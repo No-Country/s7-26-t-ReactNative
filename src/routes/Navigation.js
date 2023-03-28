@@ -34,6 +34,9 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         headerRightContainerStyle: {
           paddingRight: 20
         },
+        tabBarStyle: {
+          marginBottom: 2
+        },
         headerRight: () => (
           <Ionicons
             onPress={() => setDarkMode(!darkMode)}
