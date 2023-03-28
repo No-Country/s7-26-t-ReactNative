@@ -1,9 +1,10 @@
 import { useTheme } from '@react-navigation/native';
 import { useState } from 'react';
 import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { loginWithEmailPassword } from '../firebase/getFunctions';
 
 
-export default function Login() {
+export default function Login({navigation}) {
   
   const { colors } = useTheme();
   const [email, setEmail] = useState("")
@@ -11,7 +12,15 @@ export default function Login() {
   const [response, setResponse] = useState("")
 
   async function save(){
-    console.log("");
+    const resp = await loginWithEmailPassword(email, password)
+
+    console.log(resp);
+
+    setResponse("Bienvenido")
+
+    setTimeout(() => {
+      navigation.goBack()
+    }, 300);
   }
 
   return (
@@ -42,6 +51,9 @@ export default function Login() {
       <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => save()}>
         <Text className="text-white font-bold text-center text-base">Iniciar Sesión</Text>
       </TouchableOpacity>
+
+      <Text style={{color: colors.text}}>{response}</Text>
+
       </View>
     </KeyboardAvoidingView>
   )

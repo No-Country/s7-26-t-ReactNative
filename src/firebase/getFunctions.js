@@ -4,14 +4,17 @@ import {
   doc,
   getDoc,
   getDocs,
+  setDoc
 } from "firebase/firestore";
 import {
+  auth,
   db,
   mainCollection,
   playersCollection,
   teamsCollection,
   tournamentCollection,
 } from "./credentials";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "@firebase/auth";
 
 //Se debe especificar como string el nombre del documento con el que está guardado en la db
 //puede ser un nombre establecido o id autogenerado, hay que decidir...
@@ -90,4 +93,39 @@ export const getTeamPlayers = async (user, tournament, team) => {
 
   const docSnap = await getDocs(docRef);
   docSnap.forEach((doc) => console.log(`Jugador : ${doc.data().nombre}`));
+};
+
+//Registro
+
+export const registerUser = async (email, password) => {
+  try {
+      const userAuth = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(userAuth.user.uid);
+      //Creo el usuario en la db con el mismo id proporcionado por auth
+      setDoc(doc(db, mainCollection, userAuth.user.uid), {id:userAuth.user.uid, email})
+      return true
+  } catch (error) {
+      console.log(error);
+  }
+};
+
+//Login
+
+export const loginWithEmailPassword = async (email, password) => {
+  try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+      return user;
+  } catch (error) {
+      return undefined;
+  }
+};
+
+//Cerrar Sesion
+
+export const logOut = async () => {
+  try {
+      await signOut(auth);
+  } catch (error) {
+      console.error(error);
+  }
 };

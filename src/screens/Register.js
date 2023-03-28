@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity} from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import { registerUser } from '../firebase/getFunctions';
 
 export default function Register () {
   const { colors } = useTheme();
@@ -9,6 +10,7 @@ export default function Register () {
 
   async function save(){
     console.log("");
+    registerUser(email, password)
   }
 
   return (
@@ -35,7 +37,6 @@ export default function Register () {
         placeholder='Aa'
         placeholderTextColor={colors.text}
       />
-
 
       <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => save()}>
         <Text className="text-white font-bold text-center text-base">Registrarme</Text>
