@@ -12,6 +12,18 @@ export default function Onboarding({navigation}) {
                     navigation.navigate('Home');
                 }}
             />
+            <Button
+                title="Tournament"
+                onPress={() => {
+                    navigation.navigate('Tournament');
+                }}
+            />
+            <Button
+                title="Fixture"
+                onPress={() => {
+                    navigation.navigate('Fixture');
+                }}
+            />
             <StatusBar style="auto" />
         </View>
     );

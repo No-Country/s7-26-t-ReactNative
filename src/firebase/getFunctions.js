@@ -7,6 +7,7 @@ import {
 } from "firebase/firestore";
 import {
   db,
+  fixtureCollection,
   mainCollection,
   playersCollection,
   teamsCollection,
@@ -51,6 +52,22 @@ export const getUserTournaments = async (user) => {
   );
 };
 
+//Torneo específico
+export const getUserTournamentData = async (user, tournament) => {
+  const docRef = doc(
+    db,
+    `${mainCollection}/${user}/${tournamentCollection}/${tournament}`
+  );
+
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data()
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+};
+
 //Equipos que participan en el torneo
 export const getTournamentTeams = async (user, tournament) => {
   const docRef = collection(
@@ -81,11 +98,27 @@ export const getTeamData = async (user, tournament, team) => {
 };
 //Jugadores que conforman el equipo
 export const getTeamPlayers = async (user, tournament, team) => {
-  const docRef = collection(
+  const coleectionRef = collection(
     db,
     `${mainCollection}/${user}/${tournamentCollection}/${tournament}/${teamsCollection}/${team}/${playersCollection}`
   );
 
-  const docSnap = await getDocs(docRef);
+  const docSnap = await getDocs(coleectionRef);
   docSnap.forEach((doc) => console.log(`Jugador : ${doc.data().nombre}`));
 };
+
+//Fixture
+export const getFixture = async (user, tournament)=> {
+  const coleectionRef = collection(
+    db,
+    `${mainCollection}/${user}/${tournamentCollection}/${tournament}/${fixtureCollection}`
+  );
+
+  let fechas = []
+  const docSnap = await getDocs(coleectionRef);
+  docSnap.forEach((doc) => {
+    fechas.push(doc.data())
+  });
+  console.log("variable ", fechas)
+  return fechas
+}
