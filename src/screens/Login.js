@@ -16,11 +16,17 @@ export default function Login({navigation}) {
 
     console.log(resp);
 
-    setResponse("Bienvenido")
+    if (resp) {
+      setResponse("Bienvenido")
 
-    setTimeout(() => {
-      navigation.goBack()
-    }, 300);
+      setTimeout(() => {
+        navigation.goBack()
+      }, 300); 
+    }
+    else
+    {
+      setResponse("Error en Credenciales")
+    }
   }
 
   return (
