@@ -97,12 +97,17 @@ export const getTeamPlayers = async (user, tournament, team) => {
 
 //Registro
 
-export const registerUser = async (email, password) => {
+export const registerUser = async (email, password, username) => {
   try {
       const userAuth = await createUserWithEmailAndPassword(auth, email, password);
       console.log(userAuth.user.uid);
       //Creo el usuario en la db con el mismo id proporcionado por auth
-      setDoc(doc(db, mainCollection, userAuth.user.uid), {id:userAuth.user.uid, email})
+      setDoc(doc(db, mainCollection, userAuth.user.uid), {
+        id:userAuth.user.uid, 
+        email,
+        username,
+        telefono: "",
+      })
       return true
   } catch (error) {
       console.log(error);
