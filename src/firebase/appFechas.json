@@ -1,0 +1,46 @@
+[
+   {
+      "id": 20230321,
+      "idTorneo": 123456789,
+      "fechas": [
+         {
+            "fecha": 1,
+            "partidosJugados": [
+               {
+                  "date": "21/03/2023",
+                  "equipoLocal": "Boca Juniors",
+                  "resultadoLocal": 2,
+                  "equipoVisitante": "River Plate",
+                  "resultadoVisitante": 1
+               },
+               {
+                  "date": "21/03/2023",
+                  "equipoLocal": "San Lorenzo",
+                  "resultadoLocal": 1,
+                  "equipoVisitante": "Independiente",
+                  "resultadoVisitante": 0
+               }
+            ]
+         },
+         {
+            "fecha": 2,
+            "partidosJugados": [
+               {
+                  "date": "28/03/2023",
+                  "equipoLocal": "San Lorenzo",
+                  "resultadoLocal": 1,
+                  "equipoVisitante": "River Plate",
+                  "resultadoVisitante": 4
+               },
+               {
+                  "date": "28/03/2023",
+                  "equipoLocal": "Boca Juniors",
+                  "resultadoLocal": 3,
+                  "equipoVisitante": "Independiente",
+                  "resultadoVisitante": 1
+               }
+            ]
+         }
+      ]
+   }
+]

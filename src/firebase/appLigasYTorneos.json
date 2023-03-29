@@ -1,0 +1,654 @@
+[
+    {
+     "tipo": "Torneo",
+     "titulo": "Torneo NoCountry",
+     "id": "jdsadsad897sd21we987asd",
+     "logo": "https://t3.ftcdn.net/jpg/04/29/81/28/360_F_429812841_tNy97zTP9PJOp2Bo8G2F2Li5RCqyZlnI.jpg",
+     "deporte": 1,
+     "provincia" : "Buenos Aires",
+     "region": 5,
+     "ciudad": 3,
+     "cantidadEquipos" : 4,
+     "equipos": [
+         {
+            "id" : "asdasd8791xc86fgdf",
+            "equipo" : 1,
+            "logo" : "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg/434px-Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg.png",
+            "nombre": "Boca Juniors",
+            "golesAFavor" : 0,
+            "golesEnContra" : 0,
+            "tarjetasAmarillas" : 0,
+            "tarjetasRojas" : 0,
+            "partidosJugados" : 0,
+            "partidosGanados": 0,
+            "partidosEmpatados": 0,
+            "partidosPerdidos": 0,
+            "puntos": 0,
+            "cantidadJugadores": 8,
+            "jugadores": [
+               {
+                  "jugador" : 1,
+                  "id" : "641b461d4a7a0c0786051c17",
+                  "nombre": "Martin Palermo",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 2,
+                  "id": "641b461d4a7a0c0786051cd7",
+                  "nombre": "Guillermo Schelotto",
+                  "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+               },
+               {
+                  "jugador" : 3,
+                  "id": "641b461d4a7a0c0786051c1c",
+                  "nombre": "Ibarra",
+                  "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+               },
+               {
+                  "jugador" : 4,
+                  "id": "641b461d4a7a0c0786051c3b",
+                  "nombre": "Chico Serna",
+                  "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+               },
+               {
+                  "jugador" : 5,
+                  "id": "641b461d4a7a0c0786051cab",
+                  "nombre": "Bermudez",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 6,
+                  "id": "641b461d4a7a0c0786051c61",
+                  "nombre": "Sebastian Rossi",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 7,
+                  "id": "641b461d4a7a0c0786051c4e",
+                  "nombre": "Cordoba",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "id": "641b461d4a7a0c0786051c4a",
+                  "jugador" : 8,
+                  "nombre": "Rolon",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               }
+            ]
+      
+            
+         },
+         {
+            "id" : "asdasd8791xc86fgdf",
+            "equipo" : 2,
+            "logo" : "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_River_Plate.png",
+            "nombre": "River Plate",
+            "golesAFavor" : 0,
+            "golesEnContra" : 0,
+            "tarjetasAmarillas" : 0,
+            "tarjetasRojas" : 0,
+            "partidosJugados" : 0,
+            "partidosGanados": 0,
+            "partidosEmpatados": 0,
+            "partidosPerdidos": 0,
+            "puntos": 0,
+            "cantidadJugadores": 8,
+            "jugadores": [
+               {
+                  "jugador" : 1,
+                  "id" : "641b461d4a7a0c0786051c17",
+                  "nombre": "Martin Palermo",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 2,
+                  "id": "641b461d4a7a0c0786051cd7",
+                  "nombre": "Guillermo Schelotto",
+                  "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+               },
+               {
+                  "jugador" : 3,
+                  "id": "641b461d4a7a0c0786051c1c",
+                  "nombre": "Ibarra",
+                  "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+               },
+               {
+                  "jugador" : 4,
+                  "id": "641b461d4a7a0c0786051c3b",
+                  "nombre": "Chico Serna",
+                  "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+               },
+               {
+                  "jugador" : 5,
+                  "id": "641b461d4a7a0c0786051cab",
+                  "nombre": "Bermudez",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 6,
+                  "id": "641b461d4a7a0c0786051c61",
+                  "nombre": "Sebastian Rossi",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 7,
+                  "id": "641b461d4a7a0c0786051c4e",
+                  "nombre": "Cordoba",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "id": "641b461d4a7a0c0786051c4a",
+                  "jugador" : 8,
+                  "nombre": "Rolon",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               }
+            ]
+      
+            
+         },
+         {
+            "id" : "asdasd8791xc86fgdf",
+            "equipo" : 2,
+            "logo" : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_del_C.A._San_Lorenzo_de_Almagro.svg/1805px-Escudo_del_C.A._San_Lorenzo_de_Almagro.svg.png",
+            "nombre": "San Lorenzo",
+            "golesAFavor" : 0,
+            "golesEnContra" : 0,
+            "tarjetasAmarillas" : 0,
+            "tarjetasRojas" : 0,
+            "partidosJugados" : 0,
+            "partidosGanados": 0,
+            "partidosEmpatados": 0,
+            "partidosPerdidos": 0,
+            "puntos": 0,
+            "cantidadJugadores": 8,
+            "jugadores": [
+               {
+                  "jugador" : 1,
+                  "id" : "641b461d4a7a0c0786051c17",
+                  "nombre": "Martin Palermo",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 2,
+                  "id": "641b461d4a7a0c0786051cd7",
+                  "nombre": "Guillermo Schelotto",
+                  "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+               },
+               {
+                  "jugador" : 3,
+                  "id": "641b461d4a7a0c0786051c1c",
+                  "nombre": "Ibarra",
+                  "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+               },
+               {
+                  "jugador" : 4,
+                  "id": "641b461d4a7a0c0786051c3b",
+                  "nombre": "Chico Serna",
+                  "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+               },
+               {
+                  "jugador" : 5,
+                  "id": "641b461d4a7a0c0786051cab",
+                  "nombre": "Bermudez",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 6,
+                  "id": "641b461d4a7a0c0786051c61",
+                  "nombre": "Sebastian Rossi",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 7,
+                  "id": "641b461d4a7a0c0786051c4e",
+                  "nombre": "Cordoba",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "id": "641b461d4a7a0c0786051c4a",
+                  "jugador" : 8,
+                  "nombre": "Rolon",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               }
+            ]
+      
+            
+         },
+         {
+            "id" : "asdasd8791xc86fgdf",
+            "equipo" : 2,
+            "logo" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/1945px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png",
+            "nombre": "Independiente",
+            "golesAFavor" : 0,
+            "golesEnContra" : 0,
+            "tarjetasAmarillas" : 0,
+            "tarjetasRojas" : 0,
+            "partidosJugados" : 0,
+            "partidosGanados": 0,
+            "partidosEmpatados": 0,
+            "partidosPerdidos": 0,
+            "puntos": 0,
+            "cantidadJugadores": 8,
+            "jugadores": [
+               {
+                  "jugador" : 1,
+                  "id" : "641b461d4a7a0c0786051c17",
+                  "nombre": "Martin Palermo",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 2,
+                  "id": "641b461d4a7a0c0786051cd7",
+                  "nombre": "Guillermo Schelotto",
+                  "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+               },
+               {
+                  "jugador" : 3,
+                  "id": "641b461d4a7a0c0786051c1c",
+                  "nombre": "Ibarra",
+                  "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+               },
+               {
+                  "jugador" : 4,
+                  "id": "641b461d4a7a0c0786051c3b",
+                  "nombre": "Chico Serna",
+                  "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+               },
+               {
+                  "jugador" : 5,
+                  "id": "641b461d4a7a0c0786051cab",
+                  "nombre": "Bermudez",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 6,
+                  "id": "641b461d4a7a0c0786051c61",
+                  "nombre": "Sebastian Rossi",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "jugador" : 7,
+                  "id": "641b461d4a7a0c0786051c4e",
+                  "nombre": "Cordoba",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               },
+               {
+                  "id": "641b461d4a7a0c0786051c4a",
+                  "jugador" : 8,
+                  "nombre": "Rolon",
+                  "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+               }
+            ]
+      
+            
+         }
+     ],
+     "fechas": [
+      {
+         "fecha": 1,
+         "partidosJugados": [
+            {
+               "date": "21/03/2023",
+               "equipoLocal": "Boca Juniors",
+               "resultadoLocal": 2,
+               "equipoVisitante": "River Plate",
+               "resultadoVisitante": 1
+            },
+            {
+               "date": "21/03/2023",
+               "equipoLocal": "San Lorenzo",
+               "resultadoLocal": 1,
+               "equipoVisitante": "Independiente",
+               "resultadoVisitante": 0
+            }
+         ]
+      },
+      {
+         "fecha": 2,
+         "partidosJugados": [
+            {
+               "date": "28/03/2023",
+               "equipoLocal": "San Lorenzo",
+               "resultadoLocal": 1,
+               "equipoVisitante": "River Plate",
+               "resultadoVisitante": 4
+            },
+            {
+               "date": "28/03/2023",
+               "equipoLocal": "Boca Juniors",
+               "resultadoLocal": 3,
+               "equipoVisitante": "Independiente",
+               "resultadoVisitante": 1
+            }
+         ]
+      }
+   ]
+   },
+   {
+      "tipo": "Torneo",
+      "titulo": "Torneo prueba1",
+      "id": "jdsadsad897sd21we09f09",
+      "deporte": 1,
+      "provincia" : "Buenos Aires",
+      "region": 5,
+      "ciudad": 3,
+      "cantidadEquipos" : 4,
+      "equipos": [
+          {
+             "id" : "asdasd8791xc86fgdf",
+             "equipo" : 1,
+             "logo" : "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg/434px-Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg.png",
+             "nombre": "Boca Juniors",
+             "golesAFavor" : 0,
+             "golesEnContra" : 0,
+             "tarjetasAmarillas" : 0,
+             "tarjetasRojas" : 0,
+             "partidosJugados" : 0,
+             "partidosGanados": 0,
+             "partidosEmpatados": 0,
+             "partidosPerdidos": 0,
+             "puntos": 0,
+             "cantidadJugadores": 8,
+             "jugadores": [
+                {
+                   "jugador" : 1,
+                   "id" : "641b461d4a7a0c0786051c17",
+                   "nombre": "Martin Palermo",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 2,
+                   "id": "641b461d4a7a0c0786051cd7",
+                   "nombre": "Guillermo Schelotto",
+                   "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+                },
+                {
+                   "jugador" : 3,
+                   "id": "641b461d4a7a0c0786051c1c",
+                   "nombre": "Ibarra",
+                   "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+                },
+                {
+                   "jugador" : 4,
+                   "id": "641b461d4a7a0c0786051c3b",
+                   "nombre": "Chico Serna",
+                   "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+                },
+                {
+                   "jugador" : 5,
+                   "id": "641b461d4a7a0c0786051cab",
+                   "nombre": "Bermudez",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 6,
+                   "id": "641b461d4a7a0c0786051c61",
+                   "nombre": "Sebastian Rossi",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 7,
+                   "id": "641b461d4a7a0c0786051c4e",
+                   "nombre": "Cordoba",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "id": "641b461d4a7a0c0786051c4a",
+                   "jugador" : 8,
+                   "nombre": "Rolon",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                }
+             ]
+       
+             
+          },
+          {
+             "id" : "asdasd8791xc86fgdf",
+             "equipo" : 2,
+             "logo" : "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_River_Plate.png",
+             "nombre": "River Plate",
+             "golesAFavor" : 0,
+             "golesEnContra" : 0,
+             "tarjetasAmarillas" : 0,
+             "tarjetasRojas" : 0,
+             "partidosJugados" : 0,
+             "partidosGanados": 0,
+             "partidosEmpatados": 0,
+             "partidosPerdidos": 0,
+             "puntos": 0,
+             "cantidadJugadores": 8,
+             "jugadores": [
+                {
+                   "jugador" : 1,
+                   "id" : "641b461d4a7a0c0786051c17",
+                   "nombre": "Martin Palermo",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 2,
+                   "id": "641b461d4a7a0c0786051cd7",
+                   "nombre": "Guillermo Schelotto",
+                   "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+                },
+                {
+                   "jugador" : 3,
+                   "id": "641b461d4a7a0c0786051c1c",
+                   "nombre": "Ibarra",
+                   "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+                },
+                {
+                   "jugador" : 4,
+                   "id": "641b461d4a7a0c0786051c3b",
+                   "nombre": "Chico Serna",
+                   "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+                },
+                {
+                   "jugador" : 5,
+                   "id": "641b461d4a7a0c0786051cab",
+                   "nombre": "Bermudez",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 6,
+                   "id": "641b461d4a7a0c0786051c61",
+                   "nombre": "Sebastian Rossi",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 7,
+                   "id": "641b461d4a7a0c0786051c4e",
+                   "nombre": "Cordoba",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "id": "641b461d4a7a0c0786051c4a",
+                   "jugador" : 8,
+                   "nombre": "Rolon",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                }
+             ]
+       
+             
+          },
+          {
+             "id" : "asdasd8791xc86fgdf",
+             "equipo" : 2,
+             "logo" : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_del_C.A._San_Lorenzo_de_Almagro.svg/1805px-Escudo_del_C.A._San_Lorenzo_de_Almagro.svg.png",
+             "nombre": "San Lorenzo",
+             "golesAFavor" : 0,
+             "golesEnContra" : 0,
+             "tarjetasAmarillas" : 0,
+             "tarjetasRojas" : 0,
+             "partidosJugados" : 0,
+             "partidosGanados": 0,
+             "partidosEmpatados": 0,
+             "partidosPerdidos": 0,
+             "puntos": 0,
+             "cantidadJugadores": 8,
+             "jugadores": [
+                {
+                   "jugador" : 1,
+                   "id" : "641b461d4a7a0c0786051c17",
+                   "nombre": "Martin Palermo",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 2,
+                   "id": "641b461d4a7a0c0786051cd7",
+                   "nombre": "Guillermo Schelotto",
+                   "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+                },
+                {
+                   "jugador" : 3,
+                   "id": "641b461d4a7a0c0786051c1c",
+                   "nombre": "Ibarra",
+                   "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+                },
+                {
+                   "jugador" : 4,
+                   "id": "641b461d4a7a0c0786051c3b",
+                   "nombre": "Chico Serna",
+                   "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+                },
+                {
+                   "jugador" : 5,
+                   "id": "641b461d4a7a0c0786051cab",
+                   "nombre": "Bermudez",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 6,
+                   "id": "641b461d4a7a0c0786051c61",
+                   "nombre": "Sebastian Rossi",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 7,
+                   "id": "641b461d4a7a0c0786051c4e",
+                   "nombre": "Cordoba",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "id": "641b461d4a7a0c0786051c4a",
+                   "jugador" : 8,
+                   "nombre": "Rolon",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                }
+             ]
+       
+             
+          },
+          {
+             "id" : "asdasd8791xc86fgdf",
+             "equipo" : 2,
+             "logo" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/1945px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png",
+             "nombre": "Independiente",
+             "golesAFavor" : 0,
+             "golesEnContra" : 0,
+             "tarjetasAmarillas" : 0,
+             "tarjetasRojas" : 0,
+             "partidosJugados" : 0,
+             "partidosGanados": 0,
+             "partidosEmpatados": 0,
+             "partidosPerdidos": 0,
+             "puntos": 0,
+             "cantidadJugadores": 8,
+             "jugadores": [
+                {
+                   "jugador" : 1,
+                   "id" : "641b461d4a7a0c0786051c17",
+                   "nombre": "Martin Palermo",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 2,
+                   "id": "641b461d4a7a0c0786051cd7",
+                   "nombre": "Guillermo Schelotto",
+                   "imagen" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRygnMc36zkA8_rWJ5j-pE1OPV-rcVmnrwBzpz1PiXAZA&s"
+                },
+                {
+                   "jugador" : 3,
+                   "id": "641b461d4a7a0c0786051c1c",
+                   "nombre": "Ibarra",
+                   "imagen" : "https://i0.wp.com/lanumero12.com.ar/archivos/2023/02/Hugo-Ibarra-entrenamiento-Boca-822023.png?resize=780%2C470&ssl=1"
+                },
+                {
+                   "jugador" : 4,
+                   "id": "641b461d4a7a0c0786051c3b",
+                   "nombre": "Chico Serna",
+                   "imagen" : "https://cdnb.20m.es/sites/30/2022/03/chicho.jpg"
+                },
+                {
+                   "jugador" : 5,
+                   "id": "641b461d4a7a0c0786051cab",
+                   "nombre": "Bermudez",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 6,
+                   "id": "641b461d4a7a0c0786051c61",
+                   "nombre": "Sebastian Rossi",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "jugador" : 7,
+                   "id": "641b461d4a7a0c0786051c4e",
+                   "nombre": "Cordoba",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                },
+                {
+                   "id": "641b461d4a7a0c0786051c4a",
+                   "jugador" : 8,
+                   "nombre": "Rolon",
+                   "imagen" : "https://media.gettyimages.com/id/1170591267/es/foto/martin-palermo-of-boca-juniors-celebrates-after-scoring-the-third-goal-of-his-team-during-the.jpg?s=612x612&w=gi&k=20&c=Lk2OnvBrFiMcOToD0N50JgPa-U2oCCUawl0dsS2NeQI="
+                }
+             ]
+       
+             
+          }
+      ],
+      "fechas": [
+       {
+          "fecha": 1,
+          "partidosJugados": [
+             {
+                "date": "21/03/2023",
+                "equipoLocal": "Boca Juniors",
+                "resultadoLocal": 2,
+                "equipoVisitante": "River Plate",
+                "resultadoVisitante": 1
+             },
+             {
+                "date": "21/03/2023",
+                "equipoLocal": "San Lorenzo",
+                "resultadoLocal": 1,
+                "equipoVisitante": "Independiente",
+                "resultadoVisitante": 0
+             }
+          ]
+       },
+       {
+          "fecha": 2,
+          "partidosJugados": [
+             {
+                "date": "28/03/2023",
+                "equipoLocal": "San Lorenzo",
+                "resultadoLocal": 1,
+                "equipoVisitante": "River Plate",
+                "resultadoVisitante": 4
+             },
+             {
+                "date": "28/03/2023",
+                "equipoLocal": "Boca Juniors",
+                "resultadoLocal": 3,
+                "equipoVisitante": "Independiente",
+                "resultadoVisitante": 1
+             }
+          ]
+       }
+    ]
+    }
+]
+
+
+
