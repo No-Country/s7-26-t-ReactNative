@@ -50,28 +50,24 @@ export default function Register({navigation}) {
             type: "error",
             text1: "⚠️ Ya existe una cuenta con ese email"
           });
-          setValid(false);
           break;
         case "auth/invalid-email":
           Toast.show({
             type: "error",
             text1: "⚠️ Email inválido"
           });
-          setValid(false);
           break;
         case "auth/weak-password":
           Toast.show({
             type: "error",
             text1: "⚠️ La contraseña es demasiado débil"
           });
-          setValid(false);
           break;
         default:
           Toast.show({
             type: "error",
             text1: "⚠️ Algo ha salido mal. Por favor inténtelo nuevamente"
           });
-          setValid(false);
           break;
       }
     }
