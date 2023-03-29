@@ -11,8 +11,8 @@ import Onboarding from "../screens/Onboarding";
 import Login from "../screens/Login";
 import News from "../screens/News";
 import Ranking from "../screens/Ranking";
-import Schedule from "../screens/Schedule";
-import Favorites from "../screens/Favorites";
+import Stats from "../screens/Stats";
+import Fixture from "../screens/Fixture";
 import Register from "../screens/Register";
 
 const Stack = createNativeStackNavigator();
@@ -69,7 +69,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
       />
 
       <Tab.Screen
-        name="Partidos"
+        name="Competidores"
         component={Ranking}
         options={({
           tabBarLabel:() => {return null},
@@ -78,8 +78,8 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
       />
 
       <Tab.Screen
-        name="Favoritos"
-        component={Favorites}
+        name="Fixture"
+        component={Fixture}
         options={{
           tabBarLabel:() => {return null},
           tabBarIcon: props => <FontAwesome name="list" size={30} color={props.color} />
@@ -87,8 +87,8 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
       />
 
       <Tab.Screen
-        name="Fechas"
-        component={Schedule}
+        name="Estadisticas"
+        component={Stats}
         options={{
           tabBarLabel:() => {return null},
           tabBarIcon: props => <FontAwesome name="bar-chart" size={30} color={props.color} />
