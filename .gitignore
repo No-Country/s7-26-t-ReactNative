@@ -12,6 +12,8 @@ web-build/
 
 app.json
 
+yarn.lock
+
 # macOS
 .DS_Store
 
