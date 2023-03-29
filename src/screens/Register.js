@@ -11,6 +11,8 @@ import { useTheme } from "@react-navigation/native";
 import { registerUser } from "../firebase/getFunctions";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Toast from "react-native-toast-message";
+import { toastConfig } from "../components/Toast";
 
 const registerSchema = Yup.object().shape({
   username: Yup.string()
@@ -24,14 +26,64 @@ const registerSchema = Yup.object().shape({
     .required("La Constraseña es obligatoria"),
 });
 
-export default function Register() {
+export default function Register({navigation}) {
   const { colors } = useTheme();
 
   async function handleSubmit({email, password, username}) {
-    registerUser(email, password, username);
+    const res = await registerUser(email, password, username)
+      
+    if(!res) {
+        Toast.show({
+          type: "success",
+          text1: "😃 Bienvenido"
+        });
+
+        setTimeout(() => {
+          navigation.goBack()
+        }, 700); 
+    }
+    else
+    {
+      switch (res) {
+        case "auth/email-already-in-use":
+          Toast.show({
+            type: "error",
+            text1: "⚠️ Ya existe una cuenta con ese email"
+          });
+          setValid(false);
+          break;
+        case "auth/invalid-email":
+          Toast.show({
+            type: "error",
+            text1: "⚠️ Email inválido"
+          });
+          setValid(false);
+          break;
+        case "auth/weak-password":
+          Toast.show({
+            type: "error",
+            text1: "⚠️ La contraseña es demasiado débil"
+          });
+          setValid(false);
+          break;
+        default:
+          Toast.show({
+            type: "error",
+            text1: "⚠️ Algo ha salido mal. Por favor inténtelo nuevamente"
+          });
+          setValid(false);
+          break;
+      }
+    }
+
   }
 
   return (
+    <>
+    <View className="z-10">
+    <Toast config={toastConfig}/>
+    </View>
+    
     <KeyboardAvoidingView
       behavior="padding"
       className="flex justify-center items-center w-[280] h-full mx-auto"
@@ -62,6 +114,7 @@ export default function Register() {
             >
               Bienvenido a Torneopalooza
             </Text>
+
             <Text
               style={{ color: colors.text }}
               className="mr-auto text-base font-semibold opacity-50"
@@ -131,5 +184,6 @@ export default function Register() {
         )}
       </Formik>
     </KeyboardAvoidingView>
+    </>
   );
 }

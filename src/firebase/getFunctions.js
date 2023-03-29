@@ -108,9 +108,9 @@ export const registerUser = async (email, password, username) => {
         username,
         telefono: "",
       })
-      return true
+      return false
   } catch (error) {
-      console.log(error);
+    return error.code;
   }
 };
 

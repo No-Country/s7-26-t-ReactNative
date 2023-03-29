@@ -4,6 +4,8 @@ import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity} from 're
 import { loginWithEmailPassword } from '../firebase/getFunctions';
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Toast from "react-native-toast-message";
+import {toastConfig} from '../components/Toast'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,25 +19,35 @@ const loginSchema = Yup.object().shape({
 export default function Login({navigation}) {
   
   const { colors } = useTheme();
-  const [response, setResponse] = useState("")
 
   async function handleSubmit({email, password}){
     const resp = await loginWithEmailPassword(email, password)
 
     if (resp) {
-      setResponse("Bienvenido")
+      Toast.show({
+        type: "success",
+        text1: "😃 Bienvenido"
+      });
 
       setTimeout(() => {
         navigation.goBack()
-      }, 300); 
+      }, 700); 
     }
     else
     {
-      setResponse("Error en Credenciales")
+      Toast.show({
+        type: "error",
+        text1: "⚠️ Error en credenciales."
+      });
     }
   }
 
   return (
+    <>
+    <View className="z-10">
+    <Toast config={toastConfig} />
+    </View>
+    
     <KeyboardAvoidingView
       behavior="padding"
       className="flex justify-center items-center w-[280] h-full mx-auto"
@@ -66,8 +78,6 @@ export default function Login({navigation}) {
             >
               Bienvenido a Torneopalooza
             </Text>
-
-            <Text className="mx-auto font-semibold" style={{ color: colors.text }} >{response}</Text>
 
             <Text
               style={{ color: colors.text }}
@@ -120,5 +130,6 @@ export default function Login({navigation}) {
         )}
       </Formik>
     </KeyboardAvoidingView>
+    </>
   )
 }
