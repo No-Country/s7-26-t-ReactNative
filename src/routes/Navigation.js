@@ -21,7 +21,6 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
 
   return (
     <>
-    <StatusBar barStyle={darkMode? "light-content" : "dark-content"} />
     <Tab.Navigator
       screenOptions={{
         tabBarStyle:{
@@ -130,6 +129,7 @@ export function Navigation() {
 
   return (
     <>
+    <StatusBar style={darkMode? "light": "dark"} />
     <NavigationContainer theme={darkMode ? CustomDark : CustomLight}>
       <Stack.Navigator>
         <Stack.Screen name="Root" options={{ headerShown: false }}>
