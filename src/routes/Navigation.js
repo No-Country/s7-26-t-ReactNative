@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "../screens/Home";
 import Tournament from "../screens/Tournament";
 import Onboarding from "../screens/Onboarding";
@@ -16,6 +17,7 @@ import Register from "../screens/Register";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 function BottomNavigation({ darkMode, setDarkMode, colors }) {
 
@@ -123,39 +125,51 @@ const CustomDark = {
   }
 };
 
-export function Navigation() {
+function StackNavigation({darkMode, setDarkMode}) {
 
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Root" options={{ headerShown: false }}>
+        {() => (
+          <BottomNavigation
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+            colors={darkMode ? CustomDark.colors : CustomLight.colors}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Login" component={Login} options={{ headerTitle: "" }}/>
+      <Stack.Screen name="Register" component={Register} options={{ headerTitle: "" }}/>
+      <Stack.Screen
+        name="Tournament"
+        options={{ headerShown: false }}
+        component={Tournament}
+      />
+      
+      <Stack.Screen
+        name="Onboarding"
+        options={{ headerShown: false }}
+        component={Onboarding}
+      />
+    </Stack.Navigator>
+  );
+}
+
+export function DrawerNavigation(){
   const [darkMode, setDarkMode] = useState(true);
 
   return (
     <>
     <StatusBar style={darkMode? "light": "dark"} />
     <NavigationContainer theme={darkMode ? CustomDark : CustomLight}>
-      <Stack.Navigator>
-        <Stack.Screen name="Root" options={{ headerShown: false }}>
-          {() => (
-            <BottomNavigation
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
-              colors={darkMode ? CustomDark.colors : CustomLight.colors}
-            />
-          )}
-        </Stack.Screen>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Login" component={Login} options={{ headerTitle: "" }}/>
-        <Stack.Screen name="Register" component={Register} options={{ headerTitle: "" }}/>
-        <Stack.Screen
-          name="Tournament"
-          options={{ headerShown: false }}
-          component={Tournament}
-        />
-        
-        <Stack.Screen
-          name="Onboarding"
-          options={{ headerShown: false }}
-          component={Onboarding}
-        />
-      </Stack.Navigator>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Index" options={{ headerShown: false }}>
+          {
+            () => <StackNavigation darkMode={darkMode} setDarkMode={setDarkMode} />
+          }
+        </Drawer.Screen>
+      </Drawer.Navigator>
     </NavigationContainer>
     </>
   );
