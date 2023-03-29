@@ -1,5 +1,5 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -21,6 +21,8 @@ const Drawer = createDrawerNavigator();
 
 function BottomNavigation({ darkMode, setDarkMode, colors }) {
 
+  const navigation = useNavigation()
+
   return (
     <>
     <Tab.Navigator
@@ -38,6 +40,14 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         tabBarStyle: {
           marginBottom: 2
         },
+        headerLeft: () => (
+          <Ionicons
+            onPress={() => navigation.toggleDrawer()}
+            name="menu-sharp"
+            size={30}
+            color={darkMode ? "#fff" : "#000"}
+          />
+        ),
         headerRight: () => (
           <Ionicons
             onPress={() => setDarkMode(!darkMode)}
@@ -45,7 +55,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
             size={30}
             color={darkMode ? "#fff" : "#000"}
           />
-        ),
+        )
       }}
       
     >
@@ -54,7 +64,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         component={Home}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="list" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="trophy" size={30} color={props.color} />
         }}
       />
 
@@ -63,7 +73,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         component={Ranking}
         options={({
           tabBarLabel:() => {return null},
-          tabBarIcon: props =><Ionicons name="football" size={30} color={props.color} />
+          tabBarIcon: props =><FontAwesome name="user" size={30} color={props.color} />
         })}
       />
 
@@ -72,7 +82,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         component={Favorites}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="md-thumbs-up-sharp" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="list" size={30} color={props.color} />
         }}
       />
 
@@ -81,7 +91,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         component={Schedule}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="calendar" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="bar-chart" size={30} color={props.color} />
         }}
       />
 
@@ -90,7 +100,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         component={News}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="newspaper" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="newspaper-o" size={30} color={props.color} />
         }}
       />
     </Tab.Navigator>
