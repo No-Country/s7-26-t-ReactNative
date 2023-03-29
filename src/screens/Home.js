@@ -1,19 +1,29 @@
 import { useState, useEffect } from 'react';
 import { Button, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import {auth} from '../firebase/credentials';
-import { logOut } from '../firebase/getFunctions';
+import { auth } from '../firebase/credentials';
+import { getUserData, logOut } from '../firebase/getFunctions';
 
  function Home({navigation}) {
 
   const [user, setUser] = useState([])
 
+  const getUserDataa = async (uid) => {
+    if (uid) {
+      const userData = await getUserData(uid);
+      setUser(userData)
+    }
+    
+    return null
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        // User is logged in
-        setUser(user);
+        
+        if (user.uid) {
+          getUserDataa(user.uid)
+        }
       } else {
-        // User is logged out
         setUser(null);
       }
     });
@@ -46,7 +56,7 @@ import { logOut } from '../firebase/getFunctions';
 
       {
         user?.email?
-        <Text className="text-indigo-600">Hola {user?.email}</Text>
+        <Text className="text-indigo-600">Hola {user.username}</Text>
         :
         undefined
       }

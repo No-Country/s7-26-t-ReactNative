@@ -2,65 +2,134 @@ import { useTheme } from '@react-navigation/native';
 import { useState } from 'react';
 import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity} from 'react-native';
 import { loginWithEmailPassword } from '../firebase/getFunctions';
+import { Formik } from "formik";
+import * as Yup from "yup";
+import Toast from "react-native-toast-message";
+import {toastConfig} from '../components/Toast'
 
+const loginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Email Invalido")
+    .required("El Email es obligatorio"),
+  password: Yup.string()
+    .min(5, "Ingresa almenos 5 caracteres")
+    .required("La Constraseña es obligatoria"),
+});
 
 export default function Login({navigation}) {
   
   const { colors } = useTheme();
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [response, setResponse] = useState("")
 
-  async function save(){
+  async function handleSubmit({email, password}){
     const resp = await loginWithEmailPassword(email, password)
 
-    console.log(resp);
-
     if (resp) {
-      setResponse("Bienvenido")
+      Toast.show({
+        type: "success",
+        text1: "😃 Bienvenido"
+      });
 
       setTimeout(() => {
         navigation.goBack()
-      }, 300); 
+      }, 700); 
     }
     else
     {
-      setResponse("Error en Credenciales")
+      Toast.show({
+        type: "error",
+        text1: "⚠️ Error en credenciales."
+      });
     }
   }
 
   return (
-    <KeyboardAvoidingView behavior='padding' className="flex justify-center items-center w-[280] h-full mx-auto">
+    <>
+    <View className="z-10">
+    <Toast config={toastConfig} />
+    </View>
+    
+    <KeyboardAvoidingView
+      behavior="padding"
+      className="flex justify-center items-center w-[280] h-full mx-auto"
+      keyboardVerticalOffset={
+        Platform.select({
+           ios: () => 50,
+           android: () => 50
+        })()
+      }
+    >
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={handleSubmit}
+        validationSchema={loginSchema}
+      >
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+        }) => (
+          <View className="w-full flex">
+            <Text
+              style={{ color: colors.text }}
+              className="mx-auto text-center text-4xl mb-5 font-bold -tracking-wide"
+            >
+              Bienvenido a Torneopalooza
+            </Text>
 
-      <View className="w-full flex gap-y-3">
-      
-      <Text style={{color: colors.text}} className="mr-auto -mb-3 text-base font-semibold opacity-60">Email</Text>
-      <TextInput
-        className="bg-white/10 border border-black/20 py-3 px-4 focus:border-indigo-600/50 w-full rounded-md"
-        style={{color: colors.text}}
-        onChangeText={nextValue => setEmail(nextValue)}
-        value={email}
-        placeholder='Your@email.com'
-        placeholderTextColor={colors.text}
-      />
+            <Text
+              style={{ color: colors.text }}
+              className="mr-auto text-base font-semibold opacity-50"
+            >
+              Email
+            </Text>
+            <TextInput
+              className="bg-white/10 border border-black/20 py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2"
+              style={{ color: colors.text }}
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+              placeholder="Your@email.com"
+              placeholderTextColor={colors.text}
+            />
+            
+            {errors.email && touched.email && <Text className="text-rose-600">{errors.email}</Text>}
 
-      <Text style={{color: colors.text}} className="mr-auto -mb-3 text-base font-semibold opacity-60">Password</Text>
-      <TextInput
-        className="bg-white/10 border border-black/20 py-3 px-4 focus:border-indigo-600/50 w-full rounded-md -mb-1"
-        style={{color: colors.text}}
-        onChangeText={nextValue => setPassword(nextValue)}
-        value={password}
-        placeholder='Aa'
-        placeholderTextColor={colors.text}
-      />
+            <Text
+              style={{ color: colors.text }}
+              className="mr-auto text-base font-semibold opacity-50"
+            >
+              Password
+            </Text>
+            <TextInput
+              className="bg-white/10 border border-black/20 py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2"
+              style={{ color: colors.text }}
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              placeholder="Aa"
+              placeholderTextColor={colors.text}
+            />
+            
+            {errors.password && touched.password && <Text className="text-rose-600 mb-2">{errors.password}</Text>}
 
-      <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => save()}>
-        <Text className="text-white font-bold text-center text-base">Iniciar Sesión</Text>
-      </TouchableOpacity>
-
-      <Text style={{color: colors.text}}>{response}</Text>
-
-      </View>
+            <TouchableOpacity
+              className="bg-indigo-600 p-3 rounded-md mb-3"
+              onPress={() => handleSubmit()}
+            >
+              <Text className="text-white font-bold text-center text-base">
+                Iniciar Sesion
+              </Text>
+            </TouchableOpacity>
+            <Text className="text-sm font-bold text-indigo-500 -tracking-wider">
+              ¿No Tenes cuenta? Registrate acá
+            </Text>
+          </View>
+        )}
+      </Formik>
     </KeyboardAvoidingView>
+    </>
   )
 }

@@ -142,8 +142,8 @@ export function Navigation() {
           )}
         </Stack.Screen>
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Login" component={Login} options={{ headerTitle: "" }}/>
+        <Stack.Screen name="Register" component={Register} options={{ headerTitle: "" }}/>
         <Stack.Screen
           name="Tournament"
           options={{ headerShown: false }}
