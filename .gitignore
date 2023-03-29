@@ -12,6 +12,8 @@ web-build/
 
 app.json
 
+package-lock.json
+
 yarn.lock
 
 # macOS

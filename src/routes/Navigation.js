@@ -1,23 +1,27 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "../screens/Home";
 import Tournament from "../screens/Tournament";
 import Onboarding from "../screens/Onboarding";
 import Login from "../screens/Login";
 import News from "../screens/News";
 import Ranking from "../screens/Ranking";
-import Schedule from "../screens/Schedule";
-import Favorites from "../screens/Favorites";
+import Stats from "../screens/Stats";
+import Fixture from "../screens/Fixture";
 import Register from "../screens/Register";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 function BottomNavigation({ darkMode, setDarkMode, colors }) {
+
+  const navigation = useNavigation()
 
   return (
     <>
@@ -36,6 +40,14 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         tabBarStyle: {
           marginBottom: 2
         },
+        headerLeft: () => (
+          <Ionicons
+            onPress={() => navigation.toggleDrawer()}
+            name="menu-sharp"
+            size={30}
+            color={darkMode ? "#fff" : "#000"}
+          />
+        ),
         headerRight: () => (
           <Ionicons
             onPress={() => setDarkMode(!darkMode)}
@@ -43,7 +55,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
             size={30}
             color={darkMode ? "#fff" : "#000"}
           />
-        ),
+        )
       }}
       
     >
@@ -52,34 +64,34 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         component={Home}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="list" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="trophy" size={30} color={props.color} />
         }}
       />
 
       <Tab.Screen
-        name="Partidos"
+        name="Competidores"
         component={Ranking}
         options={({
           tabBarLabel:() => {return null},
-          tabBarIcon: props =><Ionicons name="football" size={30} color={props.color} />
+          tabBarIcon: props =><FontAwesome name="user" size={30} color={props.color} />
         })}
       />
 
       <Tab.Screen
-        name="Favoritos"
-        component={Favorites}
+        name="Fixture"
+        component={Fixture}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="md-thumbs-up-sharp" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="list" size={30} color={props.color} />
         }}
       />
 
       <Tab.Screen
-        name="Fechas"
-        component={Schedule}
+        name="Estadisticas"
+        component={Stats}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="calendar" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="bar-chart" size={30} color={props.color} />
         }}
       />
 
@@ -88,7 +100,7 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
         component={News}
         options={{
           tabBarLabel:() => {return null},
-          tabBarIcon: props => <Ionicons name="newspaper" size={30} color={props.color} />
+          tabBarIcon: props => <FontAwesome name="newspaper-o" size={30} color={props.color} />
         }}
       />
     </Tab.Navigator>
@@ -123,39 +135,51 @@ const CustomDark = {
   }
 };
 
-export function Navigation() {
+function StackNavigation({darkMode, setDarkMode}) {
 
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Root" options={{ headerShown: false }}>
+        {() => (
+          <BottomNavigation
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+            colors={darkMode ? CustomDark.colors : CustomLight.colors}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Login" component={Login} options={{ headerTitle: "" }}/>
+      <Stack.Screen name="Register" component={Register} options={{ headerTitle: "" }}/>
+      <Stack.Screen
+        name="Tournament"
+        options={{ headerShown: false }}
+        component={Tournament}
+      />
+      
+      <Stack.Screen
+        name="Onboarding"
+        options={{ headerShown: false }}
+        component={Onboarding}
+      />
+    </Stack.Navigator>
+  );
+}
+
+export function DrawerNavigation(){
   const [darkMode, setDarkMode] = useState(true);
 
   return (
     <>
     <StatusBar style={darkMode? "light": "dark"} />
     <NavigationContainer theme={darkMode ? CustomDark : CustomLight}>
-      <Stack.Navigator>
-        <Stack.Screen name="Root" options={{ headerShown: false }}>
-          {() => (
-            <BottomNavigation
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
-              colors={darkMode ? CustomDark.colors : CustomLight.colors}
-            />
-          )}
-        </Stack.Screen>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Login" component={Login} options={{ headerTitle: "" }}/>
-        <Stack.Screen name="Register" component={Register} options={{ headerTitle: "" }}/>
-        <Stack.Screen
-          name="Tournament"
-          options={{ headerShown: false }}
-          component={Tournament}
-        />
-        
-        <Stack.Screen
-          name="Onboarding"
-          options={{ headerShown: false }}
-          component={Onboarding}
-        />
-      </Stack.Navigator>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Index" options={{ headerShown: false }}>
+          {
+            () => <StackNavigation darkMode={darkMode} setDarkMode={setDarkMode} />
+          }
+        </Drawer.Screen>
+      </Drawer.Navigator>
     </NavigationContainer>
     </>
   );
