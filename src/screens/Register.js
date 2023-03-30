@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
+  Platform
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { registerUser } from "../firebase/getFunctions";
@@ -83,6 +84,7 @@ export default function Register({ navigation }) {
         keyboardVerticalOffset={Platform.select({
           ios: () => 50,
           android: () => 50,
+          web: () => 50
         })()}
       >
         <Formik

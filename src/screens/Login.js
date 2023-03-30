@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { useState } from 'react';
-import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity, Platform} from 'react-native';
 import { loginWithEmailPassword } from '../firebase/getFunctions';
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -54,7 +54,8 @@ export default function Login({navigation}) {
       keyboardVerticalOffset={
         Platform.select({
            ios: () => 50,
-           android: () => 50
+           android: () => 50,
+           web: () => 50
         })()
       }
     >
