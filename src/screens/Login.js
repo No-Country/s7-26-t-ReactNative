@@ -30,7 +30,7 @@ export default function Login({navigation}) {
       });
 
       setTimeout(() => {
-        navigation.goBack()
+        navigation.popToTop();
       }, 700); 
     }
     else

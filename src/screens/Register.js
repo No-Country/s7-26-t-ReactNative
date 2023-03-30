@@ -39,7 +39,7 @@ export default function Register({ navigation }) {
       });
 
       setTimeout(() => {
-        navigation.goBack();
+        navigation.popToTop();
       }, 700);
     } else {
       switch (res) {
