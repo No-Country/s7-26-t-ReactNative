@@ -1,10 +1,10 @@
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import Home from "../screens/Home";
 import Tournament from "../screens/Tournament";
 import Onboarding from "../screens/Onboarding";
@@ -14,6 +14,9 @@ import Ranking from "../screens/Ranking";
 import Stats from "../screens/Stats";
 import Fixture from "../screens/Fixture";
 import Register from "../screens/Register";
+import { Button, Image, Text, View, TouchableOpacity } from "react-native";
+import { auth } from "../firebase/credentials"
+import { getUserData, logOut } from '../firebase/getFunctions';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -166,6 +169,77 @@ function StackNavigation({darkMode, setDarkMode}) {
   );
 }
 
+function CustomDrawerContent({props, navigation}) {
+
+  const [user, setUser] = useState(null)
+
+  const fetchUser = async (uid) => {
+    if (uid) {
+      const userData = await getUserData(uid);
+      setUser(userData)
+    }
+    
+    return null
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        
+        if (user.uid) {
+          fetchUser(user.uid)
+        }
+      } else {
+        setUser(null);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  return (
+    <DrawerContentScrollView {...props}>
+      <View className="flex-1 justify-between h-full items-center">
+        {
+          user?
+          <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
+            <FontAwesome name="user-circle" size={60} color="#fff" />
+            <Text className="font-bold text-lg text-white">Hola {user.username}</Text>
+          </View>
+          :
+          undefined
+        }
+        <View className="flex flex-col gap-y-4 items-center my-2">
+        {
+          !user?.email?
+          <>
+          <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => navigation.navigate("Login")}>
+            <Text className="text-white font-bold text-center text-base">Iniciar Sesion</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => navigation.navigate("Register")}>
+            <Text className="text-white font-bold text-center text-base">Registro</Text>
+          </TouchableOpacity>
+          </>
+          :
+          undefined
+        }
+        </View>
+
+        {
+          user?
+          <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => logOut()}>
+            <Text className="text-white font-bold text-center text-base">Cerrar Sesion</Text>
+          </TouchableOpacity>
+          :
+          undefined
+        }
+
+      </View>
+    </DrawerContentScrollView>
+  );
+}
+
 export function DrawerNavigation(){
   const [darkMode, setDarkMode] = useState(true);
 
@@ -173,7 +247,7 @@ export function DrawerNavigation(){
     <>
     <StatusBar style={darkMode? "light": "dark"} />
     <NavigationContainer theme={darkMode ? CustomDark : CustomLight}>
-      <Drawer.Navigator>
+      <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
         <Drawer.Screen name="Index" options={{ headerShown: false }}>
           {
             () => <StackNavigation darkMode={darkMode} setDarkMode={setDarkMode} />
