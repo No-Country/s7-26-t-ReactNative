@@ -123,9 +123,11 @@ export default function Login({navigation}) {
                 Iniciar Sesion
               </Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('Register')}>
             <Text className="text-sm font-bold text-indigo-500 -tracking-wider">
               ¿No Tenes cuenta? Registrate acá
             </Text>
+            </TouchableOpacity>
           </View>
         )}
       </Formik>
