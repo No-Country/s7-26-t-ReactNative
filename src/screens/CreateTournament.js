@@ -1,4 +1,4 @@
-import { Text, TextInput, View, KeyboardAvoidingView, TouchableOpacity} from "react-native"
+import { Text, TextInput, View, KeyboardAvoidingView, TouchableOpacity, Platform} from "react-native"
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { CreateTournamentFB } from "../firebase/getFunctions";
