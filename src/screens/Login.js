@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { useState } from 'react';
-import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity, Platform} from 'react-native';
 import { loginWithEmailPassword } from '../firebase/getFunctions';
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -30,7 +30,7 @@ export default function Login({navigation}) {
       });
 
       setTimeout(() => {
-        navigation.goBack()
+        navigation.popToTop();
       }, 700); 
     }
     else
@@ -54,7 +54,8 @@ export default function Login({navigation}) {
       keyboardVerticalOffset={
         Platform.select({
            ios: () => 50,
-           android: () => 50
+           android: () => 50,
+           web: () => 50
         })()
       }
     >
@@ -123,9 +124,11 @@ export default function Login({navigation}) {
                 Iniciar Sesion
               </Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('Register')}>
             <Text className="text-sm font-bold text-indigo-500 -tracking-wider">
               ¿No Tenes cuenta? Registrate acá
             </Text>
+            </TouchableOpacity>
           </View>
         )}
       </Formik>

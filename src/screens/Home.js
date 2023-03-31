@@ -1,75 +1,44 @@
-import { useState, useEffect } from 'react';
+import { Link, useTheme } from '@react-navigation/native';
+import { useState, useEffect, Children } from 'react';
 import { Button, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { auth } from '../firebase/credentials';
-import { getUserData, logOut } from '../firebase/getFunctions';
+import { ListTournaments } from '../firebase/getFunctions';
 
  function Home({navigation}) {
 
-  const [user, setUser] = useState([])
+  const { dark, colors } = useTheme()
 
-  const getUserDataa = async (uid) => {
-    if (uid) {
-      const userData = await getUserData(uid);
-      setUser(userData)
-    }
-    
-    return null
-  };
+  const [partidos, setPartidos] = useState(null)
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        
-        if (user.uid) {
-          getUserDataa(user.uid)
-        }
-      } else {
-        setUser(null);
-      }
-    });
-
-    return unsubscribe;
-  }, []);
+  async function getTournaments(){
+    const data = await ListTournaments()
+    setPartidos(data)
+  }
 
   return (
     <ScrollView className="h-full">
-    <View className="flex items-center mx-auto justify-center gap-y-4 h-full">
-      <View className="flex flex-col gap-y-4">
-      {
-        !user?.email?
-        <>
-        <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => navigation.navigate("Login")}>
-          <Text className="text-white font-bold text-center text-base">Iniciar Sesion</Text>
-        </TouchableOpacity>
+    <View className="flex items-center mx-auto my-4 justify-center h-full w-full">
 
-        <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => navigation.navigate("Register")}>
-          <Text className="text-white font-bold text-center text-base">Registro</Text>
-        </TouchableOpacity>
-        </>
+      <Text style={{color: colors.text}} className="text-5xl">Torneopalooza</Text>
+      <Text style={{color: colors.text}} className="text-2xl">S7-26T React Native</Text>
+
+      <Text onPress={() => getTournaments()} className="p-2 bg-indigo-600 my-4 text-white">Obtener Partidos</Text>
+      {
+        partidos?
+        Children.toArray(
+          partidos.map(partido => (
+            <>
+              <TouchableOpacity className={"flex p-2 px-3 my-1 rounded "+(dark? "bg-slate-700/60" : "bg-black/90")} onPress={() => navigation.navigate({name: "VerTorneo", params: {uid: partido.uid}})}>
+                <Text className="text-white text-xl">{partido.nombre}</Text>
+                <Text className="text-white">{partido.deporte}</Text>
+                <Text className="text-white">Creado por {partido.creador}</Text>
+                <Text className="text-white">En {partido.ciudad}</Text>
+              </TouchableOpacity>
+            </>
+          ))
+        )
         :
         undefined
       }
-      </View>
-
-      <Text className="text-teal-500 text-2xl">Tournament App</Text>
-      <Text className="text-teal-500 text-xl">S7 - 26 - React Native</Text>
-
-      {
-        user?.email?
-        <Text className="text-indigo-600">Hola {user.username}</Text>
-        :
-        undefined
-      }
-
-      {
-        user?
-        <TouchableOpacity className="bg-indigo-600 p-3 rounded-md" onPress={() => logOut()}>
-          <Text className="text-white font-bold text-center text-base">Cerrar Sesion</Text>
-        </TouchableOpacity>
-        :
-        undefined
-      }
-
     </View>
     </ScrollView>
   );
