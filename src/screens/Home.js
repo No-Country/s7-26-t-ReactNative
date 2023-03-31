@@ -28,6 +28,7 @@ import { ListTournaments } from '../firebase/getFunctions';
           partidos.map(partido => (
             <View className="flex p-2 my-1 bg-slate-700/70 w-[70%]">
               <Text className="text-lg" style={{color: colors.text}}>{partido.nombre}</Text>
+              <Text style={{color: colors.text}}>{partido.deporte}</Text>
               <Text style={{color: colors.text}}>Creado por {partido.creador}</Text>
               <Text style={{color: colors.text}}>En {partido.ciudad}</Text>
               <Text style={{color: colors.text}}>{partido.descripcion}</Text>
