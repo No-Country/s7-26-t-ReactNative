@@ -8,6 +8,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "../components/Toast";
+import * as ImagePicker from "expo-image-picker";
 
 const tournamentSchema = Yup.object().shape({
   nombre: Yup.string()
@@ -26,7 +27,7 @@ const CreateTournament = ({navigation, route}) => {
   
   const [imagen, setImagen] = useState(null)
   const [deporte, setDeporte] = useState(null)
-  const deportes = ["Futbol", "Basquet", "Handball", "Tenis"]
+  const deportes = ["Futbol", "Basquet", "Handball", "Tenis", "Voley", "E-Sport", "Rugby", "Baseball", "Hockey", "Golf", "Ciclismo", "Running", "Natación", "Otro"]
   const { colors } = useTheme()
 
   async function handleSubmit({nombre, region, ciudad, descripcion}){

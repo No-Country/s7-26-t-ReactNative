@@ -1,11 +1,11 @@
-import { useTheme } from '@react-navigation/native';
+import { Link, useTheme } from '@react-navigation/native';
 import { useState, useEffect, Children } from 'react';
 import { Button, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { ListTournaments } from '../firebase/getFunctions';
 
- function Home({}) {
+ function Home({navigation}) {
 
-  const { colors } = useTheme()
+  const { dark, colors } = useTheme()
 
   const [partidos, setPartidos] = useState(null)
 
@@ -21,18 +21,19 @@ import { ListTournaments } from '../firebase/getFunctions';
       <Text style={{color: colors.text}} className="text-5xl">Torneopalooza</Text>
       <Text style={{color: colors.text}} className="text-2xl">S7-26T React Native</Text>
 
-      <Text onPress={() => getTournaments()} className="p-2 bg-indigo-600 my-4" style={{color: colors.text}}>Obtener Partidos</Text>
+      <Text onPress={() => getTournaments()} className="p-2 bg-indigo-600 my-4 text-white">Obtener Partidos</Text>
       {
         partidos?
         Children.toArray(
           partidos.map(partido => (
-            <View className="flex p-2 my-1 bg-slate-700/70 w-[70%]">
-              <Text className="text-lg" style={{color: colors.text}}>{partido.nombre}</Text>
-              <Text style={{color: colors.text}}>{partido.deporte}</Text>
-              <Text style={{color: colors.text}}>Creado por {partido.creador}</Text>
-              <Text style={{color: colors.text}}>En {partido.ciudad}</Text>
-              <Text style={{color: colors.text}}>{partido.descripcion}</Text>
-            </View>
+            <>
+              <TouchableOpacity className={"flex p-2 px-3 my-1 rounded "+(dark? "bg-slate-700/60" : "bg-black/90")} onPress={() => navigation.navigate({name: "VerTorneo", params: {uid: partido.uid}})}>
+                <Text className="text-white text-xl">{partido.nombre}</Text>
+                <Text className="text-white">{partido.deporte}</Text>
+                <Text className="text-white">Creado por {partido.creador}</Text>
+                <Text className="text-white">En {partido.ciudad}</Text>
+              </TouchableOpacity>
+            </>
           ))
         )
         :

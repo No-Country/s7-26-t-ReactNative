@@ -7,6 +7,7 @@ import {
   getDocs,
   setDoc
 } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   auth,
   db,
@@ -14,6 +15,7 @@ import {
   playersCollection,
   teamsCollection,
   tournamentCollection,
+  picturesCollection
 } from "./credentials";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "@firebase/auth";
 
@@ -137,36 +139,87 @@ export const logOut = async () => {
 };
 
 //Crear Torneo
+//Pido los datos de front y los paso a la collecion de Torneos
+//al usar AddDoc le genera un id unico como en la funcion de registro
+//si puede crearlo retorna true como respuesta si ocurre un error retorna false
 
 export const CreateTournamentFB = async (data) => {
 
   try {
     const {nombre, creador, region, ciudad, deporte, imagen, descripcion} = data
 
-    await addDoc(collection(db, "torneos"), {
+    const docRef = doc(collection(db, tournamentCollection));
+    await setDoc(docRef, {
       nombre,
       creador,
       region,
       ciudad,
       deporte,
       imagen,
-      descripcion
-    })
+      descripcion,
+      uid: docRef.id
+    });
 
     return true
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false
   }
 
 }
 
+//Listado de Torneos
+//Lista todo sin filtrar de la collection de Torneos
+//Retorna los Datos en un array, solo con las propiedades seleccionadas al hacer el map
+
 export const ListTournaments = async () => {
   try {
-    const res = await getDocs(collection(db, "torneos"))
+    const res = await getDocs(collection(db, tournamentCollection))
     
-    return res.docs.map(doc => doc.data());
+    return res.docs.map(doc => {
+      const { uid, nombre, creador, ciudad, imagen, deporte } = doc.data();
+      return { uid, nombre, creador, ciudad, imagen, deporte };
+    });
   } catch (error) {
     return false
   }
 }
+
+//Obtener Datos de un Torneo
+//Busca en la collection de Torneos por el Uid del torneo
+//si existe retorna los datos de ese torneo sino retorna false
+
+export const getTournament = async (tournamentId) => {
+  try {
+    const res = await getDoc(doc(db, tournamentCollection, tournamentId))
+    
+    if (res.exists()) {
+      return res.data()
+    }
+
+    return null
+  } catch (error) {
+    return false
+  }
+}
+
+//Subir Fotos
+//Sube fotos a la collecion de fotos y devuelve la url de la foto para ser agregada a otra collecion
+//Ejemplo: si lo uso en editar perfil me retorna la url de esa foto que subi y la guardo en el campo de foto
+//En la collecion de Users, pero el archivo fisico queda en el Firestore
+//Todavia no esta bien implementado - 31 marzo
+
+export const uploadProfilePicture = async (imageUri, name) => {
+  try {
+    const response = await fetch(imageUri);
+    const blobFile = await response.blob();
+
+    const reference = ref(picturesCollection, `fotos/${name}.jpg`);
+    const result = await uploadBytes(reference, blobFile);
+    const url = await getDownloadURL(result.ref);
+
+    return url;
+  } catch (error) {
+    console.error(error);
+  }
+};

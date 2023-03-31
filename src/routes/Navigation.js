@@ -18,6 +18,7 @@ import { Button, Image, Text, View, TouchableOpacity } from "react-native";
 import { auth } from "../firebase/credentials"
 import { getUserData, logOut } from '../firebase/getFunctions';
 import CreateTournament from "../screens/CreateTournament";
+import ViewTournament from "../screens/ViewTournament";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -154,6 +155,7 @@ function StackNavigation({darkMode, setDarkMode}) {
       </Stack.Screen>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="CrearTorneo" component={CreateTournament} username={(params) => params.username} />
+      <Stack.Screen name="VerTorneo" component={ViewTournament} username={(params) => params.tournament} />
       <Stack.Screen name="Login" component={Login} options={{ headerTitle: "" }}/>
       <Stack.Screen name="Register" component={Register} options={{ headerTitle: "" }}/>
       <Stack.Screen
