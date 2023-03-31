@@ -24,13 +24,7 @@ export default function Fixture() {
                   {data.titulo}
                 </Text>
               </View>
-              <Image
-                className="rounded h-12 w-12 m-1"
-                style={{
-                  resizeMode: "cover",
-                }}
-                source={{ uri: data.logo }}
-              />
+              <Text className="m-2">{data.deporte}</Text>
             </TouchableOpacity>
           </>
         ))}
