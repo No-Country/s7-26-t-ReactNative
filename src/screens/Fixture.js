@@ -7,18 +7,30 @@ export default function Fixture() {
       <View>
         {appLigasYTorneos.map((data) => (
           <>
-            <TouchableOpacity className={`flex flex-row items-center`}>
+            <TouchableOpacity className="h-16 flex flex-row items-center justify-between border-b-2 bg-gray-100 drop-shadow-sm hover:bg-gray-150 py-[5rem] px-2 rounded mr-1 ml-1 mt-1">
+              <View className="h-16 flex flex-row items-center justify-between">
+                <Image
+                  className="rounded h-12 w-12 m-1"
+                  style={{
+                    resizeMode: "cover",
+                  }}
+                  source={{ uri: data.logo }}
+                />
+                <Text
+                  className="text-indigo-600 font-semibold"
+                  data={data}
+                  key={data.id}
+                >
+                  {data.titulo}
+                </Text>
+              </View>
               <Image
+                className="rounded h-12 w-12 m-1"
                 style={{
                   resizeMode: "cover",
-                  height: 70,
-                  width: 70,
                 }}
                 source={{ uri: data.logo }}
               />
-              <Text className="text-indigo-600" data={data} key={data.id}>
-                {data.titulo}
-              </Text>
             </TouchableOpacity>
           </>
         ))}
