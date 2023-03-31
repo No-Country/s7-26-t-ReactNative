@@ -17,6 +17,7 @@ import Register from "../screens/Register";
 import { Button, Image, Text, View, TouchableOpacity } from "react-native";
 import { auth } from "../firebase/credentials"
 import { getUserData, logOut } from '../firebase/getFunctions';
+import CreateTournament from "../screens/CreateTournament";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -152,6 +153,7 @@ function StackNavigation({darkMode, setDarkMode}) {
         )}
       </Stack.Screen>
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="CrearTorneo" component={CreateTournament} username={(params) => params.username} />
       <Stack.Screen name="Login" component={Login} options={{ headerTitle: "" }}/>
       <Stack.Screen name="Register" component={Register} options={{ headerTitle: "" }}/>
       <Stack.Screen
@@ -202,9 +204,15 @@ function CustomDrawerContent({props, navigation}) {
       <View className="flex-1 justify-between h-full items-center">
         {
           user?
+          <View className="flex gap-y-2 w-full items-center">
           <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
             <FontAwesome name="user-circle" size={60} color="#fff" />
             <Text className="font-bold text-lg text-white">Hola {user.username}</Text>
+          </View>
+
+          <TouchableOpacity className="bg-indigo-500 p-2 w-full" onPress={() => navigation.navigate("CrearTorneo", {username: user.username})}>
+            <Text className="text-white font-bold text-center text-base">Crear Torneo</Text>
+          </TouchableOpacity>
           </View>
           :
           undefined

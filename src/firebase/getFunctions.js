@@ -1,4 +1,5 @@
 import {
+  addDoc,
   collection,
   collectionGroup,
   doc,
@@ -134,3 +135,38 @@ export const logOut = async () => {
       console.error(error);
   }
 };
+
+//Crear Torneo
+
+export const CreateTournamentFB = async (data) => {
+
+  try {
+    const {nombre, creador, region, ciudad, deporte, imagen, descripcion} = data
+
+    await addDoc(collection(db, "torneos"), {
+      nombre,
+      creador,
+      region,
+      ciudad,
+      deporte,
+      imagen,
+      descripcion
+    })
+
+    return true
+  } catch (error) {
+    console.log(error);
+    return false
+  }
+
+}
+
+export const ListTournaments = async () => {
+  try {
+    const res = await getDocs(collection(db, "torneos"))
+    
+    return res.docs.map(doc => doc.data());
+  } catch (error) {
+    return false
+  }
+}
