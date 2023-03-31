@@ -5,8 +5,11 @@ import {
   doc,
   getDoc,
   getDocs,
-  setDoc
+  setDoc,
+  where,
+  query
 } from "firebase/firestore";
+
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   auth,
@@ -146,14 +149,15 @@ export const logOut = async () => {
 export const CreateTournamentFB = async (data) => {
 
   try {
-    const {nombre, creador, region, ciudad, deporte, imagen, descripcion} = data
+    const {nombre, creador, direccion, latitud, longitud, deporte, imagen, descripcion} = data
 
     const docRef = doc(collection(db, tournamentCollection));
     await setDoc(docRef, {
       nombre,
       creador,
-      region,
-      ciudad,
+      direccion,
+      latitud,
+      longitud,
       deporte,
       imagen,
       descripcion,
@@ -177,8 +181,8 @@ export const ListTournaments = async () => {
     const res = await getDocs(collection(db, tournamentCollection))
     
     return res.docs.map(doc => {
-      const { uid, nombre, creador, ciudad, imagen, deporte } = doc.data();
-      return { uid, nombre, creador, ciudad, imagen, deporte };
+      const { uid, nombre, creador, direccion, imagen, deporte } = doc.data();
+      return { uid, nombre, creador, direccion, imagen, deporte };
     });
   } catch (error) {
     return false
@@ -223,3 +227,43 @@ export const uploadProfilePicture = async (imageUri, name) => {
     console.error(error);
   }
 };
+
+export const getNearTournaments = async (lat, lng, maxDistance) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, tournamentCollection))
+
+    const nearTournaments = [];
+
+    querySnapshot.forEach((doc) => {
+      const tournament = doc.data();
+
+      const tournamentDistance = distanceInKmBetweenEarthCoordinates(lat, lng, tournament.latitud, tournament.longitud);
+
+      if (tournamentDistance <= maxDistance) {
+        nearTournaments.push({ id: doc.id, ...tournament });
+      }
+    });
+
+    return nearTournaments;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function degreesToRadians(degrees) {
+  return degrees * Math.PI / 180;
+}
+
+function distanceInKmBetweenEarthCoordinates(lat1, lng1, lat2, lng2) {
+  const earthRadiusKm = 6371;
+
+  const dLat = degreesToRadians(lat2 - lat1);
+  const dLng = degreesToRadians(lng2 - lng1);
+
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) *
+          Math.sin(dLng / 2) * Math.sin(dLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  
+  return earthRadiusKm * c;
+}

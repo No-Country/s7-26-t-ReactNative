@@ -125,6 +125,7 @@ const CustomLight = {
     notification: "#ff3b30",
     primary: "#007aff",
     text: "#000",
+    grey: "#bdbdbd"
   }
 };
 
@@ -137,6 +138,7 @@ const CustomDark = {
     notification: "#ff453a",
     primary: "#0a84ff",
     text: "#fff",
+    grey: "#bdbdbd"
   }
 };
 
