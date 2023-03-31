@@ -109,7 +109,7 @@ export default function Login({navigation}) {
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
-              placeholder="Aa"
+              placeholder="password"
               placeholderTextColor={colors.text}
             />
             
