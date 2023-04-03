@@ -18,3 +18,13 @@ export function distanceInKmBetweenEarthCoordinates(lat1, lng1, lat2, lng2) {
 
   return earthRadiusKm * c;
 }
+
+export const ordenarPorPuntos = (a, b) => {
+  if (a.puntos < b.puntos) {
+    return 1;
+  }
+  if (a.puntos > b.puntos) {
+    return -1;
+  }
+  return 0;
+};

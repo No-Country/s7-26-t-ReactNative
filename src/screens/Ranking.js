@@ -10,11 +10,13 @@ export default function Ranking() {
   const { dark, colors } = useTheme();
   const { user, setTournamentId } = useContext(UserContext);
   const [tournaments, setTournaments] = useState([]);
+
   useEffect(() => {
     const data = getUserTournaments(user?.id);
     data.then((res) => setTournaments(res));
+
     console.log(tournaments);
-  }, [user.id]);
+  }, [user?.id]);
   return (
     <View className="flex items-center mx-auto justify-center h-full w-full">
       {tournaments?.map((tournament) => (
