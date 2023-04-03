@@ -10,7 +10,6 @@ import {
 } from "firebase/firestore";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { useState } from "react";
 import { distanceInKmBetweenEarthCoordinates } from "../utils";
 import {
   db,
