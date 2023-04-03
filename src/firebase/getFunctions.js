@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { distanceInKmBetweenEarthCoordinates } from "../utlls";
+import { distanceInKmBetweenEarthCoordinates } from "../utils";
 import {
   db,
   mainCollection,
