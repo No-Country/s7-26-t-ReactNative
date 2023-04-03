@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { CreateTournamentFB } from "../firebase/getFunctions";
-import { useState } from "react";
+import { CreateTournamentFB } from "../firebase/setFunctions";
+import { useContext, useState } from "react";
 import SelectDropdown from "react-native-select-dropdown";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
@@ -18,6 +18,7 @@ import { toastConfig } from "../components/Toast";
 import Constants from "expo-constants";
 import * as ImagePicker from "expo-image-picker";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import {UserContext} from '../context/UserContext'
 
 const tournamentSchema = Yup.object().shape({
   nombre: Yup.string()
@@ -29,6 +30,7 @@ const tournamentSchema = Yup.object().shape({
 });
 
 const CreateTournament = ({ navigation, route }) => {
+  const {user} = useContext(UserContext)
   const [imagen, setImagen] = useState(null);
   const [deporte, setDeporte] = useState(null);
   const [location, setLocation] = useState(null);
@@ -79,7 +81,7 @@ const CreateTournament = ({ navigation, route }) => {
         descripcion,
       };
 
-      const resp = await CreateTournamentFB(data);
+      const resp = await CreateTournamentFB(user?.id, data);
 
       if (resp) {
         Toast.show({

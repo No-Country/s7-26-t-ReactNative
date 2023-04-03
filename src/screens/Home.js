@@ -1,7 +1,7 @@
 import { Link, useTheme } from "@react-navigation/native";
 import { useState, useEffect, Children } from "react";
 import { Button, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { ListTournaments, getNearTournaments } from "../firebase/getFunctions";
+import {  getNearTournaments, ListAllTournaments } from "../firebase/getFunctions";
 import * as Location from "expo-location";
 import { Torneopalooza } from "../components/icons";
 
@@ -12,7 +12,7 @@ function Home({ navigation }) {
   const [cerca, setCerca] = useState(null);
 
   async function getTournaments() {
-    const data = await ListTournaments();
+    const data = await ListAllTournaments();
     setPartidos(data);
   }
 
@@ -59,7 +59,7 @@ function Home({ navigation }) {
           onPress={() => getTournaments()}
           className="p-2 bg-indigo-600 my-4 text-white"
         >
-          Obtener Partidos
+          Ver Todos los torneos
         </Text>
         {partidos
           ? Children.toArray(
@@ -73,7 +73,7 @@ function Home({ navigation }) {
                     onPress={() =>
                       navigation.navigate({
                         name: "VerTorneo",
-                        params: { uid: partido.uid },
+                        params: { id: partido.id },
                       })
                     }
                   >
@@ -108,7 +108,7 @@ function Home({ navigation }) {
                     onPress={() =>
                       navigation.navigate({
                         name: "VerTorneo",
-                        params: { uid: partido.uid },
+                        params: { id: partido.id },
                       })
                     }
                   >
