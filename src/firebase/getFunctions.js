@@ -6,10 +6,12 @@ import {
   getDocs,
   where,
   query,
+  onSnapshot,
 } from "firebase/firestore";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { distanceInKmBetweenEarthCoordinates } from "../utlls";
+import { useState } from "react";
+import { distanceInKmBetweenEarthCoordinates } from "../utils";
 import {
   db,
   mainCollection,
@@ -157,8 +159,34 @@ export const ListAllTournaments = async () => {
 //Obtener Datos de un Torneo
 //Busca en la collection de Torneos por el Uid del torneo
 //si existe retorna los datos de ese torneo sino retorna false
+export const getTournament = async (tournamentId) => {
+  try {
+    const res = await getDocs(collectionGroup(db, tournamentCollection))
+    return res.docs.map(doc => doc.data()).filter(data => data.id === tournamentId)
 
-export const getTournament = async (userId, tournamentId) => {
+//No me funciona traer el documento filtrado desde firebase. 
+//Puedo consologuearlo pero cuando llamo la funcnion en viewTournament no me muestra el documento. 
+
+    /* const q = query(collectionGroup(db, tournamentCollection), where("id", "==", tournamentId))
+    let cities = [];
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          cities.push(doc.data().nombre);
+      });
+      console.log(cities)
+    })
+    return cities */
+
+
+  } catch (error) {
+    console.log(error)
+    return false;
+  }
+};
+
+
+
+/* export const getUserTournament = async (userId, tournamentId) => {
   try {
     const res = await getDoc(
       doc(
@@ -175,7 +203,7 @@ export const getTournament = async (userId, tournamentId) => {
   } catch (error) {
     return false;
   }
-};
+}; */
 
 //Subir Fotos
 //Sube fotos a la collecion de fotos y devuelve la url de la foto para ser agregada a otra collecion
