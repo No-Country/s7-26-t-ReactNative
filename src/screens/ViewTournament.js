@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { getTournament, getTournamentTeams } from "../firebase/getFunctions";
 import TournamentDetails from "../components/TournamentDetails";
 import { ordenarPorPuntos } from "../utils";
-import TournamenTable from "../components/TournamenTable";
+import TournamenTable from "../components/TournamentTable";
 
 const ViewTournament = ({ route }) => {
   const [torneo, setTorneo] = useState(null);
