@@ -1,7 +1,7 @@
 import { useTheme } from '@react-navigation/native';
 import { useState } from 'react';
 import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity, Platform} from 'react-native';
-import { loginWithEmailPassword } from '../firebase/getFunctions';
+import { loginWithEmailPassword } from '../firebase/auth';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Toast from "react-native-toast-message";

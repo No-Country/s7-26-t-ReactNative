@@ -26,9 +26,11 @@ export const db = getFirestore(app);
 
 // Collections
 export const mainCollection = "Users"
+//Subcollections
 export const teamsCollection = "Equipos"
 export const tournamentCollection = "Torneos"
 export const playersCollection = "Jugadores"
+export const fixtureCollection = "Fixture"
 export const picturesCollection = "Fotos"
 
 export default app;

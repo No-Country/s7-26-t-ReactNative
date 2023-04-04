@@ -9,7 +9,7 @@ import {
   Platform
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import { registerUser } from "../firebase/getFunctions";
+import { registerUser } from "../firebase/auth";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Toast from "react-native-toast-message";
