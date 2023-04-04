@@ -73,7 +73,10 @@ function Home({ navigation }) {
                     onPress={() =>
                       navigation.navigate({
                         name: "VerTorneo",
-                        params: { id: partido.id },
+                        params: { 
+                          id: partido.id,
+                          userId: partido.userId,
+                          },
                       })
                     }
                   >

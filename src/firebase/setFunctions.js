@@ -32,6 +32,7 @@ export const CreateTournamentFB = async (userId, data) => {
       imagen,
       descripcion,
       id: docRef.id,
+      userId: userId,
     });
 
     return true;
