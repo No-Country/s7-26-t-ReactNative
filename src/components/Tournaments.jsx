@@ -1,10 +1,12 @@
 import { useNavigation } from "@react-navigation/core";
 import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
+import LogoType from "./LogoType";
 export default function Tournaments({ data }) {
   const navigation = useNavigation();
   if (!data) {
     return <Text>Cargando</Text>;
   }
+
   return (
     <ScrollView className="w-full">
       <View>
@@ -38,7 +40,8 @@ export default function Tournaments({ data }) {
                   {data.nombre}
                 </Text>
               </View>
-              <Text className="m-2">{data.deporte}</Text>
+              <LogoType data={data} />
+              {/* <Text className="m-2">{data.deporte}</Text> */}
             </TouchableOpacity>
           </>
         ))}
