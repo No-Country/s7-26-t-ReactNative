@@ -7,7 +7,7 @@ import { Torneopalooza } from "../components/icons";
 import { Searchbar } from 'react-native-paper';
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { Sports } from '../components/SelectSports'
-
+import Tournaments from "../components/Tournaments";
 
 function Home({ navigation }) {
   const { dark, colors } = useTheme();
@@ -18,10 +18,17 @@ function Home({ navigation }) {
   const [tournaments, setTournaments] = useState(false);
   const searchTerm = searchText.toLowerCase();
 
+
+  useEffect(() => {
+    getTournaments()
+   
+  }, [])
+  
+
   async function getTournaments() {
     const data = await ListAllTournaments();
     setPartidos(data);
-    console.log(data)
+   
   }
 
   async function getCurrentLocation() {
@@ -82,9 +89,11 @@ const sportsHandler = () =>{
         <Torneopalooza width={300} height={100} color={colors.text} />
 
 
-        <View className="flex flex-row w-full mt-2">
+
+
+        <View className="flex flex-row justify-around content-center items-center">
           <Searchbar
-            placeholder="Buscar"
+            
             onChangeText={handleSearch}
             value={searchText}
             inputStyle={styles.input}
@@ -124,33 +133,7 @@ const sportsHandler = () =>{
 
 
         {partidos && tournaments
-          ? Children.toArray(
-
-            partidos.map((partido) => (
-              <>
-                <TouchableOpacity
-                  className={
-                    "flex p-2 px-3 my-1 rounded w-[90%] mx-auto " +
-                    (dark ? "bg-slate-700/60" : "bg-black/90")
-                  }
-                  onPress={() =>
-                    navigation.navigate({
-                      name: "VerTorneo",
-                      params: { id: partido.id },
-                    })
-                  }
-                >
-                  <Text className="text-white text-xl">{partido.nombre}</Text>
-                  <Text className="text-white">{partido.deporte}</Text>
-                  <Text className="text-white">
-                    Creado por {partido.creador}
-                  </Text>
-                  <Text className="text-white">{partido.direccion}</Text>
-                </TouchableOpacity>
-              </>
-            ))
-          )
-          : undefined}
+          ? (<Tournaments data={partidos} />) : null}
 
         <Text
           onPress={() => partidosCerca(2000)}
@@ -181,7 +164,11 @@ const sportsHandler = () =>{
                     Creado por {partido.creador}
                   </Text>
                   <Text className="text-white">{partido.direccion}</Text>
+
+
+                  
                 </TouchableOpacity>
+                
               </>
             ))
           )
@@ -194,22 +181,15 @@ const sportsHandler = () =>{
 const styles = StyleSheet.create({
   search: {
     width: '70%',
-    height: "auto",
-    backgroundColor: 'red',
     border: 'none',
+    height: 40,
     elevation: 0,
-    backgroundColor: 'white',
-    backgroundColor: '#FBFBFB',
-    borderBottomColor: 'transparent',
-    borderTopColor: 'transparent',
     borderRadius: 2,
-    marginTop: 10,
-    alignContent: "center",
     borderTopWidth: 0, //works
     borderBottomWidth: 0, //works
   },
   input: {
-
+    marginTop: -6
   }
 
 })

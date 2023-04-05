@@ -1,44 +1,44 @@
-import { useTheme } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import { getTournament } from "../firebase/getFunctions";
+import { getTournament, getTournamentTeams } from "../firebase/getFunctions";
+import TournamentDetails from "../components/TournamentDetails";
+import { ordenarPorPuntos } from "../utils";
+import TournamenTable from "../components/TournamentTable";
 
-const ViewTournament = ({route}) => {
+const ViewTournament = ({ route }) => {
+  const [torneo, setTorneo] = useState(null);
+  const [teams, setTeams] = useState([]);
 
-  const { colors } = useTheme()
-  const [torneo, setTorneo] = useState(null)
-
-  async function getTorneo(id){
-    let data = await getTournament(id)
-
-    setTorneo(data[0])
+  async function getTorneo(id) {
+    let data = await getTournament(id);
+    setTorneo(data[0]);
   }
 
   useEffect(() => {
     if (route?.params?.id) {
-      getTorneo(route.params.id)
+      getTorneo(route.params.id);
+
+      const data1 = getTournamentTeams(route.params.userId, route.params.id);
+      data1.then((res) => setTeams(res));
     }
-    
-  }, [])
+  }, []);
+  teams.sort(ordenarPorPuntos);
 
   return (
     <>
-    {
-      torneo?
-      <View className="flex items-start gap-y-1 py-6 px-4">
-        <Text style={{color: colors.text}} className="text-2xl font-bold my-4 ">Torneo: {torneo.nombre}</Text>
-        <Text className="text-lg font-bold bg-indigo-600 px-2 text-white">{torneo.deporte}</Text>
-        <Text style={{color: colors.text}} className="text-lg font-bold">Creado por: {torneo.creador}</Text>
-        <Text style={{color: colors.text}} className="text-lg font-bold">Coordenadas: {torneo.latitud} {torneo.longitud}</Text>
-        <Text style={{color: colors.text}} className="text-lg font-bold">Dirección: {torneo.direccion}</Text>
-        <Text style={{color: colors.text}} className="text-lg font-bold -mb-3">Descripción:</Text>
-        <Text style={{color: colors.text}} className="text-lg font-bold">{torneo.descripcion}</Text>
+      <View className="flex items-start gap-y-4 py-6 px-4 h-full">
+        {torneo ? (
+          <>
+            <TournamentDetails item={torneo} />
+            <TournamenTable teams={teams} />
+            
+          </>
+        ) : (
+          <Text>Este Torneo no Existe</Text>
+        )}
       </View>
-      :
-      <Text>Este Torneo no Existe</Text>
-    }
     </>
-  )
-}
+  );
+};
 
-export default ViewTournament
+export default ViewTournament;
