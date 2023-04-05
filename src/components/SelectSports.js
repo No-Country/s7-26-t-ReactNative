@@ -5,36 +5,15 @@ import { SportCard } from './SportCard';
 
 
 
-export const Sports = ({ setSport, tournaments, setTournaments, getTournaments }) => {
+export const Sports = ({ setSport }) => {
 
     const { dark, colors } = useTheme();
 
 
-    const tournamentHalder = () =>{
-        setTournaments(true)
-        getTournaments()
-        console.log(tournaments)
-    }
-
+   
     return (
         <>
-            <View className={"flex-row w-full justify-around mt-5"}>
-
-                <TouchableOpacity 
-                onPress={() => tournamentHalder()}
-                >
-                    <Text
-                        className={
-
-                            (dark ? "text-white" : "text-black")
-                        }
-                    >TORNEOS</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text className={(dark ? "text-white" : "text-black")}> DEPORTES</Text>
-                </TouchableOpacity>
-
-            </View>
+          
 
 
 

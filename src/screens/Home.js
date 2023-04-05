@@ -1,7 +1,7 @@
 import { Link, useTheme } from "@react-navigation/native";
 import { useState, useEffect, Children } from "react";
 import { Button, ScrollView, Text, TouchableOpacity, View, StyleSheet } from "react-native";
-import { ListTournaments, getNearTournaments } from "../firebase/getFunctions";
+import { getNearTournaments, ListAllTournaments } from "../firebase/getFunctions";
 import * as Location from "expo-location";
 import { Torneopalooza } from "../components/icons";
 import { Searchbar } from 'react-native-paper';
@@ -19,7 +19,7 @@ function Home({ navigation }) {
   const searchTerm = searchText.toLowerCase();
 
   async function getTournaments() {
-    const data = await ListTournaments();
+    const data = await ListAllTournaments();
     setPartidos(data);
     console.log(data)
   }
@@ -38,6 +38,19 @@ function Home({ navigation }) {
       longitud: location.coords.longitude
     }
   }
+
+  const tournamentHalder = () =>{
+    setTournaments(true)
+    getTournaments()
+  
+}
+
+const sportsHandler = () =>{
+  setTournaments(false)
+
+
+}
+
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -83,19 +96,36 @@ function Home({ navigation }) {
         </View>
 
 
-        <Sports tournaments={tournaments} setTournaments={setTournaments} getTournaments={getTournaments} />
 
-        <Text
-          onPress={() => getTournaments()}
-          className="p-2 bg-indigo-600 my-4 text-white"
-        >
-          Obtener Partidos
-        </Text>
+        <View className={"flex-row w-full justify-around mt-5"}>
+
+          <TouchableOpacity
+            onPress={() => tournamentHalder()}
+          >
+            <Text
+              className={
+
+                (dark ? "text-white" : "text-black")
+              }
+            >TORNEOS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+          onPress={() => sportsHandler()}
+          >
+            <Text className={(dark ? "text-white" : "text-black")}> DEPORTES</Text>
+          </TouchableOpacity>
+
+        </View>
+
+        {!tournaments ?
+          (<Sports tournaments={tournaments} setTournaments={setTournaments} getTournaments={getTournaments} />) : null
+        }
 
 
 
-        {partidos
+        {partidos && tournaments
           ? Children.toArray(
+
             partidos.map((partido) => (
               <>
                 <TouchableOpacity
@@ -106,7 +136,7 @@ function Home({ navigation }) {
                   onPress={() =>
                     navigation.navigate({
                       name: "VerTorneo",
-                      params: { uid: partido.uid },
+                      params: { id: partido.id },
                     })
                   }
                 >
@@ -141,7 +171,7 @@ function Home({ navigation }) {
                   onPress={() =>
                     navigation.navigate({
                       name: "VerTorneo",
-                      params: { uid: partido.uid },
+                      params: { id: partido.id },
                     })
                   }
                 >
