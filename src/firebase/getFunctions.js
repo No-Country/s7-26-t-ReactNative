@@ -82,6 +82,18 @@ export const getTournamentTeams = async (userId, tournamentId) => {
   }
 };
 
+export const ListSpecificTournaments = async (sport) => {
+
+  try {
+    let res = await getDocs(collectionGroup(db, tournamentCollection))
+
+    return res.docs.map((doc) => doc.data()).filter(e => e.deporte === sport)
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getTeamData = async (userId, tournamentId, teamId) => {
   /* const docRef = doc(db,`${mainCollection}/${user}/${tournament}/${team}` ); */
   try {
