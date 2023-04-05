@@ -38,6 +38,7 @@ const CreateTournament = ({ navigation, route }) => {
   const [location, setLocation] = useState(null);
   const deportes = [
     "Futbol",
+    "Futbol 5",
     "Basquet",
     "Handball",
     "Tenis",
