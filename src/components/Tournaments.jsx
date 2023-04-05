@@ -25,7 +25,7 @@ export default function Tournaments({ data }) {
               className="h-16  flex flex-row items-center justify-between border-b-2 bg-gray-100 drop-shadow-sm hover:bg-gray-150 py-[5rem] px-2 rounded mr-1 ml-1 mt-1"
             >
               <View className="flex flex-row items-center justify-between">
-                {data.imagen ? (
+                {data.imagen && (
                   <Image
                     className="rounded h-12 w-12 m-1"
                     style={{
@@ -34,14 +34,6 @@ export default function Tournaments({ data }) {
                     source={{
                       uri: `${data.imagen}`,
                     }}
-                  />
-                ) : (
-                  <Image
-                    className="rounded h-12 w-12 m-1"
-                    style={{
-                      resizeMode: "cover",
-                    }}
-                    source={{ uri: tournamentLogo }}
                   />
                 )}
                 <Text
