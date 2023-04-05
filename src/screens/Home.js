@@ -1,7 +1,11 @@
 import { Link, useTheme } from "@react-navigation/native";
 import { useState, useEffect, Children } from "react";
 import { Button, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import {  getNearTournaments, ListAllTournaments } from "../firebase/getFunctions";
+import {
+  getNearTournaments,
+  ListAllTournaments,
+} from "../firebase/getFunctions";
+import Tournaments from "../components/Tournaments";
 import * as Location from "expo-location";
 import { Torneopalooza } from "../components/icons";
 
@@ -11,15 +15,19 @@ function Home({ navigation }) {
   const [partidos, setPartidos] = useState(null);
   const [cerca, setCerca] = useState(null);
 
+  useEffect(() => {
+    getTournaments;
+  }, []);
+
   async function getTournaments() {
     const data = await ListAllTournaments();
     setPartidos(data);
   }
 
-  async function getCurrentLocation(){
+  async function getCurrentLocation() {
     let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      console.error('Permiso Rechazado');
+    if (status !== "granted") {
+      console.error("Permiso Rechazado");
       return;
     }
 
@@ -27,33 +35,28 @@ function Home({ navigation }) {
 
     return {
       latitud: location.coords.latitude,
-      longitud: location.coords.longitude
-    }
+      longitud: location.coords.longitude,
+    };
   }
 
   async function partidosCerca(km) {
+    let distance = km ? km : 5;
 
-    let distance = km? km : 5
-
-    let data = await getCurrentLocation()
+    let data = await getCurrentLocation();
 
     if (data) {
       let res = await getNearTournaments(data.latitud, data.longitud, distance);
 
-      setCerca(res); 
-    }
-    else
-    {
-      setCerca(null)
+      setCerca(res);
+    } else {
+      setCerca(null);
     }
   }
-
 
   return (
     <ScrollView className="h-full">
       <View className="flex items-center mx-auto justify-center h-full w-full">
-
-        <Torneopalooza width={300} height={100} color={colors.text}/>
+        <Torneopalooza width={300} height={100} color={colors.text} />
 
         <Text
           onPress={() => getTournaments()}
@@ -61,7 +64,8 @@ function Home({ navigation }) {
         >
           Ver Todos los torneos
         </Text>
-        {partidos
+        <Tournaments data={partidos} />
+        {/* {partidos
           ? Children.toArray(
               partidos.map((partido) => (
                 <>
@@ -87,7 +91,7 @@ function Home({ navigation }) {
                 </>
               ))
             )
-          : undefined}
+          : undefined} */}
 
         <Text
           onPress={() => partidosCerca(2000)}
