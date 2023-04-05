@@ -1,26 +1,54 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
-export default function TournamenTable({teams}) {
-
+export default function TournamenTable({ teams }) {
   return (
     <View className="w-full h-full bg-purple-400 my-4">
       <View className={"flex p-2 my-6 w-[90%] mx-auto "}>
         <Text className="text-white text-xl my-2">Posiciones: </Text>
-        <View className="flex flex-row justify-between">
-          <Text className="text-amber-400 font-bold text-lg">Equipo</Text>
-          <Text className="text-amber-400 font-bold text-lg">Puntos</Text>
-        </View>
-        {teams.length > 0 ? (
-          teams.map((team) => (
-            <View className="flex flex-row justify-between my-1" key={team.uid}>
-              <Text className="text-white">{team.nombre}</Text>
-              <Text className="text-white">{team.puntos}</Text>
-            </View>
-          ))
-        ) : (
-          <Text className="text-violet-600">No hay equipos</Text>
-        )}
+        <ScrollView horizontal className="h-auto">
+          <ScrollView>
+          <View className="flex flex-row bg-purple-700">
+            <Text className="text-md w-12"> </Text>
+            <Text className="text-amber-400 font-bold text-md w-40">
+              Equipo
+            </Text>
+            <Text className="text-amber-400 font-bold text-md w-12">Ptos</Text>
+            <Text className="text-amber-400 font-bold text-md w-12">PJ</Text>
+            <Text className="text-amber-400 font-bold text-md w-12">PG</Text>
+            <Text className="text-amber-400 font-bold text-md w-12">PE</Text>
+            <Text className="text-amber-400 font-bold text-md w-12">PP</Text>
+          </View>
+            {teams.length > 0 ? (
+              teams.map((team, index) => (
+                <View
+                  className={`flex flex-row  py-1 border-b border-amber-100 ${index%2 ? "bg-blue-900" : "bg-blue-800"}`}
+                  key={team.index}
+                >
+                  <Text className="text-white w-12 text-center">{index+1}º</Text>
+                  <Text className="text-white w-40 ">{team.nombre}</Text>
+                  <Text className="text-white w-12 text-center ">
+                    {team.puntos}
+                  </Text>
+                  <Text className="text-white w-12 text-center ">
+                    {team.partidosJugados}
+                  </Text>
+                  <Text className="text-white w-12 text-center ">
+                    {team.partidosGanados}
+                  </Text>
+                  <Text className="text-white w-12 text-center ">
+                    {team.partidosEmpatados}
+                  </Text>
+                  <Text className="text-white w-12 text-center ">
+                    {team.partidosPerdidos}
+                  </Text>
+                </View>
+              ))
+            ) : (
+              <Text className="text-violet-600">No hay equipos</Text>
+            )}
+          </ScrollView>
+        </ScrollView>
       </View>
     </View>
   );
