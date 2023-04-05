@@ -186,35 +186,101 @@ function CustomDrawerContent({ props, navigation }) {
 
   return (
     <DrawerContentScrollView {...props}>
-      <View className="flex-1 justify-between h-full items-center">
+      <View className="flex h-full justify-between items-center">
         {user ? (
-          <View className="flex gap-y-2 w-full items-center">
+          <View className="flex w-full h-full items-center mb-[5vh]">
+
             <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
               <FontAwesome name="user-circle" size={60} color="#fff" />
-              <Text className="font-bold text-lg text-white">
+              <Text className="font-bold text-lg text-white text-center">
                 Hola {user.username}
               </Text>
             </View>
 
             <TouchableOpacity
-              className="bg-indigo-500 p-2 w-full"
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
+              onPress={() =>
+                navigation.navigate("Index")
+              }
+            >
+              <Text className="text-white font-bold text-base">
+                Inicio
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
+            >
+              <Text className="text-white font-bold text-base">
+                Mi Perfil
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
               onPress={() =>
                 navigation.navigate("CrearTorneo", {
                   username: user.username,
                 })
               }
             >
-              <Text className="text-white font-bold text-center text-base">
+              <Text className="text-white font-bold text-base">
                 Crear Torneo
               </Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
+            >
+              <Text className="text-white font-bold text-base">
+                Mis Torneos
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
+            >
+              <Text className="text-white font-bold text-base">
+                Preguntas Frecuentes
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
+            >
+              <Text className="text-white font-bold text-base">
+                Politicas de Privacidad
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
+            >
+              <Text className="text-white font-bold text-base">
+                Terminos y Condiciones
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-12 w-full bg-white/5 border-b border-b-slate-700/25"
+            >
+              <Text className="text-white font-bold text-base">
+                Sobre Nosotros
+              </Text>
+            </TouchableOpacity>
+
           </View>
-        ) : undefined}
+        ) : 
+          undefined
+        }
+
+
+
         <View className="flex flex-col gap-y-4 items-center my-2">
           {!user?.email ? (
             <>
               <TouchableOpacity
-                className="bg-indigo-600 p-3 rounded-md"
+                className="py-2 px-3 rounded-md bg-white/5 border-b border-b-slate-700/25"
                 onPress={() => navigation.navigate("Login")}
               >
                 <Text className="text-white font-bold text-center text-base">
@@ -223,7 +289,7 @@ function CustomDrawerContent({ props, navigation }) {
               </TouchableOpacity>
 
               <TouchableOpacity
-                className="bg-indigo-600 p-3 rounded-md"
+                className="py-2 px-3 rounded-md bg-white/5 border-b border-b-slate-700/25"
                 onPress={() => navigation.navigate("Register")}
               >
                 <Text className="text-white font-bold text-center text-base">
@@ -236,7 +302,7 @@ function CustomDrawerContent({ props, navigation }) {
 
         {user ? (
           <TouchableOpacity
-            className="bg-indigo-600 p-3 rounded-md"
+            className="py-2 px-3 rounded-md bg-white/5 border-b border-b-slate-700/25"
             onPress={() => logOut()}
           >
             <Text className="text-white font-bold text-center text-base">

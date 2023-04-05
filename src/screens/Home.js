@@ -33,8 +33,8 @@ function Home({ navigation }) {
 
   async function getCurrentLocation() {
     let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      console.error('Permiso Rechazado');
+    if (status !== "granted") {
+      console.error("Permiso De Ubicación Rechazado");
       return;
     }
 
