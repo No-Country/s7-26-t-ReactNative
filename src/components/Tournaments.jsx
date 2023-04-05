@@ -1,6 +1,9 @@
 import { useNavigation } from "@react-navigation/core";
 import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import LogoType from "./LogoType";
+
+
+
 export default function Tournaments({ data }) {
   const navigation = useNavigation();
   if (!data) {
