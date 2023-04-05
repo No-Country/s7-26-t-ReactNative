@@ -33,8 +33,8 @@ function Home({ navigation }) {
 
   async function getCurrentLocation() {
     let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      console.error("Permiso De Ubicación Rechazado");
+    if (status !== 'granted') {
+      console.error('Permiso Rechazado');
       return;
     }
 
@@ -86,7 +86,10 @@ const sportsHandler = () =>{
     <ScrollView className="h-full">
       <View className="flex items-center mx-auto justify-center h-full w-full">
 
-        <Torneopalooza width={300} height={100} color={colors.yellow}/>
+        <Torneopalooza width={300} height={100} color={colors.text} />
+
+
+
 
         <View className="flex flex-row justify-around content-center items-center">
           <Searchbar
