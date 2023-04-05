@@ -14,6 +14,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "../components/Toast";
+import { Torneopalooza } from "../components/icons";
 
 const registerSchema = Yup.object().shape({
   username: Yup.string()
@@ -101,75 +102,67 @@ export default function Register({ navigation }) {
             touched,
           }) => (
             <View className="w-full flex">
-              <Text
-                style={{ color: colors.text }}
-                className="mx-auto text-center text-4xl mb-5 font-bold -tracking-wide"
-              >
-                Bienvenido a Torneopalooza
-              </Text>
+              <View className="mx-auto">
+                <Torneopalooza width={250} height={100} color={colors.yellow} />
+              </View>
 
               <Text
-                style={{ color: colors.text }}
-                className="mr-auto text-base font-semibold opacity-50"
+                className="mr-auto text-base font-semibold opacity-70 text-white"
               >
-                Usuario
+                Nombre
               </Text>
               <TextInput
-                className="bg-white/10 border border-black/20 py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2"
-                style={{ color: colors.text }}
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
                 onChangeText={handleChange("username")}
                 onBlur={handleBlur("username")}
                 value={values.name}
-                placeholder="Johndoe"
-                placeholderTextColor={colors.text}
+                placeholder="John doe"
+                placeholderTextColor="#ffffff6a"
               />
 
               {errors.username && touched.username && (
-                <Text className="text-rose-600">{errors.username}</Text>
+                <Text className="text-rose-500">{errors.username}</Text>
               )}
 
               <Text
-                style={{ color: colors.text }}
-                className="mr-auto text-base font-semibold opacity-50"
+                className="mr-auto text-base font-semibold opacity-70 text-white"
               >
                 Email
               </Text>
               <TextInput
-                className="bg-white/10 border border-black/20 py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2"
-                style={{ color: colors.text }}
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
                 placeholder="Your@email.com"
-                placeholderTextColor={colors.text}
+                placeholderTextColor="#ffffff6a"
               />
 
               {errors.email && touched.email && (
-                <Text className="text-rose-600">{errors.email}</Text>
+                <Text className="text-rose-500">{errors.email}</Text>
               )}
 
               <Text
-                style={{ color: colors.text }}
-                className="mr-auto text-base font-semibold opacity-50"
+                className="mr-auto text-base font-semibold opacity-70 text-white"
               >
                 Password
               </Text>
               <TextInput
-                className="bg-white/10 border border-black/20 py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2"
-                style={{ color: colors.text }}
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
                 onChangeText={handleChange("password")}
                 onBlur={handleBlur("password")}
                 value={values.password}
                 placeholder="Aa"
-                placeholderTextColor={colors.text}
+                placeholderTextColor="#ffffff6a"
               />
 
               {errors.password && touched.password && (
-                <Text className="text-rose-600 mb-2">{errors.password}</Text>
+                <Text className="text-rose-500 mb-2">{errors.password}</Text>
               )}
 
               <TouchableOpacity
-                className="bg-indigo-600 p-3 rounded-md mb-3"
+                style={{backgroundColor: colors.yellow}}
+                className="p-3 rounded-md mb-3"
                 onPress={() => handleSubmit()}
               >
                 <Text className="text-white font-bold text-center text-base">
@@ -177,7 +170,7 @@ export default function Register({ navigation }) {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text className="text-sm font-bold text-indigo-500 -tracking-wider">
+                <Text className="text-sm font-bold text-white/90 -tracking-wider">
                   ¿Tenes cuenta? Inicia sesión acá
                 </Text>
               </TouchableOpacity>

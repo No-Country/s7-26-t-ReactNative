@@ -1,5 +1,5 @@
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { Ionicons, FontAwesome, MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { useState, useEffect, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -29,7 +29,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
-function BottomNavigation({ darkMode, setDarkMode, colors }) {
+function BottomNavigation({}) {
   const navigation = useNavigation();
 
   return (
@@ -39,7 +39,8 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
           tabBarStyle: {
             paddingTop: 10,
           },
-          tabBarActiveTintColor: colors.text,
+          headerTintColor: "#fff",
+          tabBarActiveTintColor: "#F6BF47",
           headerLeftContainerStyle: {
             paddingLeft: 20,
           },
@@ -48,21 +49,19 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
           },
           tabBarStyle: {
             marginBottom: 2,
+            shadowColor: "transparent",
+            borderTopWidth: 0
+          },
+          headerStyle:{
+            shadowColor: "transparent",
+            borderBottomWidth: 0
           },
           headerLeft: () => (
             <Ionicons
               onPress={() => navigation.toggleDrawer()}
               name="menu-sharp"
               size={30}
-              color={darkMode ? "#fff" : "#000"}
-            />
-          ),
-          headerRight: () => (
-            <Ionicons
-              onPress={() => setDarkMode(!darkMode)}
-              name={darkMode ? "sunny-outline" : "moon-outline"}
-              size={30}
-              color={darkMode ? "#fff" : "#000"}
+              color={"#fff"}
             />
           ),
         }}
@@ -136,44 +135,12 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
   );
 }
 
-const lightColor = "#fff";
-const darkColor = "#010101";
-
-const CustomLight = {
-  dark: false,
-  colors: {
-    background: lightColor,
-    border: "#d8d8d8a0",
-    card: lightColor,
-    notification: "#ff3b30",
-    primary: "#007aff",
-    text: "#000",
-    grey: "#bdbdbd",
-  },
-};
-
-const CustomDark = {
-  dark: true,
-  colors: {
-    background: darkColor,
-    border: "#272729c7",
-    card: darkColor,
-    notification: "#ff453a",
-    primary: "#0a84ff",
-    text: "#fff",
-    grey: "#bdbdbd",
-  },
-};
-
-function StackNavigation({ darkMode, setDarkMode }) {
+function StackNavigation({}) {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" options={{ headerShown: false }}>
         {() => (
           <BottomNavigation
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-            colors={darkMode ? CustomDark.colors : CustomLight.colors}
           />
         )}
       </Stack.Screen>
@@ -213,52 +180,154 @@ function StackNavigation({ darkMode, setDarkMode }) {
   );
 }
 
-function CustomDrawerContent({ props, navigation }) {
+function CustomDrawerContent({ props }) {
+  const navigation = useNavigation();
   const { user } = useContext(UserContext);
 
 
   return (
     <DrawerContentScrollView {...props}>
-      <View className="flex-1 justify-between h-full items-center">
+      <View className="flex h-full justify-between items-center">
         {user ? (
-          <View className="flex gap-y-2 w-full items-center">
+          <View className="flex w-full h-full items-center mb-[3vh]">
+
             <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
               <FontAwesome name="user-circle" size={60} color="#fff" />
-              <Text className="font-bold text-lg text-white">
+              <Text className="font-bold text-lg text-white text-center">
                 Hola {user.username}
               </Text>
             </View>
 
             <TouchableOpacity
-              className="bg-indigo-500 p-2 w-full"
+              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+              onPress={() =>
+                {
+                  navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'Index' }],
+                  });
+                }
+              }
+            >
+              <View className="flex items-center justify-center w-5">
+                <FontAwesome name="home" size={20} color="#fff" />
+              </View>
+              <Text className="text-white font-bold text-base">
+                Inicio
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+            >
+              <View className="flex items-center justify-center w-5">
+                <FontAwesome name="user" size={20} color="#fff"/>
+              </View>
+              <Text className="text-white font-bold text-base">
+                Mi Perfil
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
               onPress={() =>
                 navigation.navigate("CrearTorneo", {
                   username: user.username,
                 })
               }
             >
-              <Text className="text-white font-bold text-center text-base">
+              <View className="flex items-center justify-center w-5">
+                <FontAwesome name="trophy" size={20} color="#fff"/>
+              </View>
+              <Text className="text-white font-bold text-base">
                 Crear Torneo
               </Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+            >
+              <View className="flex items-center justify-center w-5">
+                <MaterialCommunityIcons name="tournament" size={20} color="#fff" />
+              </View>
+              <Text className="text-white font-bold text-base">
+                Mis Torneos
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-6 w-full bg-white/5 mt-4 border-t border-t-slate-700/25 flex flex-row items-center gap-x-2"
+            >
+              <View className="flex items-center justify-center w-5">
+                <FontAwesome name="question" size={20} color="#fff"/>
+              </View>
+              <Text className="text-white font-bold text-base">
+                Preguntas Frecuentes
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+            >
+              <View className="flex items-center justify-center w-5">
+                <FontAwesome name="book" size={20} color="#fff"/>
+              </View>
+              <Text className="text-white font-bold text-base">
+                Politicas de Privacidad
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+            >
+              <View className="flex items-center justify-center w-5">
+                <FontAwesome name="list-alt" size={20} color="#fff"/>
+              </View>
+              <Text className="text-white font-bold text-base">
+                Terminos y Condiciones
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+            >
+              <View className="flex items-center justify-center w-5">
+                <FontAwesome name="group" size={20} color="#fff"/>
+              </View>
+              <Text className="text-white font-bold text-base">
+                Sobre Nosotros
+              </Text>
+            </TouchableOpacity>
+
           </View>
-        ) : undefined}
+        ) : 
+          undefined
+        }
+
+
+
         <View className="flex flex-col gap-y-4 items-center my-2">
           {!user?.email ? (
             <>
               <TouchableOpacity
-                className="bg-indigo-600 p-3 rounded-md"
+                className="p-3 rounded-md bg-white/5 border-b border-b-slate-700/25 flex items-center flex-row gap-x-0.5 w-40 justify-center"
                 onPress={() => navigation.navigate("Login")}
               >
+                <View className="flex items-center justify-center w-5">
+                  <FontAwesome name="sign-in" size={20} color="#fff" />
+                </View>
                 <Text className="text-white font-bold text-center text-base">
                   Iniciar Sesion
                 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                className="bg-indigo-600 p-3 rounded-md"
+                className="p-3 rounded-md bg-white/5 border-b border-b-slate-700/25 flex items-center flex-row gap-x-0.5 w-40 justify-center"
                 onPress={() => navigation.navigate("Register")}
               >
+                <View className="flex items-center justify-center w-5">
+                  <AntDesign name="addusergroup" size={20} color="#fff" />
+                </View>
                 <Text className="text-white font-bold text-center text-base">
                   Registro
                 </Text>
@@ -269,9 +338,12 @@ function CustomDrawerContent({ props, navigation }) {
 
         {user ? (
           <TouchableOpacity
-            className="bg-indigo-600 p-3 rounded-md"
+            className="p-3 rounded-md bg-white/5 border-b border-b-slate-700/25 flex items-center flex-row gap-x-0.5"
             onPress={() => logOut()}
           >
+            <View className="flex items-center justify-center w-5">
+              <FontAwesome name="sign-out" size={20} color="#fff" />
+            </View>
             <Text className="text-white font-bold text-center text-base">
               Cerrar Sesion
             </Text>
@@ -282,19 +354,35 @@ function CustomDrawerContent({ props, navigation }) {
   );
 }
 
+//card es el header y bottombar por defecto
+
+const RootColors = {
+  dark: false,
+  colors: {
+    background: "#52408e",
+    border: "#d8d8d8a0",
+    card: "#52408e",
+    notification: "#ff3b30",
+    primary: "#007aff",
+    text: "#000",
+    grey: "#bdbdbd",
+    purple: "#52408e",
+    yellow: "#F0C05A"
+  },
+};
+
 export function DrawerNavigation() {
-  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <>
-      <StatusBar style={darkMode ? "light" : "dark"} />
-      <NavigationContainer theme={darkMode ? CustomDark : CustomLight}>
+      <StatusBar style={"light"} />
+      <NavigationContainer theme={RootColors}>
         <Drawer.Navigator
           drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
           <Drawer.Screen name="Index" options={{ headerShown: false }}>
             {() => (
-              <StackNavigation darkMode={darkMode} setDarkMode={setDarkMode} />
+              <StackNavigation />
             )}
           </Drawer.Screen>
         </Drawer.Navigator>
