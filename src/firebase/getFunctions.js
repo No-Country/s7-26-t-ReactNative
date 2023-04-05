@@ -4,6 +4,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  setDoc,
   where,
   query,
   onSnapshot,
@@ -19,6 +20,7 @@ import {
   tournamentCollection,
   picturesCollection,
   fixtureCollection,
+  storage,
 } from "./credentials";
 
 //Se debe especificar como string el nombre del documento con el que está guardado en la db
@@ -80,6 +82,18 @@ export const getTournamentTeams = async (userId, tournamentId) => {
     console.log(error);
     return false;
   }
+};
+
+export const ListSpecificTournaments = async (sport) => {
+
+  try {
+    let res = await getDocs(collectionGroup(db, tournamentCollection))
+
+    return res.docs.map((doc) => doc.data()).filter(e => e.deporte === sport)
+
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const getTeamData = async (userId, tournamentId, teamId) => {
@@ -215,7 +229,7 @@ export const uploadProfilePicture = async (imageUri, name) => {
     const response = await fetch(imageUri);
     const blobFile = await response.blob();
 
-    const reference = ref(picturesCollection, `fotos/${name}.jpg`);
+    const reference = ref(storage, `fotos/${name}.jpg`);
     const result = await uploadBytes(reference, blobFile);
     const url = await getDownloadURL(result.ref);
 

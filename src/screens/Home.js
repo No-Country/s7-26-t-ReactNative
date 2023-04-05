@@ -15,6 +15,8 @@ function Home({ navigation }) {
   const [partidos, setPartidos] = useState(null);
   const [cerca, setCerca] = useState(null);
   const [searchText, setSearchText] = useState('');
+  const [sport, setSport] = useState(false);
+  const [filtrados, setPartidosFiltrados] = useState(false);
   const [tournaments, setTournaments] = useState(false);
   const searchTerm = searchText.toLowerCase();
 
@@ -28,6 +30,7 @@ function Home({ navigation }) {
   async function getTournaments() {
     const data = await ListAllTournaments();
     setPartidos(data);
+    setPartidosFiltrados(null)
    
   }
 
@@ -49,12 +52,15 @@ function Home({ navigation }) {
   const tournamentHalder = () =>{
     setTournaments(true)
     getTournaments()
+    setPartidosFiltrados(null)
   
 }
 
 const sportsHandler = () =>{
   setTournaments(false)
-
+  setSport(false)
+  setPartidosFiltrados(null)
+ 
 
 }
 
@@ -106,6 +112,7 @@ const sportsHandler = () =>{
 
 
 
+
         <View className={"flex-row w-full justify-around mt-5"}>
 
           <TouchableOpacity
@@ -126,8 +133,8 @@ const sportsHandler = () =>{
 
         </View>
 
-        {!tournaments ?
-          (<Sports tournaments={tournaments} setTournaments={setTournaments} getTournaments={getTournaments} />) : null
+        {!tournaments && !sport ?
+          (<Sports sport={sport} setSport={setSport}  setPartidosFiltrados={setPartidosFiltrados} />) : null
         }
 
 
@@ -135,14 +142,20 @@ const sportsHandler = () =>{
         {partidos && tournaments
           ? (<Tournaments data={partidos} />) : null}
 
-        <Text
+        {/* <Text
           onPress={() => partidosCerca(2000)}
           className="p-2 bg-indigo-600 my-4 text-white"
         >
           Obtener Partidos Cerca
-        </Text>
+        </Text> */}
 
-        {cerca
+          {filtrados?
+(<Tournaments data={filtrados} />):null
+          }
+
+
+
+        {/* {cerca
           ? Children.toArray(
             cerca.map((partido) => (
               <>
@@ -172,7 +185,7 @@ const sportsHandler = () =>{
               </>
             ))
           )
-          : undefined}
+          : undefined} */}
       </View>
     </ScrollView>
   );
