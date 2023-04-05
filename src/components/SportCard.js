@@ -11,8 +11,8 @@ export const SportCard = ({title, icon}) => {
   const { dark, colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-       <FontAwesome5 name={icon} size={100} color={dark?'white':"black"} />
+    <View >
+       <FontAwesome5 name={icon} size={80} color={dark?'white':"black"} />
        <Text className={dark?"text-white":"text-black"} >{title.toUpperCase()}</Text>
     </View>
   )
@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
     
       
       borderRadius: 10,
-      width: "45%",
      
-
+     
+textAlign:"center",
       height: 150,
       alignItems: 'center',
       justifyContent: 'center',

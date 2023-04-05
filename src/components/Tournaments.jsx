@@ -10,6 +10,11 @@ export default function Tournaments({ data }) {
     return <Text>Cargando</Text>;
   }
 
+
+if (data.length == 0){
+  return <Text className="text-white">No hay torneo</Text>
+}
+
   return (
     <ScrollView className="w-full">
       <View>
