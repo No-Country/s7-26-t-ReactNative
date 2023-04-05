@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Platform,
+  Image,
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -19,6 +20,7 @@ import Constants from "expo-constants";
 import * as ImagePicker from "expo-image-picker";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import {UserContext} from '../context/UserContext'
+import { uploadProfilePicture } from "../firebase/getFunctions";
 
 const tournamentSchema = Yup.object().shape({
   nombre: Yup.string()
@@ -50,7 +52,19 @@ const CreateTournament = ({ navigation, route }) => {
     "Natación",
     "Otro",
   ];
-  const { dark, colors } = useTheme();
+  const { colors } = useTheme();
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+    });
+
+    if (!result.canceled) {
+      setImagen(result.assets[0].uri);
+    }
+  };
 
   const handleSelectPlace = (place) => {
     fetch(
@@ -70,6 +84,12 @@ const CreateTournament = ({ navigation, route }) => {
 
   async function handleSubmit({ nombre, descripcion }) {
     if (deporte && location) {
+
+      const resImg = await uploadProfilePicture(
+        imagen,
+        `profileImg${nombre}`
+      );
+
       const data = {
         nombre,
         creador: route.params.username,
@@ -77,7 +97,7 @@ const CreateTournament = ({ navigation, route }) => {
         latitud: location.latitud,
         longitud: location.longitud,
         deporte,
-        imagen,
+        imagen: resImg,
         descripcion,
       };
 
@@ -135,18 +155,21 @@ const CreateTournament = ({ navigation, route }) => {
             touched,
           }) => (
             <View className="w-full flex gap-y-1">
+                {
+                  imagen?
+                  <Image source={{ uri: imagen }} style={{height: 100, width: 100}} className="mx-auto mb-2" />
+                  :
+                  <View style={{marginBottom: 2}} className="mx-auto">
+                    <FontAwesome name="file-picture-o" size={100} color="#fff" />
+                  </View>
+                }
               <Text
-                style={{ color: colors.text }}
-                className="mr-auto text-base font-semibold opacity-50"
+                className="mr-auto text-base font-semibold opacity-70 text-white"
               >
                 Nombre
               </Text>
               <TextInput
-                className={
-                  "bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 " +
-                  (dark ? "border-white/10" : "border-black/20")
-                }
-                style={{ color: colors.text }}
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
                 onChangeText={handleChange("nombre")}
                 onBlur={handleBlur("nombre")}
                 value={values.nombre}
@@ -159,8 +182,18 @@ const CreateTournament = ({ navigation, route }) => {
               )}
 
               <Text
-                style={{ color: colors.text }}
-                className="mr-auto text-base font-semibold opacity-50 mb-1"
+                className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white"
+              >
+                Foto
+              </Text>
+              <View className="flex">
+                <TouchableOpacity onPress={pickImage} style={{height: 44, marginBottom: 4}} className="border border-white/10 px-4 bg-white/10 rounded-md">
+                  <Text className="text-center text-white text-base font-medium my-auto">Cargar Foto</Text>
+                </TouchableOpacity>
+              </View>
+
+              <Text
+                className="mr-auto text-base font-semibold opacity-70 mb-1 text-white"
               >
                 Deporte
               </Text>
@@ -170,18 +203,19 @@ const CreateTournament = ({ navigation, route }) => {
                 data={deportes}
                 buttonStyle={{
                   width: "100%",
-                  backgroundColor: dark ? "#ffffff1a" : "transparent",
-                  borderColor: dark ? "#ffffff1a" : "#00000033",
+                  backgroundColor: "#ffffff1a",
+                  borderColor: "#00000033",
                   height: 44,
                   borderWidth: 1,
                   borderRadius: 5,
+                  marginBottom: 5
                 }}
-                buttonTextStyle={{ color: colors.text }}
+                buttonTextStyle={{ color: "#fff" }}
                 renderDropdownIcon={(isOpened) => {
                   return (
                     <FontAwesome
                       name={isOpened ? "chevron-up" : "chevron-down"}
-                      color={"#444"}
+                      color={"#fff"}
                       size={18}
                     />
                   );
@@ -191,7 +225,7 @@ const CreateTournament = ({ navigation, route }) => {
                   backgroundColor: colors.card,
                   borderBottomColor: "transparent",
                 }}
-                rowTextStyle={{ color: colors.text }}
+                rowTextStyle={{ color: "#fff" }}
                 onSelect={(selectedItem) => {
                   setDeporte(selectedItem);
                 }}
@@ -204,8 +238,7 @@ const CreateTournament = ({ navigation, route }) => {
               />
 
               <Text
-                style={{ color: colors.text }}
-                className="mr-auto text-base font-semibold opacity-50 -mb-0.5"
+                className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white"
               >
                 Ciudad
               </Text>
@@ -221,9 +254,9 @@ const CreateTournament = ({ navigation, route }) => {
                     },
                     textInput: {
                       borderWidth: 1,
-                      borderColor: dark ? "#ffffff1a" : "#00000033",
-                      backgroundColor: dark ? "#ffffff1a" : "transparent",
-                      color: colors.text,
+                      borderColor: "#00000033",
+                      backgroundColor: "#ffffff1a",
+                      color: "#fff",
                     },
                   }}
                   onFail={(error) => console.error(error)}
@@ -239,17 +272,13 @@ const CreateTournament = ({ navigation, route }) => {
               </View>
 
               <Text
-                style={{ color: colors.text }}
-                className="mr-auto text-base font-semibold opacity-50"
+                className="mr-auto text-base font-semibold opacity-70 text-white"
               >
                 Descripción
               </Text>
               <TextInput
-                className={
-                  "bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 " +
-                  (dark ? "border-white/10" : "border-black/20")
-                }
-                style={{ color: colors.text }}
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20"
+                style={{ color: "#fff" }}
                 onChangeText={handleChange("descripcion")}
                 onBlur={handleBlur("descripcion")}
                 value={values.descripcion}
@@ -262,7 +291,8 @@ const CreateTournament = ({ navigation, route }) => {
               )}
 
               <TouchableOpacity
-                className="bg-indigo-600 p-3 rounded-md mb-3"
+                style={{backgroundColor: colors.yellow}}
+                className="p-3 rounded-md mb-3 text-white"
                 onPress={() => handleSubmit()}
               >
                 <Text className="text-white font-bold text-center text-base">

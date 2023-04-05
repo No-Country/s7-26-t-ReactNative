@@ -86,10 +86,7 @@ const sportsHandler = () =>{
     <ScrollView className="h-full">
       <View className="flex items-center mx-auto justify-center h-full w-full">
 
-        <Torneopalooza width={300} height={100} color={colors.text} />
-
-
-
+        <Torneopalooza width={300} height={100} color={colors.yellow}/>
 
         <View className="flex flex-row justify-around content-center items-center">
           <Searchbar

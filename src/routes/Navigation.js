@@ -29,7 +29,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
-function BottomNavigation({ darkMode, setDarkMode, colors }) {
+function BottomNavigation({}) {
   const navigation = useNavigation();
 
   return (
@@ -39,7 +39,8 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
           tabBarStyle: {
             paddingTop: 10,
           },
-          tabBarActiveTintColor: colors.text,
+          headerTintColor: "#fff",
+          tabBarActiveTintColor: "#F6BF47",
           headerLeftContainerStyle: {
             paddingLeft: 20,
           },
@@ -48,21 +49,19 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
           },
           tabBarStyle: {
             marginBottom: 2,
+            shadowColor: "transparent",
+            borderTopWidth: 0
+          },
+          headerStyle:{
+            shadowColor: "transparent",
+            borderBottomWidth: 0
           },
           headerLeft: () => (
             <Ionicons
               onPress={() => navigation.toggleDrawer()}
               name="menu-sharp"
               size={30}
-              color={darkMode ? "#fff" : "#000"}
-            />
-          ),
-          headerRight: () => (
-            <Ionicons
-              onPress={() => setDarkMode(!darkMode)}
-              name={darkMode ? "sunny-outline" : "moon-outline"}
-              size={30}
-              color={darkMode ? "#fff" : "#000"}
+              color={"#fff"}
             />
           ),
         }}
@@ -136,44 +135,12 @@ function BottomNavigation({ darkMode, setDarkMode, colors }) {
   );
 }
 
-const lightColor = "#fff";
-const darkColor = "#010101";
-
-const CustomLight = {
-  dark: false,
-  colors: {
-    background: lightColor,
-    border: "#d8d8d8a0",
-    card: lightColor,
-    notification: "#ff3b30",
-    primary: "#007aff",
-    text: "#000",
-    grey: "#bdbdbd",
-  },
-};
-
-const CustomDark = {
-  dark: true,
-  colors: {
-    background: darkColor,
-    border: "#272729c7",
-    card: darkColor,
-    notification: "#ff453a",
-    primary: "#0a84ff",
-    text: "#fff",
-    grey: "#bdbdbd",
-  },
-};
-
-function StackNavigation({ darkMode, setDarkMode }) {
+function StackNavigation({}) {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" options={{ headerShown: false }}>
         {() => (
           <BottomNavigation
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-            colors={darkMode ? CustomDark.colors : CustomLight.colors}
           />
         )}
       </Stack.Screen>
@@ -282,19 +249,35 @@ function CustomDrawerContent({ props, navigation }) {
   );
 }
 
+//card es el header y bottombar por defecto
+
+const RootColors = {
+  dark: false,
+  colors: {
+    background: "#52408e",
+    border: "#d8d8d8a0",
+    card: "#52408e",
+    notification: "#ff3b30",
+    primary: "#007aff",
+    text: "#000",
+    grey: "#bdbdbd",
+    purple: "#52408e",
+    yellow: "#F0C05A"
+  },
+};
+
 export function DrawerNavigation() {
-  const [darkMode, setDarkMode] = useState(true);
 
   return (
     <>
-      <StatusBar style={darkMode ? "light" : "dark"} />
-      <NavigationContainer theme={darkMode ? CustomDark : CustomLight}>
+      <StatusBar style={"light"} />
+      <NavigationContainer theme={RootColors}>
         <Drawer.Navigator
           drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
           <Drawer.Screen name="Index" options={{ headerShown: false }}>
             {() => (
-              <StackNavigation darkMode={darkMode} setDarkMode={setDarkMode} />
+              <StackNavigation />
             )}
           </Drawer.Screen>
         </Drawer.Navigator>
