@@ -329,7 +329,7 @@ function CustomDrawerContent({ props }) {
                   <AntDesign name="addusergroup" size={20} color="#fff" />
                 </View>
                 <Text className="text-white font-bold text-center text-base">
-                  Registro
+                  Registrate
                 </Text>
               </TouchableOpacity>
             </>

@@ -7,7 +7,7 @@ import {
   setDoc,
   where,
   query,
-  onSnapshot,
+  onSnapshot
 } from "firebase/firestore";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -18,7 +18,6 @@ import {
   playersCollection,
   teamsCollection,
   tournamentCollection,
-  picturesCollection,
   fixtureCollection,
   storage,
 } from "./credentials";
@@ -159,10 +158,7 @@ export const ListAllTournaments = async () => {
     const res = await getDocs(collectionGroup(db, tournamentCollection));
 
     return res.docs.map(
-      (doc) => doc.data() /* {
-      const { uid, nombre, creador, ciudad, imagen, deporte } = doc.data();
-      return { uid, nombre, creador, ciudad, imagen, deporte };
-    } */
+      (doc) => doc.data()
     );
   } catch (error) {
     return false;
@@ -261,6 +257,24 @@ export const getNearTournaments = async (lat, lng, maxDistance) => {
     });
 
     return nearTournaments;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+/**
+ * 
+ * @param {search} search palabra a buscar en la base de datos, busca en el campo nombre del torneo
+ * @returns array con los torneos encontrados
+ */
+
+export const searchTournaments = async (search) => {
+  try {
+    const tournamentsFound = await getDocs(collectionGroup(db, tournamentCollection));
+
+    const data = tournamentsFound.docs.map((doc) => doc.data()).filter((data) => new RegExp(search, 'i').test(data.nombre));
+
+    return data;
   } catch (error) {
     console.error(error);
   }
