@@ -7,7 +7,7 @@ const {colors}= useTheme()
 
   switch (data) {
     case "Futbol":
-      return <FontAwesome name="soccer-ball-o" size={80} color={colors.grey} />;
+      return <FontAwesome name="soccer-ball-o" size={80} color={colors.grey} style={{marginBottom: 10}} />;
 
     case "Basquet":
       return <Ionicons name="basketball-outline" size={90} color={colors.grey} />;

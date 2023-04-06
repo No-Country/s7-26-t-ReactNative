@@ -25,7 +25,7 @@ export const Sports = ({ setSport, setPartidosFiltrados }) => {
 
 
 
-            <View className={"mt-4 h-auto rounded-sm items-center justify-center" + (dark ? "bg-slate-700/60" : "bg-transparent")}>
+            <View className={"h-auto rounded-sm items-center justify-center " + (dark ? "bg-slate-700/60" : "bg-transparent")}>
 
 
 

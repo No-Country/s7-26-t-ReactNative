@@ -4,7 +4,6 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { getNearTournaments, ListAllTournaments, searchTournaments } from "../firebase/getFunctions";
 import * as Location from "expo-location";
 import { Torneopalooza } from "../components/icons";
-
 import { Sports } from '../components/SelectSports'
 import Tournaments from "../components/Tournaments";
 import { SearchBar } from "../components/SearchBar";
