@@ -4,7 +4,7 @@
 //si puede crearlo retorna true como respuesta si ocurre un error retorna false
 
 import { collection, doc, setDoc } from "firebase/firestore";
-import { db, mainCollection, tournamentCollection } from "./credentials";
+import { db, mainCollection, teamsCollection, tournamentCollection } from "./credentials";
 
 export const CreateTournamentFB = async (userId, data) => {
   try {
@@ -33,6 +33,39 @@ export const CreateTournamentFB = async (userId, data) => {
       descripcion,
       id: docRef.id,
       userId: userId,
+    });
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+export const CreateTeam = async (userId, tournamentId, data) => {
+  try {
+    const {
+      nombre,
+      imagen,
+    } = data;
+
+    const docRef = doc(
+      collection(db, `${mainCollection}/${userId}/${tournamentCollection}/${tournamentId}/${teamsCollection}`)
+    );
+    await setDoc(docRef, {
+      nombre,
+      imagen:imagen, 
+      golesAFavor:0,
+      golesEnContra:0,
+      partidosGanados:0,
+      partidosEmpatados:0,
+      partidosPerdidos:0,
+      partidosJugados:0,
+      puntos:0,
+      tarjetasAmarillas:0,
+      tarjetasRoajas:0,
+      id: docRef.id,
+      tournamentId: tournamentId,
     });
 
     return true;
