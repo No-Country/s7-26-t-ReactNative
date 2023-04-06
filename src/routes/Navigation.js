@@ -29,6 +29,7 @@ import { logOut } from "../firebase/auth";
 import CreateTournament from "../screens/CreateTournament";
 import ViewTournament from "../screens/ViewTournament";
 import { UserContext } from "../context/UserContext";
+import AddTeam from "../screens/AddTeam";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -151,6 +152,10 @@ function StackNavigation({}) {
         name="CrearTorneo"
         component={CreateTournament}
         username={(params) => params.username}
+      />
+      <Stack.Screen
+        name="AddTeam"
+        component={AddTeam}
       />
       <Stack.Screen
         name="VerTorneo"
@@ -349,7 +354,7 @@ const RootColors = {
     grey: "#bdbdbd",
     purple: "#52408e",
     yellow: "#F0C05A",
-    darkPrimary: "#512DA",
+    darkPrimary: "#512DA8",
     lightPrimary: "#D1C4E9",
     primaryColor: "#673AB7",
     textIcons: "#FFFFFF",
