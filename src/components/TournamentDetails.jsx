@@ -3,17 +3,24 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function TournamentDetails( {item} ) {
+export default function TournamentDetails({ item }) {
   const { colors } = useTheme();
   const [saved, setSaved] = useState(false);
   return (
     <View className="flex justify-center items-center bg-purple-400 w-full h-auto p-2 text-center ">
-      <Image
-        className="w-20 h-20 rounded-full "
-        source={{
-          uri: "https://t3.ftcdn.net/jpg/04/29/81/28/360_F_429812841_tNy97zTP9PJOp2Bo8G2F2Li5RCqyZlnI.jpg",
-        }}
-      />
+      {item.imagen ? (
+        <Image
+          className="w-20 h-20 rounded-full "
+          source={{
+            uri: `${item.imagen}`,
+          }}
+        />
+      ) : (
+        <Image
+          className="w-20 h-20 rounded-full "
+          source={require("../../assets/torneoSample.png")}
+        />
+      )}
 
       <View className="flex flex-row justify-center items-center">
         <Text

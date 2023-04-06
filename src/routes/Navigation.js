@@ -1,5 +1,10 @@
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { Ionicons, FontAwesome, MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
+import {
+  Ionicons,
+  FontAwesome,
+  MaterialCommunityIcons,
+  AntDesign,
+} from "@expo/vector-icons";
 import { useState, useEffect, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -50,11 +55,11 @@ function BottomNavigation({}) {
           tabBarStyle: {
             marginBottom: 2,
             shadowColor: "transparent",
-            borderTopWidth: 0
+            borderTopWidth: 0,
           },
-          headerStyle:{
+          headerStyle: {
             shadowColor: "transparent",
-            borderBottomWidth: 0
+            borderBottomWidth: 0,
           },
           headerLeft: () => (
             <Ionicons
@@ -139,10 +144,7 @@ function StackNavigation({}) {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" options={{ headerShown: false }}>
-        {() => (
-          <BottomNavigation
-          />
-        )}
+        {() => <BottomNavigation />}
       </Stack.Screen>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen
@@ -184,13 +186,11 @@ function CustomDrawerContent({ props }) {
   const navigation = useNavigation();
   const { user } = useContext(UserContext);
 
-
   return (
     <DrawerContentScrollView {...props}>
       <View className="flex h-full justify-between items-center">
         {user ? (
           <View className="flex w-full h-full items-center mb-[3vh]">
-
             <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
               <FontAwesome name="user-circle" size={60} color="#fff" />
               <Text className="font-bold text-lg text-white text-center">
@@ -200,32 +200,24 @@ function CustomDrawerContent({ props }) {
 
             <TouchableOpacity
               className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-              onPress={() =>
-                {
-                  navigation.reset({
-                    index: 0,
-                    routes: [{ name: 'Index' }],
-                  });
-                }
-              }
+              onPress={() => {
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: "Index" }],
+                });
+              }}
             >
               <View className="flex items-center justify-center w-5">
                 <FontAwesome name="home" size={20} color="#fff" />
               </View>
-              <Text className="text-white font-bold text-base">
-                Inicio
-              </Text>
+              <Text className="text-white font-bold text-base">Inicio</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-            >
+            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
               <View className="flex items-center justify-center w-5">
-                <FontAwesome name="user" size={20} color="#fff"/>
+                <FontAwesome name="user" size={20} color="#fff" />
               </View>
-              <Text className="text-white font-bold text-base">
-                Mi Perfil
-              </Text>
+              <Text className="text-white font-bold text-base">Mi Perfil</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -237,74 +229,63 @@ function CustomDrawerContent({ props }) {
               }
             >
               <View className="flex items-center justify-center w-5">
-                <FontAwesome name="trophy" size={20} color="#fff"/>
+                <FontAwesome name="trophy" size={20} color="#fff" />
               </View>
               <Text className="text-white font-bold text-base">
                 Crear Torneo
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-            >
+            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
               <View className="flex items-center justify-center w-5">
-                <MaterialCommunityIcons name="tournament" size={20} color="#fff" />
+                <MaterialCommunityIcons
+                  name="tournament"
+                  size={20}
+                  color="#fff"
+                />
               </View>
               <Text className="text-white font-bold text-base">
                 Mis Torneos
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="py-2.5 pl-6 w-full bg-white/5 mt-4 border-t border-t-slate-700/25 flex flex-row items-center gap-x-2"
-            >
+            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 mt-4 border-t border-t-slate-700/25 flex flex-row items-center gap-x-2">
               <View className="flex items-center justify-center w-5">
-                <FontAwesome name="question" size={20} color="#fff"/>
+                <FontAwesome name="question" size={20} color="#fff" />
               </View>
               <Text className="text-white font-bold text-base">
                 Preguntas Frecuentes
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-            >
+            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
               <View className="flex items-center justify-center w-5">
-                <FontAwesome name="book" size={20} color="#fff"/>
+                <FontAwesome name="book" size={20} color="#fff" />
               </View>
               <Text className="text-white font-bold text-base">
                 Politicas de Privacidad
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-            >
+            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
               <View className="flex items-center justify-center w-5">
-                <FontAwesome name="list-alt" size={20} color="#fff"/>
+                <FontAwesome name="list-alt" size={20} color="#fff" />
               </View>
               <Text className="text-white font-bold text-base">
                 Terminos y Condiciones
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-            >
+            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
               <View className="flex items-center justify-center w-5">
-                <FontAwesome name="group" size={20} color="#fff"/>
+                <FontAwesome name="group" size={20} color="#fff" />
               </View>
               <Text className="text-white font-bold text-base">
                 Sobre Nosotros
               </Text>
             </TouchableOpacity>
-
           </View>
-        ) : 
-          undefined
-        }
-
-
+        ) : undefined}
 
         <View className="flex flex-col gap-y-4 items-center my-2">
           {!user?.email ? (
@@ -367,12 +348,19 @@ const RootColors = {
     text: "#000",
     grey: "#bdbdbd",
     purple: "#52408e",
-    yellow: "#F0C05A"
+    yellow: "#F0C05A",
+    darkPrimary: "#512DA",
+    lightPrimary: "#D1C4E9",
+    primaryColor: "#673AB7",
+    textIcons: "#FFFFFF",
+    primaryText: "#212121",
+    secondaryText: "#757575",
+    accentColor: "#FFC107",
+    dividerColor: "#BDBDBD",
   },
 };
 
 export function DrawerNavigation() {
-
   return (
     <>
       <StatusBar style={"light"} />
@@ -381,9 +369,7 @@ export function DrawerNavigation() {
           drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
           <Drawer.Screen name="Index" options={{ headerShown: false }}>
-            {() => (
-              <StackNavigation />
-            )}
+            {() => <StackNavigation />}
           </Drawer.Screen>
         </Drawer.Navigator>
       </NavigationContainer>

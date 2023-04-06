@@ -6,7 +6,7 @@ export default function LogoType({ data }) {
       return <FontAwesome name="soccer-ball-o" size={24} color="black" />;
 
     case "Basquet":
-      return <Ionicons name="basketball-outline" size={24} color="black" />;
+      return <Ionicons name="basketball-outline" size={28} color="black" />;
 
     case "Handball":
       return <MaterialIcons name="sports-handball" size={24} color="black" />;
