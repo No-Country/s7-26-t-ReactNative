@@ -8,24 +8,16 @@ import { ordenarPorPuntos } from "../utils";
 export default function Fixture({ route }) {
   const [fixture, setFixture] = useState([]);
   const { dark, colors } = useTheme();
-  const { user, tournamentId } = useContext(UserContext);
-  const { id } = useRoute().params;
+  const { tournamentId, createdBy } = useContext(UserContext);
+  
   
 
   useEffect(() => {
-    //Me lee el parametro
-    console.log("Id torneo: ", `${id}`);
-    console.log("Id torneo: ", tournamentId);
-
-    //Pero la funcion no me lo toma
-    /* const data = getFixture(user?.id, id); */
-
-    //Solo cuando paso el id como string literal
-    const data = getFixture(user?.id, "ceyjOmpGpcW9P6EHN6t6");
+    const data = getFixture(createdBy, tournamentId);
     data.then((res) => setFixture(res));
 
     
-  }, [id]);
+  }, [tournamentId]);
 
 
   return (

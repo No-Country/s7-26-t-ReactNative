@@ -13,6 +13,7 @@ NativeWindStyleSheet.setOutput({
 export default function App() {
   const [user, setUser] = useState(null);
   const [tournamentId, setTournamentId] = useState(null);
+  const [createdBy, setCreatedBy] = useState(null);
   const fetchUser = async (uid) => {
     if (uid) {
       const userData = await getUserData(uid);
@@ -37,7 +38,7 @@ export default function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={ {user,tournamentId, setTournamentId} }>
+    <UserContext.Provider value={ {user,tournamentId, setTournamentId, createdBy, setCreatedBy} }>
       <DrawerNavigation />
     </UserContext.Provider>
   );

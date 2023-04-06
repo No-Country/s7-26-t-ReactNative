@@ -2,10 +2,14 @@ import { useNavigation } from "@react-navigation/core";
 import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import LogoType from "./LogoType";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
 
 export default function Tournaments({ data }) {
   const { colors } = useTheme();
   const navigation = useNavigation();
+  const {setTournamentId, setCreatedBy} = useContext(UserContext);
+
   if (!data) {
     return <Text>Cargando</Text>;
   }
@@ -21,11 +25,15 @@ export default function Tournaments({ data }) {
           <>
             <TouchableOpacity
               key={data.id}
-              onPress={() =>
+              onPress={() =>{
+
                 navigation.navigate({
                   name: "VerTorneo",
                   params: { id: data.id, userId: data.userId },
-                })
+                });
+                setCreatedBy(data.userId);
+                setTournamentId(data.id)
+              }
               }
               style={{
                 backgroundColor: colors.lightPrimary,
