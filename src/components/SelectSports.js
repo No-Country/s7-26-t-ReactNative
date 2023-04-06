@@ -36,7 +36,7 @@ export const Sports = ({ setSport, setPartidosFiltrados }) => {
                     <TouchableOpacity
                         onPress={() => getSpecificSport("Futbol")}
                     >
-                        <SportCard title="futbol" icon="futbol" />
+                        <SportCard title="Futbol"/>
                     </TouchableOpacity>
 </View>
 
@@ -46,7 +46,7 @@ export const Sports = ({ setSport, setPartidosFiltrados }) => {
                     <TouchableOpacity
                         onPress={() => getSpecificSport("Basquet")}
                     >
-                        <SportCard title="basquet" icon="basketball-ball" />
+                        <SportCard title="Basquet"/>
 
                     </TouchableOpacity>
 
@@ -55,20 +55,78 @@ export const Sports = ({ setSport, setPartidosFiltrados }) => {
 <View style={styles.container}>
 
                     <TouchableOpacity
-                        onPress={() => getSpecificSport("Voley")}
+                        onPress={() => getSpecificSport("Handball")}
                     >
-                        <SportCard title="vóley" icon="volleyball-ball" />
+                        <SportCard title="Handball" />
                     </TouchableOpacity>
 </View>
 
 <View style={styles.container}>
 
                     <TouchableOpacity
-                        onPress={() => getSpecificSport("Futbol-5")}
+                        onPress={() => getSpecificSport("Tenis")}
                     >
-                    <SportCard title="futbol 5" icon="futbol" />
+                    <SportCard title="Tenis"/>
                 </TouchableOpacity>
 </View>
+
+
+<View style={styles.container}>
+
+                    <TouchableOpacity
+                        onPress={() => getSpecificSport("Voley")}
+                    >
+                    <SportCard title="Voley"/>
+                </TouchableOpacity>
+</View>
+
+
+<View style={styles.container}>
+
+                    <TouchableOpacity
+                        onPress={() => getSpecificSport("E-Sport")}
+                    >
+                    <SportCard title="E-Sport"/>
+                </TouchableOpacity>
+</View>
+
+<View style={styles.container}>
+
+                    <TouchableOpacity
+                        onPress={() => getSpecificSport("Hockey")}
+                    >
+                    <SportCard title="Hockey"/>
+                </TouchableOpacity>
+</View>
+
+
+<View style={styles.container}>
+
+                    <TouchableOpacity
+                        onPress={() => getSpecificSport("Ciclismo")}
+                    >
+                    <SportCard title="Ciclismo"/>
+                </TouchableOpacity>
+</View>
+
+<View style={styles.container}>
+
+                    <TouchableOpacity
+                        onPress={() => getSpecificSport("Running")}
+                    >
+                    <SportCard title="Running"/>
+                </TouchableOpacity>
+</View>
+
+<View style={styles.container}>
+
+                    <TouchableOpacity
+                        onPress={() => getSpecificSport("Natación")}
+                    >
+                    <SportCard title="Natación"/>
+                </TouchableOpacity>
+</View>
+
 
             </View>
         </View >
