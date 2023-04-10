@@ -24,14 +24,12 @@ const CategoryPicker = ({ selected, setSelected }) => {
 
 const [categories, setCategories] = useState(preloadCategories)
 
-
       
 
    
     const deleteCategory = (id) => {
-      let pos = selected.map((e) => e.id).indexOf(id);
-      selected.splice(pos, 1);
-      setSelected(selected);
+      const updatedSelected = selected.filter((e) => e.id !== id);
+  setSelected(updatedSelected);
     };
   
     const addCategory = (category) => {
@@ -48,10 +46,9 @@ const [categories, setCategories] = useState(preloadCategories)
             categories.map((cat) => {
 
                 let found = selected.find((e) => e.id === cat.id);
-            //console.log('found', found?.id, i)
+              
             if (found) {
 
-                console.log(selected)
 
                 return (
                   <TouchableOpacity
@@ -59,7 +56,7 @@ const [categories, setCategories] = useState(preloadCategories)
                     onPress={() => deleteCategory(cat.id)}
                     style={styles.selected}
                   >
-                    <Text style={styles.sportNameActive}>{cat.deporte}</Text>
+                    <Text style={styles.sportNameActive}>{found.deporte}</Text>
                   </TouchableOpacity>
                 );
                 } else {
