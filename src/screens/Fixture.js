@@ -19,7 +19,7 @@ export default function Fixture({ route }) {
   const [teams, setTeams] = useState([]);
   const [fixture, setFixture] = useState([]);
   const { dark, colors } = useTheme();
-  const { tournamentId, createdBy } = useContext(UserContext);
+  const { user, tournamentId, createdBy } = useContext(UserContext);
   const [confirm, setConfirm] = useState(false);
 
   const createFixture = () => {
@@ -127,7 +127,9 @@ export default function Fixture({ route }) {
               <Text style={{ color: colors.primaryText }} className="text-xl">
                 No hay fixture creado aún
               </Text>
-              <Text> </Text>
+              <Text>{" "}</Text>
+              {
+                user && user.id === createdBy ? 
               <TouchableOpacity
                 style={{ backgroundColor: colors.accentColor }}
                 className="p-3 rounded-md mb-3 "
@@ -139,7 +141,8 @@ export default function Fixture({ route }) {
                 >
                   Crear Fixture
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> : null
+              }
             </View>
           )}
         </>

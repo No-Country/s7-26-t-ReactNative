@@ -19,9 +19,12 @@ export default function Ranking() {
     //Necesito parametros userId, tournamentId para hacer la solicitud, segun el torneo que se solicite
     if (tournamentId && createdBy) {
       const data = getTournamentTeams(createdBy, tournamentId);
-      data.then((res) => setTeams(res));
+      data.then((res) => {
+        setTeams(res);
+        setLoading(false);
+      });
     }
-    if(teams.length > 0) setLoading(false)
+    /* if(teams.length > 0) setLoading(false) */
   }, [tournamentId, createdBy]);
 
   return (
@@ -32,7 +35,9 @@ export default function Ranking() {
         <>
           <View className="w-full h-36 items-center py-4">
             <Text className="text-white text-base ">
-              Equipos participantes del torneo:{" "}
+              {teams.length > 0
+                ? "Equipos participantes del torneo:"
+                : "No hay equipos"}
             </Text>
           </View>
           <ScrollView className="w-full">
@@ -59,7 +64,7 @@ export default function Ranking() {
               ))}
             </View>
           </ScrollView>
-          {user ? (
+          {user && user.id === createdBy ? (
             <View className="my-4">
               <TouchableOpacity
                 style={{ backgroundColor: colors.accentColor }}
