@@ -18,11 +18,11 @@ function Home({ navigation }) {
   const [filtrados, setPartidosFiltrados] = useState(false);
   const [tournaments, setTournaments] = useState(false);
   const searchTerm = searchText.toLowerCase();
+  const [selected, setSelected] = useState([]);
 
 
   useEffect(() => {
     getTournaments()
-
   }, [])
 
 
