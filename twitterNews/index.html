@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body class="hidden" onload="cargarCuenta()">
+    <a
+      class="twitter-timeline"
+      href="https://twitter.com/DeportesAR?ref_src=twsrc%5Etfw"
+    ></a>
+    <div class="container" id="onready">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <script
+      async
+      src="https://platform.twitter.com/widgets.js"
+      charset="utf-8"
+    ></script>
+    <script>
+      function cargarCuenta() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let accountValue = urlParams.get("cuenta");
+        document.querySelector(".twitter-timeline").href =
+          "https://twitter.com/" + accountValue + "?ref_src=twsrc%5Etfw";
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
