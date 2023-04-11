@@ -145,6 +145,16 @@ function BottomNavigation({}) {
             ),
           }}
         />
+
+        <Tab.Screen
+          name="VerTorneo"
+          component={ViewTournament}
+          username={(params) => params.tournament}
+          options={{
+            tabBarButton: () => null,
+            tabBarVisible: false,
+          }}
+        />
       </Tab.Navigator>
     </>
   );
@@ -193,11 +203,6 @@ function StackNavigation() {
         component={AddTeam}
       />
       <Stack.Screen
-        name="VerTorneo"
-        component={ViewTournament}
-        username={(params) => params.tournament}
-      />
-      <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerTitle: "" }}
@@ -237,7 +242,24 @@ function CustomDrawerContent({ props }) {
         {user ? (
           <View className="flex w-full h-full items-center mb-[3vh]">
             <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
-              <FontAwesome name="user-circle" size={60} color="#fff" />
+              {
+                user?.photo?
+                <Image
+                  resizeMode="contain"
+                  style={{
+                    height: 80,
+                    width: 80,
+                    borderRadius: 100,
+                    marginBottom: -10
+                  }}
+                  source={{
+                    uri: user?.photo
+                  }}
+                />
+                :
+                <FontAwesome name="user-circle" size={60} color="#fff" />
+              }
+              
               <Text className="font-bold text-lg text-white text-center">
                 Hola {user.username}
               </Text>

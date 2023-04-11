@@ -1,11 +1,15 @@
-import { ScrollView, Text, View, Linking, TouchableOpacity, TextInput, KeyboardAvoidingView} from "react-native"
+import { ScrollView, Text, View, Linking, TouchableOpacity, TextInput, Image ,KeyboardAvoidingView, ImageBackground} from "react-native"
 import { useContext, useState } from "react"
 import { UserContext } from "../context/UserContext"
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-view';
+import * as ImagePicker from "expo-image-picker";
+import { updateProfile } from "../firebase/auth";
+import { uploadProfilePicture } from "../firebase/getFunctions";
+import Toast from "react-native-toast-message";
+import { toastConfig } from "../components/Toast";
 
 const userSchema = Yup.object().shape({
   username: Yup.string()
@@ -14,23 +18,57 @@ const userSchema = Yup.object().shape({
   email: Yup.string()
     .email("Email Invalido")
     .required("El Email es obligatorio"),
-  phone: Yup.number()
+  telefono: Yup.string(),
+  twitter: Yup.string()
 });
 
-export default function Profile(){
+export default function Profile({navigation}){
   
   const {colors} = useTheme()
   const {user, setUser} = useContext(UserContext);
   const [editMode, setEditMode] = useState(false)
+  const [image, setImage] = useState(null)
 
-  async function handleSubmit({ email, username, phone }) {
-    //const res = await updateProfile(email, username, phone);
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+    });
 
-    console.log(email);
-    console.log(username);
-    console.log(phone);
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
 
-    if (!res) {
+  async function handleSubmit(data) {
+    const {
+      email,
+      username,
+      telefono,
+      twitter
+    } = data;
+
+    let photo = ""
+    
+    image?
+      photo = await uploadProfilePicture(
+        image,
+        `profilePicImg${username}`
+      )
+      :
+      null
+
+    const userId = user.id;
+    const updatedEmail = email !== user.email ? email : user.email;
+    const updatedUsername = username !== user.username ? username : user.username;
+    const updatedTelefono = telefono !== user.telefono ? telefono : user.telefono;
+    const updatedPhoto = photo ? photo : user.photo;
+    const updatedTwitter = twitter !== user.twitter ? twitter : user.twitter;
+
+    const res = await updateProfile(userId, updatedEmail, updatedUsername, updatedTelefono, updatedPhoto ,updatedTwitter)
+
+    if (res) {
       Toast.show({
         type: "success",
         text1: "😃 Cambios Guardados",
@@ -43,41 +81,38 @@ export default function Profile(){
         });
       }, 1000);
     } else {
-      switch (res) {
-        case "auth/email-already-in-use":
-          Toast.show({
-            type: "error",
-            text1: "⚠️ Ya existe una cuenta con ese email",
-          });
-          break;
-        case "auth/invalid-email":
-          Toast.show({
-            type: "error",
-            text1: "⚠️ Email inválido",
-          });
-          break;
-        default:
-          Toast.show({
-            type: "error",
-            text1: "⚠️ Algo ha salido mal. Por favor inténtelo nuevamente",
-          });
-          break;
-      }
+      Toast.show({
+        type: "error",
+        text1: "⚠️ Algo ha salido mal. Por favor inténtelo nuevamente",
+      });
     }
+
+    setUser({
+      ...user,
+      email: updatedEmail,
+      username: updatedUsername,
+      telefono: updatedTelefono,
+      photo: updatedPhoto,
+      twitter: updatedTwitter,
+    });
   }
 
   return (
+    <>
+    <View className="z-10">
+    <Toast config={toastConfig} />
+    </View>
     <KeyboardAvoidingView
     behavior="position"
     keyboardVerticalOffset={Platform.select({
-      ios: () => -160,
-      android: () => -160,
-      web: () => -160
+      ios: () => -120,
+      android: () => -120,
+      web: () => -120
     })()}
     >
     <ScrollView className="h-full">
       <Formik
-        initialValues={{ username: user.username, email: user.email, phone: user.telefono }}
+        initialValues={{ username: user.username, email: user.email, telefono: user.telefono, twitter: user?.twitter }}
         onSubmit={handleSubmit}
         validationSchema={userSchema}
       >
@@ -88,10 +123,19 @@ export default function Profile(){
           values,
           errors,
           touched,
+          resetForm
         }) => (
-        <View className="gap-y-8 py-8">
+        <ImageBackground
+          style={{
+            height: "100%",
+            width: "100%"
+          }}
+          resizeMode="cover"
+          source={require("../../assets/bg_pattern.png")}
+        >
+        <View className="gap-y-6 py-8">
           <View className="flex items-center relative">
-            <TouchableOpacity className="ml-auto absolute right-5 top-0 w-[34] items-center" onPress={() => setEditMode(!editMode)}>
+            <TouchableOpacity className="ml-auto absolute right-5 top-0 w-[34] items-center" onPress={() => {setEditMode(!editMode), editMode && resetForm() }}>
               {
                 editMode?
                 <FontAwesome name="close" size={32} color="#fff" />
@@ -102,20 +146,52 @@ export default function Profile(){
             {
               editMode?
               <View className="flex items-center">
-                <FontAwesome name="user-circle" size={60} color="#fff" />
-                <TouchableOpacity style={{backgroundColor: colors.yellow}} className="mt-2 py-1.5 px-3 rounded">
+                {
+                  image?
+                  <Image
+                    resizeMode="contain"
+                    style={{
+                      height: 80,
+                      width: 80,
+                      borderRadius: 100
+                    }}
+                    source={{
+                      uri: image
+                    }}
+                  />
+                  :
+                  <FontAwesome name="user-circle" size={60} color="#fff" />
+                }
+                <TouchableOpacity onPress={pickImage} style={{backgroundColor: colors.yellow}} className="mt-2 py-1.5 px-3 rounded">
                   <Text className="text-white font-semibold">Cargar Imagen</Text>
                 </TouchableOpacity>
               </View>
               :
-              <FontAwesome name="user-circle" size={60} color="#fff" />
+              <>
+              {
+                user?.photo?
+                <Image
+                  resizeMode="contain"
+                  style={{
+                    height: 80,
+                    width: 80,
+                    borderRadius: 100
+                  }}
+                  source={{
+                    uri: user?.photo
+                  }}
+                />
+                :
+                <FontAwesome name="user-circle" size={60} color="#fff" />
+              }
+              </>
             }
             {
               editMode?
               <>
               <TextInput
                 style={{minWidth: 160, maxWidth: 320}}
-                className="text-4xl text-white font-semibold my-3 bg-black/20 px-2 pt-1.5"
+                className="text-4xl text-white font-semibold my-3 bg-black/20 px-2 pt-1.5 rounded-lg"
                 onChangeText={handleChange("username")}
                 onBlur={handleBlur("username")}
                 value={values.username}
@@ -131,7 +207,7 @@ export default function Profile(){
             }
           </View>
   
-          <View className="flex flex-row justify-around py-4 w-[90%] mx-auto bg-black/10 rounded-lg">
+          <View className="flex flex-row justify-around py-4 w-[90%] mx-auto bg-black/30 rounded-lg">
             <View className="flex items-center">
               <Text className="text-2xl font-bold text-white">28</Text>
               <Text className="text-base font-medium text-white">Equipos</Text>
@@ -150,7 +226,7 @@ export default function Profile(){
           </View>
   
           <View className="px-[7.5%]">
-            <Text className="text-3xl text-white font-semibold mb-3">Contacto</Text>
+            <Text className="text-3xl text-white font-semibold mb-4 tracking-widest">Contacto</Text>
   
             <View className="flex flex-row items-center gap-x-2 mb-2 bg-white/5 py-3 px-2 rounded-lg">
               <View className="w-[24] items-center -mb-0.5">
@@ -162,9 +238,10 @@ export default function Profile(){
                 <View>
                 <TextInput
                   style={{minWidth: 160, maxWidth: 280}}
-                  className="text-white font-semibold bg-black/20 px-2 py-1.5 items-center ml-2"
-                  onChangeText={handleChange("phone")}
-                  onBlur={handleBlur("phone")}
+                  keyboardType='numeric'
+                  className="text-white font-semibold bg-black/20 px-2 py-1.5 items-center ml-2 rounded"
+                  onChangeText={handleChange("telefono")}
+                  onBlur={handleBlur("telefono")}
                   value={values.telefono}
                   placeholderTextColor="#ffffff6a"
                 />
@@ -176,7 +253,7 @@ export default function Profile(){
               }
             </View>
   
-            <View className="flex flex-row items-center gap-x-2 bg-white/5 py-3 px-2 rounded-lg">
+            <View className="flex flex-row items-center gap-x-2 bg-white/5 py-3 px-2 rounded-lg mb-2">
               <View className="w-[24] justify-center items-center">
                 <MaterialIcons name="alternate-email" size={24} color="#fff" />
               </View>
@@ -186,7 +263,7 @@ export default function Profile(){
                 <View>
                 <TextInput
                   style={{minWidth: 160, maxWidth: 280}}
-                  className="text-white font-semibold bg-black/20 px-2 py-1.5 items-center ml-2"
+                  className="text-white font-semibold bg-black/20 px-2 py-1.5 items-center ml-2 rounded"
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
                   value={values.email}
@@ -203,19 +280,50 @@ export default function Profile(){
                 </Text>
               }
             </View>
+
+            <View className="flex flex-row items-center gap-x-2 bg-white/5 py-3 px-2 rounded-lg">
+              <View className="w-[24] justify-center items-center">
+                <FontAwesome name="twitter" size={24} color="#fff" />
+              </View>
+  
+              {
+                editMode?
+                <View className="pl-2">
+                  <View style={{minWidth: 160, maxWidth: 280}}  className="flex flex-row items-center bg-black/20 pl-2 rounded">
+                    <View className="w-[20] justify-center items-center">
+                      <MaterialIcons name="alternate-email" size={20} color="#FFFFFFB3" />
+                    </View>
+                    <TextInput
+                      className="text-white font-semibold px-0.5 py-1.5 w-[130]"
+                      onChangeText={handleChange("twitter")}
+                      onBlur={handleBlur("twitter")}
+                      value={values.twitter}
+                      placeholderTextColor="#ffffff6a"
+                    />
+                  </View>
+                </View>
+                :
+                <Text className="text-lg text-white font-semibold" onPress={() => {user?.twitter? Linking.openURL(`https://twitter.com/${user?.twitter}`) : null}}>
+                  {user.twitter? user.twitter : "-"}
+                </Text>
+              }
+            </View>
+
           </View>
           {
             editMode?
-            <TouchableOpacity style={{backgroundColor: colors.yellow}} className="mx-auto py-2 px-3.5 rounded" onPress={() => handleSubmit()}>
+            <TouchableOpacity style={{backgroundColor: colors.yellow}} className="mx-auto py-2 px-3.5 rounded" onPress={handleSubmit}>
               <Text className="text-white text-base font-semibold">Guardar Cambios</Text>
             </TouchableOpacity>
             :
             null
           }
         </View>
+        </ImageBackground>
         )}
       </Formik>
     </ScrollView>
     </KeyboardAvoidingView>
+    </>
   )
 }

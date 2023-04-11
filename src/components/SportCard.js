@@ -15,7 +15,7 @@ export const SportCard = ({title, icon}) => {
     <View >
        <LogoTypeHome data={title} />
        <Text
-        style={{color: colors.yellow, fontWeight: "bold", marginTop: 4}}
+        style={{color: colors.yellow, fontWeight: "bold", marginTop: 4, textAlign: "center"}}
        
         >{title.toUpperCase()}</Text>
     </View>
