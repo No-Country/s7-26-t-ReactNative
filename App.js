@@ -38,7 +38,7 @@ export default function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={ {user,tournamentId, setTournamentId, createdBy, setCreatedBy} }>
+    <UserContext.Provider value={ {user, setUser, tournamentId, setTournamentId, createdBy, setCreatedBy} }>
       <DrawerNavigation />
     </UserContext.Provider>
   );

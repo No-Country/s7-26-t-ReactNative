@@ -216,7 +216,6 @@ export const getTournament = async (tournamentId) => {
 //Sube fotos a la collecion de fotos y devuelve la url de la foto para ser agregada a otra collecion
 //Ejemplo: si lo uso en editar perfil me retorna la url de esa foto que subi y la guardo en el campo de foto
 //En la collecion de Users, pero el archivo fisico queda en el Firestore
-//Todavia no esta bien implementado - 31 marzo
 
 export const uploadProfilePicture = async (imageUri, name) => {
   try {
@@ -232,6 +231,10 @@ export const uploadProfilePicture = async (imageUri, name) => {
     console.error(error);
   }
 };
+
+//Listar Torneos cercanos
+//Necesita una latitud longitud y distancia en KM
+//devuelve la lista con los torneos cercanos
 
 export const getNearTournaments = async (lat, lng, maxDistance) => {
   try {

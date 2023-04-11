@@ -59,8 +59,7 @@ const AddTeam = ({ navigation, route }) => {
 
       };
 
-      const resp = await CreateTeam( "3n5DkpBpvCOZMC93VA34sdDzoIP2",
-      "ceyjOmpGpcW9P6EHN6t6", data);
+      const resp = await CreateTeam("3n5DkpBpvCOZMC93VA34sdDzoIP2", "ceyjOmpGpcW9P6EHN6t6", data);
 
       if (resp) {
         Toast.show({

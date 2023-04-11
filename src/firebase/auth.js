@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "@firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db, mainCollection } from "./credentials";
 
 //Registro
@@ -39,5 +39,28 @@ export const logOut = async () => {
       await signOut(auth);
   } catch (error) {
       console.error(error);
+  }
+};
+
+export const updateProfile = async (uid, email, username, telefono, photo, twitter) => {
+
+  try {
+    const userRef = doc(db, mainCollection, uid);
+    const userSnapshot = await getDoc(userRef);
+
+    if (userSnapshot.exists()) {
+      await updateDoc(userRef, {
+        email,
+        username,
+        telefono,
+        ...(photo ? { photo } : {}),
+        ...(twitter ? { twitter } : {})
+      });
+    }
+
+    return true;
+  } catch (error) {
+    console.log("Error en try-catch:", error);
+    return error.code;
   }
 };
