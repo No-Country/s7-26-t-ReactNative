@@ -28,3 +28,13 @@ export const ordenarPorPuntos = (a, b) => {
   }
   return 0;
 };
+
+export const ordenarFechas = (a, b) => {
+  if (a.round > b.round) {
+    return 1;
+  }
+  if (a.round < b.round) {
+    return -1;
+  }
+  return 0;
+};

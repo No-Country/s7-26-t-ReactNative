@@ -92,7 +92,7 @@ export const ListSpecificTournaments = async (sport) => {
 
   } catch (error) {
     console.error(error);
-  }
+  }
 };
 
 export const getTeamData = async (userId, tournamentId, teamId) => {
@@ -203,11 +203,9 @@ export const getTournament = async (tournamentId) => {
         `${mainCollection}/${userId}/${tournamentCollection}/${tournamentId}`
       )
     );
-
     if (res.exists()) {
       return res.data();
     }
-
     return null;
   } catch (error) {
     return false;

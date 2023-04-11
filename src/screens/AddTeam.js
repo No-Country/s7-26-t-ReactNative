@@ -153,7 +153,7 @@ const AddTeam = ({ navigation, route }) => {
 
 
               <TouchableOpacity
-                style={{backgroundColor: colors.yellow}}
+                style={{backgroundColor: colors.accentColor}}
                 className="p-3 rounded-md mb-3 text-white"
                 onPress={() => handleSubmit()}
               >

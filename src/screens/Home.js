@@ -1,16 +1,15 @@
-import { Link, useTheme } from "@react-navigation/native";
-import { useState, useEffect, Children } from "react";
-import { Button, ScrollView, Text, TouchableOpacity, View, StyleSheet } from "react-native";
-import { getNearTournaments, ListAllTournaments } from "../firebase/getFunctions";
+import { useTheme } from "@react-navigation/native";
+import { useState, useEffect } from "react";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { getNearTournaments, ListAllTournaments, searchTournaments } from "../firebase/getFunctions";
 import * as Location from "expo-location";
 import { Torneopalooza } from "../components/icons";
-import { Searchbar } from 'react-native-paper';
-import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { Sports } from '../components/SelectSports'
 import Tournaments from "../components/Tournaments";
+import { SearchBar } from "../components/SearchBar";
 
 function Home({ navigation }) {
-  const { dark, colors } = useTheme();
+  const { colors } = useTheme();
 
   const [partidos, setPartidos] = useState(null);
   const [cerca, setCerca] = useState(null);
@@ -23,15 +22,15 @@ function Home({ navigation }) {
 
   useEffect(() => {
     getTournaments()
-   
+
   }, [])
-  
+
 
   async function getTournaments() {
     const data = await ListAllTournaments();
     setPartidos(data);
     setPartidosFiltrados(null)
-   
+
   }
 
   async function getCurrentLocation() {
@@ -49,27 +48,29 @@ function Home({ navigation }) {
     }
   }
 
-  const tournamentHalder = () =>{
+  const tournamentHalder = () => {
     setTournaments(true)
     getTournaments()
     setPartidosFiltrados(null)
-  
-}
+  }
 
-const sportsHandler = () =>{
-  setTournaments(false)
-  setSport(false)
-  setPartidosFiltrados(null)
- 
+  const sportsHandler = () => {
+    setTournaments(false)
+    setSport(false)
+    setPartidosFiltrados(null)
+  }
 
-}
-
-
-  const handleSearch = (text) => {
+  const handleSearch = async (text) => {
     setSearchText(text);
-    console.log(searchTerm)
-  };
+    let data = await searchTournaments(searchTerm)
 
+    if (partidos && tournaments) {
+      setPartidos(data)
+    }
+    if (filtrados) {
+      setPartidosFiltrados(data)
+    }
+  };
 
   async function partidosCerca(km) {
 
@@ -87,58 +88,36 @@ const sportsHandler = () =>{
     }
   }
 
-
   return (
+
     <ScrollView className="h-full">
       <View className="flex items-center mx-auto justify-center h-full w-full">
 
         <Torneopalooza width={300} height={100} color={colors.text} />
 
+        {(partidos && tournaments) || filtrados ?
+          (<SearchBar handleSearch={handleSearch} searchText={searchText} />) : null
+        }
 
-
-
-        <View className="flex flex-row justify-around content-center items-center">
-          <Searchbar
-            
-            onChangeText={handleSearch}
-            value={searchText}
-            inputStyle={styles.input}
-            style={styles.search}
-            icon={() => <FontAwesome name="search" size={24} color={'black'} />}
-          />
-
-          <Text className="p-2 bg-indigo-600 my-4 text-white"> FILTROS </Text>
-        </View>
-
-
-
-
-        <View className={"flex-row w-full justify-around mt-5"}>
+        <View className={"flex-row w-full justify-around mt-5 mb-5"}>
 
           <TouchableOpacity
             onPress={() => tournamentHalder()}
           >
             <Text
-              className={
-
-                (dark ? "text-white" : "text-black")
-              }
+              style={{ color: "white", fontWeight: "bold", fontSize: 18, backgroundColor: "#6c5d9e", padding: 4, borderRadius: 4 }}
             >TORNEOS</Text>
           </TouchableOpacity>
           <TouchableOpacity
-          onPress={() => sportsHandler()}
+            onPress={() => sportsHandler()}
           >
-            <Text className={(dark ? "text-white" : "text-black")}> DEPORTES</Text>
+            <Text style={{ color: "white", fontWeight: "bold", fontSize: 18, backgroundColor: "#6c5d9e", padding: 4, borderRadius: 4 }}> DEPORTES</Text>
           </TouchableOpacity>
-
         </View>
 
         {!tournaments && !sport ?
-          (<Sports sport={sport} setSport={setSport}  setPartidosFiltrados={setPartidosFiltrados} />) : null
+          (<Sports sport={sport} setSport={setSport} setPartidosFiltrados={setPartidosFiltrados} />) : null
         }
-
-
-
         {partidos && tournaments
           ? (<Tournaments data={partidos} />) : null}
 
@@ -149,12 +128,9 @@ const sportsHandler = () =>{
           Obtener Partidos Cerca
         </Text> */}
 
-          {filtrados?
-(<Tournaments data={filtrados} />):null
-          }
-
-
-
+        {filtrados ?
+          (<Tournaments data={filtrados} />) : null
+        }
         {/* {cerca
           ? Children.toArray(
             cerca.map((partido) => (
@@ -191,20 +167,6 @@ const sportsHandler = () =>{
   );
 }
 
-const styles = StyleSheet.create({
-  search: {
-    width: '70%',
-    border: 'none',
-    height: 40,
-    elevation: 0,
-    borderRadius: 2,
-    borderTopWidth: 0, //works
-    borderBottomWidth: 0, //works
-  },
-  input: {
-    marginTop: -6
-  }
 
-})
 
 export default Home;
