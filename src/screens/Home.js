@@ -21,7 +21,7 @@ function Home({ navigation }) {
   const searchTerm = searchText.toLowerCase();
   const [selected, setSelected] = useState([]);
   const [accepted, setAccepted] = useState(false)
-  
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     getTournaments()
@@ -100,7 +100,7 @@ function Home({ navigation }) {
         <Torneopalooza width={300} height={100} color={colors.text} />
 
         {(partidos && tournaments) || filtrados ?
-          (<SearchBar  setAccepted={setAccepted} selected={selected} setSelected={setSelected} handleSearch={handleSearch} searchText={searchText} />) : null
+          (<SearchBar modalVisible={modalVisible} setModalVisible={setModalVisible} setAccepted={setAccepted} selected={selected} setSelected={setSelected} handleSearch={handleSearch} searchText={searchText} />) : null
         }
 
         <View className={"flex-row w-full justify-around mt-5 mb-5"}>
@@ -108,16 +108,25 @@ function Home({ navigation }) {
           <TouchableOpacity
             onPress={() => tournamentHalder()}
           >
+            <View className={"bg-purple-700 text-xl p-2 rounded-lg "  + (tournaments? "text-yellow-300" : "text-white")}>
+
             <Text
-              style={{ color: "white", fontWeight: "bold", fontSize: 18, backgroundColor: "#6c5d9e", padding: 4, borderRadius: 4 }}
+            className={"text-lg font-bold " + (tournaments? "text-white" : "text-slate-300")}
+             
             >TORNEOS</Text>
+            </View>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => sportsHandler()}
           >
-            <Text style={{ color: "white", fontWeight: "bold", fontSize: 18, backgroundColor: "#6c5d9e", padding: 4, borderRadius: 4 }}> DEPORTES</Text>
+            <View className={"bg-purple-700 text-xl p-2 rounded-lg "  + (!tournaments? "text-yellow-300" : "text-white")}>
+            <Text className={"text-lg font-bold " + (!tournaments? "text-white" : "text-slate-300")}> DEPORTES</Text>
+
+            </View>
           </TouchableOpacity>
         </View>
+
+        
 
         {!tournaments && !sport ?
           (<Sports sport={sport} setSport={setSport} setPartidosFiltrados={setPartidosFiltrados} />) : null
@@ -126,8 +135,8 @@ function Home({ navigation }) {
           ? (<Tournaments data={partidos} />) : null}
 
 
-          {tournaments && accepted ?
-            (<FilteredSports selected={selected} setSelected={setSelected}/>):null
+          {tournaments && accepted && modalVisible==false ?
+            (<FilteredSports   selected={selected} setSelected={setSelected}/>):null
         }
         {/* <Text
           onPress={() => partidosCerca(2000)}
@@ -139,7 +148,8 @@ function Home({ navigation }) {
         {filtrados ?
           (<Tournaments fromHome={true} data={filtrados} />) : null
         }
-        {/* {cerca
+       
+       {/* {cerca
           ? Children.toArray(
             cerca.map((partido) => (
               <>
@@ -151,7 +161,7 @@ function Home({ navigation }) {
                   onPress={() =>
                     navigation.navigate({
                       name: "VerTorneo",
-                      params: { id: partido.id, userId: partido.userId}
+                      params: { id: partido.id },
                     })
                   }
                 >
@@ -161,15 +171,15 @@ function Home({ navigation }) {
                     Creado por {partido.creador}
                   </Text>
                   <Text className="text-white">{partido.direccion}</Text>
-
-
-                  
                 </TouchableOpacity>
-                
               </>
             ))
           )
-          : undefined} */}
+          : undefined}
+         */}
+
+
+        
       </View>
     </ScrollView>
   );

@@ -7,9 +7,9 @@ import CategoryPicker from './CategoryPicker';
 import Slider from "react-native-a11y-slider";
 
 
-export const SearchBar = ({ setAccepted, handleSearch, searchText,selected, setSelected }) => {
+export const SearchBar = ({modalVisible, setModalVisible, setAccepted, handleSearch, searchText,selected, setSelected }) => {
 
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
   const [distancia, setDistancia] = useState(0);
   const [apply, setApply] = useState([]);
   
@@ -37,7 +37,7 @@ export const SearchBar = ({ setAccepted, handleSearch, searchText,selected, setS
 
 
   return (
-    <View className=" mt-4 flex flex-row justify-around content-center items-center">
+    <View className=" mt-4 flex w-full flex-row justify-around content-center items-center">
       <Searchbar
 
         onChangeText={handleSearch}

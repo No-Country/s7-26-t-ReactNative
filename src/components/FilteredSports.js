@@ -25,7 +25,7 @@ export const FilteredSports = ({ selected, setSelected }) => {
 
   
  useEffect(() => {
-    
+    setSelected([])
    return () => {
      setSelected([])
     

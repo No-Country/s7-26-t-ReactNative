@@ -44,7 +44,7 @@ export default function Tournaments({ data, fromHome }) {
               }}
               className=" h-16 flex flex-row items-center justify-between border-b-2   py-[5rem] px-2 rounded mr-1 ml-1 mt-1"
             >
-              <View className="flex flex-row items-center justify-between ">
+              <View  className="flex flex-row items-center justify-between ">
                 {data.imagen ? (
                   <Image
                     className="rounded h-12 w-12 m-1"
