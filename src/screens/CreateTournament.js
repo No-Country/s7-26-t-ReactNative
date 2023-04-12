@@ -98,7 +98,7 @@ const CreateTournament = ({ navigation, route }) => {
         latitud: location.latitud,
         longitud: location.longitud,
         deporte,
-        imagen: resImg,
+        imagen: resImg || "",
         descripcion,
       };
 

@@ -3,7 +3,7 @@ import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import LogoType from "./LogoType";
 import { UserContext } from "../context/UserContext";
-import { useContext } from "react";
+import { useContext, Children } from "react";
 
 export default function Tournaments({ data, fromHome }) {
   const { colors } = useTheme();
@@ -25,7 +25,9 @@ export default function Tournaments({ data, fromHome }) {
   return (
     <ScrollView className="w-full">
       <View>
-        {data?.map((data) => (
+       
+        { Children.toArray(
+        data?.map((data) => (
           <>
             <TouchableOpacity
               key={data.id}
@@ -77,6 +79,7 @@ export default function Tournaments({ data, fromHome }) {
               {/* <Text className="m-2">{data.deporte}</Text> */}
             </TouchableOpacity>
           </>
+        )
         ))}
       </View>
     </ScrollView>

@@ -7,7 +7,7 @@ import CategoryPicker from './CategoryPicker';
 import Slider from "react-native-a11y-slider";
 
 
-export const SearchBar = ({modalVisible, setModalVisible, setAccepted, handleSearch, searchText,selected, setSelected }) => {
+export const SearchBar = ({setPartidos, modalVisible, setModalVisible, setAccepted, handleSearch, searchText,selected, setSelected }) => {
 
   // const [modalVisible, setModalVisible] = useState(false);
   const [distancia, setDistancia] = useState(0);
@@ -19,10 +19,14 @@ export const SearchBar = ({modalVisible, setModalVisible, setAccepted, handleSea
   }
 
   const handleApply = () => {
-   
+    setPartidos([])
     setModalVisible(!modalVisible)
     setAccepted(true)
-  
+
+  if(distancia !== 0 && selected.length !== 0){
+    console.log("TEST DE FUNCION")
+    
+  }
     
   }
 

@@ -29,9 +29,9 @@ function Home({ navigation }) {
 
 
   async function getTournaments() {
-    // const data = await ListAllTournaments();
-    // setPartidos(data);
-    setPartidos([]);
+    const data = await ListAllTournaments();
+    setPartidos(data);
+    // setPartidos([]);
     setPartidosFiltrados(null)
 
   }
@@ -52,6 +52,7 @@ function Home({ navigation }) {
   }
 
   const tournamentHalder = () => {
+    setAccepted(false)
     setTournaments(true)
     getTournaments()
     setPartidosFiltrados(null)
@@ -100,7 +101,7 @@ function Home({ navigation }) {
         <Torneopalooza width={300} height={100} color={colors.text} />
 
         {(partidos && tournaments) || filtrados ?
-          (<SearchBar modalVisible={modalVisible} setModalVisible={setModalVisible} setAccepted={setAccepted} selected={selected} setSelected={setSelected} handleSearch={handleSearch} searchText={searchText} />) : null
+          (<SearchBar  setPartidos={setPartidos} modalVisible={modalVisible} setModalVisible={setModalVisible} setAccepted={setAccepted} selected={selected} setSelected={setSelected} handleSearch={handleSearch} searchText={searchText} />) : null
         }
 
         <View className={"flex-row w-full justify-around mt-5 mb-5"}>
