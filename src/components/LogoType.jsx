@@ -1,4 +1,4 @@
-import { FontAwesome, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5, MaterialIcons, AntDesign} from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 export default function LogoType({ data }) {
   switch (data.deporte) {
