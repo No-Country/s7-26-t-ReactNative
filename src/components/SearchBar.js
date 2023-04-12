@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Searchbar } from 'react-native-paper';
 import { Text, View, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
@@ -7,20 +7,34 @@ import CategoryPicker from './CategoryPicker';
 import Slider from "react-native-a11y-slider";
 
 
-export const SearchBar = ({ handleSearch, searchText,selected, setSelected }) => {
+export const SearchBar = ({ setAccepted, handleSearch, searchText,selected, setSelected }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [distancia, setDistancia] = useState(0);
-
+  const [apply, setApply] = useState([]);
+  
 
   const handleValue = (e) => {
     setDistancia(e)
   }
 
   const handleApply = () => {
+   
     setModalVisible(!modalVisible)
-    console.log(selected)
+    setAccepted(true)
+  
+    
   }
+
+
+  const filterSelected = () => {
+    
+    setModalVisible(true)
+   
+  }
+
+
+
 
   return (
     <View className=" mt-4 flex flex-row justify-around content-center items-center">
@@ -35,7 +49,7 @@ export const SearchBar = ({ handleSearch, searchText,selected, setSelected }) =>
 
 
 
-      <TouchableOpacity className="p-2 bg-indigo-900 w-24  h-10 rounded-md" onPress={() => setModalVisible(true)} >
+      <TouchableOpacity className="p-2 bg-indigo-900 w-24  h-10 rounded-md" onPress={filterSelected} >
         <Text className="text-base text-center font-bold text-white"> FILTROS </Text>
 
       </TouchableOpacity>
@@ -47,6 +61,7 @@ export const SearchBar = ({ handleSearch, searchText,selected, setSelected }) =>
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
+          
         }}>
         <View className=" flex-1 justify-center items-end ">
           <View className="w-10/12 h-2.5/5  mr-5 mt-16  bg-white  pl-6 pr-6 pb-12 flex shadow-md z-5 border-2 border-indigo-400">
@@ -55,7 +70,7 @@ export const SearchBar = ({ handleSearch, searchText,selected, setSelected }) =>
             <View>
               <Text className="text-base font-bold mb-2 mt-2">DEPORTES</Text>
               <View>
-                <CategoryPicker selected={selected} setSelected={setSelected} />
+                <CategoryPicker apply={apply} setApply={setApply} selected={selected} setSelected={setSelected} />
               </View>
             </View>
 
@@ -78,7 +93,7 @@ export const SearchBar = ({ handleSearch, searchText,selected, setSelected }) =>
 
               <Pressable
                 className="p-2 bg-indigo-800 w-6/12 ml-4 h-10 rounded-md"
-                onPress={() => handleApply()}>
+                onPress={handleApply}>
                 <Text className="text-base text-center font-bold text-white">APLICAR</Text>
               </Pressable>
 

@@ -5,7 +5,7 @@ import LogoType from "./LogoType";
 import { UserContext } from "../context/UserContext";
 import { useContext } from "react";
 
-export default function Tournaments({ data }) {
+export default function Tournaments({ data, fromHome }) {
   const { colors } = useTheme();
   const navigation = useNavigation();
   const {setTournamentId, setCreatedBy} = useContext(UserContext);
@@ -15,7 +15,11 @@ export default function Tournaments({ data }) {
   }
 
   if (data.length == 0) {
-    return <Text className="text-white">No hay torneo</Text>;
+    if(fromHome){
+      return <Text className="text-white">No hay torneo</Text>;
+    } else {
+      return null
+    }
   }
 
   return (

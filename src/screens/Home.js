@@ -7,6 +7,7 @@ import { Torneopalooza } from "../components/icons";
 import { Sports } from '../components/SelectSports'
 import Tournaments from "../components/Tournaments";
 import { SearchBar } from "../components/SearchBar";
+import { FilteredSports } from "../components/FilteredSports";
 
 function Home({ navigation }) {
   const { colors } = useTheme();
@@ -19,7 +20,8 @@ function Home({ navigation }) {
   const [tournaments, setTournaments] = useState(false);
   const searchTerm = searchText.toLowerCase();
   const [selected, setSelected] = useState([]);
-
+  const [accepted, setAccepted] = useState(false)
+  
 
   useEffect(() => {
     getTournaments()
@@ -27,8 +29,9 @@ function Home({ navigation }) {
 
 
   async function getTournaments() {
-    const data = await ListAllTournaments();
-    setPartidos(data);
+    // const data = await ListAllTournaments();
+    // setPartidos(data);
+    setPartidos([]);
     setPartidosFiltrados(null)
 
   }
@@ -58,6 +61,7 @@ function Home({ navigation }) {
     setTournaments(false)
     setSport(false)
     setPartidosFiltrados(null)
+    
   }
 
   const handleSearch = async (text) => {
@@ -96,7 +100,7 @@ function Home({ navigation }) {
         <Torneopalooza width={300} height={100} color={colors.text} />
 
         {(partidos && tournaments) || filtrados ?
-          (<SearchBar handleSearch={handleSearch} searchText={searchText} />) : null
+          (<SearchBar  setAccepted={setAccepted} selected={selected} setSelected={setSelected} handleSearch={handleSearch} searchText={searchText} />) : null
         }
 
         <View className={"flex-row w-full justify-around mt-5 mb-5"}>
@@ -121,6 +125,10 @@ function Home({ navigation }) {
         {partidos && tournaments
           ? (<Tournaments data={partidos} />) : null}
 
+
+          {tournaments && accepted ?
+            (<FilteredSports selected={selected} setSelected={setSelected}/>):null
+        }
         {/* <Text
           onPress={() => partidosCerca(2000)}
           className="p-2 bg-indigo-600 my-4 text-white"
@@ -129,7 +137,7 @@ function Home({ navigation }) {
         </Text> */}
 
         {filtrados ?
-          (<Tournaments data={filtrados} />) : null
+          (<Tournaments fromHome={true} data={filtrados} />) : null
         }
         {/* {cerca
           ? Children.toArray(

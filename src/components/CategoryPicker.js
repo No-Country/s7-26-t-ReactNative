@@ -5,7 +5,7 @@ import { useTheme } from '@react-navigation/native';
 
 
 const preloadCategories=[
-    { id: 1, deporte: 'Fútbol' },
+    { id: 1, deporte: "Futbol" },
     { id: 2, deporte: 'Basquet' },
     { id: 3, deporte: 'Handball' },
     { id: 4, deporte: 'Tenis' },
@@ -18,12 +18,26 @@ const preloadCategories=[
   ]
 
 
-const CategoryPicker = ({ selected, setSelected }) => {
+const CategoryPicker = ({ apply, setApply,selected, setSelected }) => {
     
     const { colors } = useTheme();
 
-const [categories, setCategories] = useState(preloadCategories)
+const [categories, setCategories] = useState([])
 
+// const [apply, setApply] = useState([]);
+
+      // useEffect(() => {
+      //   setCategories(preloadCategories)
+      //   console.log(categories)
+      // }, [])
+      
+      useEffect(() => {
+        setCategories(preloadCategories)
+      
+        return () => {
+          setCategories([])
+        }
+      }, [])
       
 
    
@@ -36,6 +50,15 @@ const [categories, setCategories] = useState(preloadCategories)
       setSelected([...selected, category]);
     };
   
+
+    // useEffect(() => {
+    
+    //   setSelected([])
+    //   return () => {
+    //     setSelected([])
+    //   }
+    // }, [])
+    
 
 
     return (
