@@ -3,9 +3,9 @@ import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import LogoType from "./LogoType";
 import { UserContext } from "../context/UserContext";
-import { useContext } from "react";
+import { useContext, Children } from "react";
 
-export default function Tournaments({ data }) {
+export default function Tournaments({ data, fromHome }) {
   const { colors } = useTheme();
   const navigation = useNavigation();
   const {setTournamentId, setCreatedBy} = useContext(UserContext);
@@ -15,13 +15,19 @@ export default function Tournaments({ data }) {
   }
 
   if (data.length == 0) {
-    return <Text className="text-white">No hay torneo</Text>;
+    if(fromHome){
+      return <Text className="text-white">No hay torneo</Text>;
+    } else {
+      return null
+    }
   }
 
   return (
     <ScrollView className="w-full">
       <View>
-        {data?.map((data) => (
+       
+        { Children.toArray(
+        data?.map((data) => (
           <>
             <TouchableOpacity
               key={data.id}
@@ -40,7 +46,7 @@ export default function Tournaments({ data }) {
               }}
               className=" h-16 flex flex-row items-center justify-between border-b-2   py-[5rem] px-2 rounded mr-1 ml-1 mt-1"
             >
-              <View className="flex flex-row items-center justify-between ">
+              <View  className="flex flex-row items-center justify-between ">
                 {data.imagen ? (
                   <Image
                     className="rounded h-12 w-12 m-1"
@@ -73,6 +79,7 @@ export default function Tournaments({ data }) {
               {/* <Text className="m-2">{data.deporte}</Text> */}
             </TouchableOpacity>
           </>
+        )
         ))}
       </View>
     </ScrollView>

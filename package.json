@@ -30,6 +30,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.6",
+    "react-native-a11y-slider": "^1.1.1",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-google-places-autocomplete": "^2.5.1",
     "react-native-keyboard-avoiding-scroll-view": "^1.0.1",
