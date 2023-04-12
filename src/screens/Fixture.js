@@ -82,17 +82,19 @@ export default function Fixture({ route }) {
                 {fixture.map((partido, index) => (
                   <View
                     className={
-                      "flex p-2 px-3 my-1 rounded w-[90%] mx-auto " +
-                      (dark ? "bg-slate-700/60" : "bg-black/90")
+                      "flex p-4 px-3 my-1 rounded-md w-[90%] mx-auto "
                     }
+                    style={{backgroundColor:colors.primaryText}}
                     key={index}
                   >
                     <Text className="text-violet-500">
                       Fecha: {partido.round}
                     </Text>
-                    <Text className="text-white">{partido.player1}</Text>
-                    <Text className="text-yellow-600">vs</Text>
-                    <Text className="text-white">{partido.player2}</Text>
+                    <View className="flex-row justify-between py-1 ">
+                    <Text className="text-white w-[40%] text-center">{partido.player1}</Text>
+                    <Text className="text-yellow-600 w-[20%] text-center">vs</Text>
+                    <Text className="text-white w-[40%] text-center">{partido.player2}</Text>
+                    </View>
                   </View>
                 ))}
               </ScrollView>
