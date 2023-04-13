@@ -25,6 +25,12 @@ function Home() {
     getTournaments()
   }, [])
 
+  const sportScreenHandler = () =>{
+    setSportsScreen(true)
+    getTournaments()
+  }
+
+
   return (
     <ScrollView className="h-full">
       <View className="flex items-center mx-auto justify-center h-full w-full">
@@ -37,7 +43,7 @@ function Home() {
         ) : null}
 
         <View className={"flex-row w-full justify-around my-5"}>
-          <TouchableOpacity onPress={() => setSportsScreen(true)}>
+          <TouchableOpacity onPress={() => sportScreenHandler()}>
             <View className="bg-purple-700 text-xl py-2 px-3 rounded-lg" >
               <Text
                 className={
