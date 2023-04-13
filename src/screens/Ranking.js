@@ -1,13 +1,13 @@
 import { useNavigation, useTheme } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import { View, Text, Image, ActivityIndicator } from "react-native";
+import { View, Text, Image } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { UserContext } from "../context/UserContext";
 import {
   getTournamentTeams,
   getUserTournaments,
 } from "../firebase/getFunctions";
-
+import Loader from "../components/Loader";
 export default function Ranking() {
   const navigation = useNavigation();
   const { dark, colors } = useTheme();
@@ -30,7 +30,7 @@ export default function Ranking() {
   return (
     <View className="flex items-center h-full w-full ">
       {loading ? (
-        <ActivityIndicator size={50} color={colors.accentColor} />
+        <Loader />
       ) : (
         <>
           <View className="w-full h-30 items-center py-4">
