@@ -33,11 +33,9 @@ export default function Ranking() {
         <ActivityIndicator size={50} color={colors.accentColor} />
       ) : (
         <>
-          <View className="w-full h-36 items-center py-4">
-            <Text className="text-white text-base ">
-              {teams.length > 0
-                ? "Equipos participantes del torneo:"
-                : "No hay equipos"}
+          <View className="w-full h-30 items-center py-4">
+            <Text style={{ color: colors.textIcons }} className="text-base ">
+              {teams.length > 0 ? "Equipos competidores:" : "No hay equipos"}
             </Text>
           </View>
           <ScrollView className="w-full">
@@ -45,14 +43,21 @@ export default function Ranking() {
               {teams?.map((team) => (
                 <TouchableOpacity
                   key={team.nombre}
-                  className={"flex p-2 px-3 my-1 rounded-lg w-32 "}
+                  className={"flex p-2 px-3 my-1 rounded-lg w-36 h-30 "}
                   style={{ backgroundColor: colors.lightPrimary }}
                 >
-                  <View className="flex felx-col items-center">
-                    <Image
-                      source={{ uri: team.imagen }}
-                      className="h-16 w-16 rounded-full "
-                    />
+                  <View className="flex felx-col items-center space-y-4">
+                    {team.imagen ? (
+                      <Image
+                        source={{ uri: team.imagen }}
+                        className="h-16 w-16 rounded-full "
+                      />
+                    ) : (
+                      <Image
+                        source={require("../../assets/defaultGroup.png")}
+                        className="h-16 w-16 rounded-full "
+                      />
+                    )}
                     <Text
                       className=" text-md my-1"
                       style={{ color: colors.primaryText }}
