@@ -11,15 +11,11 @@ export default function Tournaments({ data, fromHome }) {
   const {setTournamentId, setCreatedBy} = useContext(UserContext);
 
   if (!data) {
-    return <Text>Cargando</Text>;
+    return <Text>Cargando</Text>
   }
 
   if (data.length == 0) {
-    if(fromHome){
-      return <Text className="text-white">No hay torneo</Text>;
-    } else {
-      return null
-    }
+    return <Text className="text-white">No hay Torneos</Text>
   }
 
   return (
