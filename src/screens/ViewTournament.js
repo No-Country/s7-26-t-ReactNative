@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { getTournament, getTournamentTeams } from "../firebase/getFunctions";
 import TournamentDetails from "../components/TournamentDetails";
@@ -6,11 +6,14 @@ import { ordenarPorPuntos } from "../utils";
 import TournamenTable from "../components/TournamentTable";
 import { useTheme } from "@react-navigation/native";
 import Loader from "../components/Loader";
+import { UserContext } from "../context/UserContext";
+
 const ViewTournament = ({ route }) => {
   const [torneo, setTorneo] = useState(null);
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const { colors } = useTheme();
+  const {createdBy, tournamentId} = useContext(UserContext)
 
   async function getTorneo(id) {
     let data = await getTournament(id);
@@ -21,11 +24,15 @@ const ViewTournament = ({ route }) => {
   useEffect(() => {
     if (route?.params?.id) {
       getTorneo(route.params.id);
-      const data1 = getTournamentTeams(route.params.userId, route.params.id);
+      const data1 = getTournamentTeams(createdBy, tournamentId);
       data1.then((res) => setTeams(res));
     }
-  }, []);
+  }, [createdBy,tournamentId]);
   teams.sort(ordenarPorPuntos);
+
+  useLayoutEffect(() => {
+    setLoading(true)
+  }, [tournamentId])
 
   return (
     <>
