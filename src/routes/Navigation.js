@@ -20,7 +20,7 @@ import Tournament from "../screens/Tournament";
 import Onboarding from "../screens/Onboarding";
 import Login from "../screens/Login";
 import News from "../screens/News";
-import Ranking from "../screens/Ranking";
+import Teams from "../screens/Teams";
 import Stats from "../screens/Stats";
 import Fixture from "../screens/Fixture";
 import Register from "../screens/Register";
@@ -96,7 +96,7 @@ function BottomNavigation({}) {
 
         <Tab.Screen
           name="Competidores"
-          component={Ranking}
+          component={Teams}
           options={{
             tabBarLabel: () => {
               return null;
