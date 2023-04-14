@@ -69,7 +69,7 @@ function BottomNavigation({}) {
           },
           headerStyle: {
             shadowColor: "transparent",
-            backgroundColor: colors.background,
+            backgroundColor: colors.primaryColor,
             borderBottomWidth: 0,
           },
           headerTitle: "",
