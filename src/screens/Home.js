@@ -1,9 +1,12 @@
 import { useTheme } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { ListAllTournaments, searchTournaments } from "../firebase/getFunctions";
+import {
+  ListAllTournaments,
+  searchTournaments,
+} from "../firebase/getFunctions";
 import { Torneopalooza } from "../components/icons";
-import { Sports } from '../components/SelectSports'
+import { Sports } from "../components/SelectSports";
 import Tournaments from "../components/Tournaments";
 import { SearchBar } from "../components/SearchBar";
 
@@ -22,29 +25,22 @@ function Home() {
   }
 
   useEffect(() => {
-    getTournaments()
-  }, [])
+    getTournaments();
+  }, []);
 
-  const sportScreenHandler = () =>{
-    setSportsScreen(true)
-    getTournaments()
-  }
-
+  const sportScreenHandler = () => {
+    setSportsScreen(true);
+    getTournaments();
+  };
 
   return (
     <ScrollView className="h-full">
       <View className="flex items-center mx-auto justify-center h-full w-full">
-        <Torneopalooza width={300} height={100} color={colors.yellow} />
-
-        {sportsScreen ? (
-          <SearchBar
-            setPartidos={setPartidos}
-          />
-        ) : null}
+        {sportsScreen ? <SearchBar setPartidos={setPartidos} /> : null}
 
         <View className={"flex-row w-full justify-around my-5"}>
           <TouchableOpacity onPress={() => sportScreenHandler()}>
-            <View className="bg-purple-700 text-xl py-2 px-3 rounded-lg" >
+            <View className="bg-purple-700 text-xl py-2 px-3 rounded-lg">
               <Text
                 className={
                   "text-lg font-bold " +
@@ -57,7 +53,7 @@ function Home() {
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => setSportsScreen(false)}>
-            <View className="bg-purple-700 text-xl py-2 px-3 rounded-lg" >
+            <View className="bg-purple-700 text-xl py-2 px-3 rounded-lg">
               <Text
                 className={
                   "text-lg font-bold " +
@@ -79,12 +75,9 @@ function Home() {
             setSportsScreen={setSportsScreen}
           />
         )}
-
       </View>
     </ScrollView>
   );
 }
-
-
 
 export default Home;

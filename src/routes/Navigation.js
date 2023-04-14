@@ -1,4 +1,8 @@
-import { NavigationContainer, useNavigation, useTheme } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  useNavigation,
+  useTheme,
+} from "@react-navigation/native";
 import {
   Ionicons,
   FontAwesome,
@@ -30,7 +34,7 @@ import CreateTournament from "../screens/CreateTournament";
 import ViewTournament from "../screens/ViewTournament";
 import { UserContext } from "../context/UserContext";
 import AddTeam from "../screens/AddTeam";
-import {RootColors} from '../theme.js'
+import { RootColors } from "../theme.js";
 import Profile from "../screens/Profile";
 import { Torneopalooza } from "../components/icons";
 
@@ -40,7 +44,7 @@ const Drawer = createDrawerNavigator();
 
 function BottomNavigation({}) {
   const navigation = useNavigation();
-  const {colors} = useTheme()
+  const { colors } = useTheme();
 
   return (
     <>
@@ -54,6 +58,7 @@ function BottomNavigation({}) {
           headerLeftContainerStyle: {
             paddingLeft: 20,
           },
+          headerTitleAlign: "center",
           headerRightContainerStyle: {
             paddingRight: 20,
           },
@@ -73,12 +78,12 @@ function BottomNavigation({}) {
               onPress={() => navigation.toggleDrawer()}
               name="menu-sharp"
               size={30}
-              color={"#fff"}
+              color={colors.accentColor}
             />
           ),
-          headerRight: () => (
-            <Torneopalooza width={75} height={45} color={colors.yellow} />
-          )
+          headerTitle: () => (
+            <Torneopalooza width={146} height={45} color={colors.yellow} />
+          ),
         }}
       >
         <Tab.Screen
@@ -161,33 +166,35 @@ function BottomNavigation({}) {
 }
 
 function StackNavigation() {
-
-  const navigation = useNavigation()
-  const {colors} = useTheme()
+  const navigation = useNavigation();
+  const { colors } = useTheme();
 
   return (
-    <Stack.Navigator screenOptions={{
-      headerLeft: () => (
-        <TouchableOpacity className="w-10 py-2" onPress={() => 
-          navigation.goBack()
-        }>
-          <FontAwesome name="chevron-left" size={20} color={colors.yellow}/>
-        </TouchableOpacity>
-      ),
-      headerRight: () => (
-        <Torneopalooza width={75} height={45} color={colors.yellow} />
-      ),
-      headerTitle: "",
-      headerStyle:{
-        backgroundColor: colors.background,
-        borderBottomWidth: 0,
-        shadowColor: "transparent"
-      },
-    }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerLeft: () => (
+          <TouchableOpacity
+            className="w-10 py-2"
+            onPress={() => navigation.goBack()}
+          >
+            <FontAwesome name="chevron-left" size={20} color={colors.yellow} />
+          </TouchableOpacity>
+        ),
+        headerRight: () => (
+          <Torneopalooza width={75} height={45} color={colors.yellow} />
+        ),
+        headerTitle: "",
+        headerStyle: {
+          backgroundColor: colors.primaryColor,
+          borderBottomWidth: 0,
+          shadowColor: "transparent",
+        },
+      }}
+    >
       <Stack.Screen
-        name="Root" 
+        name="Root"
         options={{
-          headerShown: false 
+          headerShown: false,
         }}
       >
         {() => <BottomNavigation />}
@@ -198,10 +205,7 @@ function StackNavigation() {
         component={CreateTournament}
         username={(params) => params.username}
       />
-      <Stack.Screen
-        name="AddTeam"
-        component={AddTeam}
-      />
+      <Stack.Screen name="AddTeam" component={AddTeam} />
       <Stack.Screen
         name="Login"
         component={Login}
@@ -224,10 +228,7 @@ function StackNavigation() {
         component={Onboarding}
       />
 
-      <Stack.Screen
-        name="MiPerfil"
-        component={Profile}
-      />
+      <Stack.Screen name="MiPerfil" component={Profile} />
     </Stack.Navigator>
   );
 }
@@ -242,24 +243,23 @@ function CustomDrawerContent({ props }) {
         {user ? (
           <View className="flex w-full h-full items-center mb-[3vh]">
             <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
-              {
-                user?.photo?
+              {user?.photo ? (
                 <Image
                   resizeMode="contain"
                   style={{
                     height: 80,
                     width: 80,
                     borderRadius: 100,
-                    marginBottom: -10
+                    marginBottom: -10,
                   }}
                   source={{
-                    uri: user?.photo
+                    uri: user?.photo,
                   }}
                 />
-                :
+              ) : (
                 <FontAwesome name="user-circle" size={60} color="#fff" />
-              }
-              
+              )}
+
               <Text className="font-bold text-lg text-white text-center">
                 Hola {user.username}
               </Text>
@@ -417,13 +417,16 @@ export function DrawerNavigation() {
         <Drawer.Navigator
           drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
-          <Drawer.Screen name="Index" options={{ 
-            headerShown: false, 
-            headerTitle: "",
-            headerStyle:{
-              backgroundColor: "transparent"
-            }
-          }}>
+          <Drawer.Screen
+            name="Index"
+            options={{
+              headerShown: false,
+              headerTitle: "",
+              headerStyle: {
+                backgroundColor: "transparent",
+              },
+            }}
+          >
             {() => <StackNavigation />}
           </Drawer.Screen>
         </Drawer.Navigator>
