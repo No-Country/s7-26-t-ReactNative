@@ -1,12 +1,7 @@
 import { useRoute, useTheme } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+import { View, Text, Touchable, TouchableOpacity } from "react-native";
+import Loader from "../components/Loader";
 import { UserContext } from "../context/UserContext";
 import { getFixture, getTournamentTeams } from "../firebase/getFunctions";
 import { RoundRobin } from "tournament-pairings";
@@ -24,10 +19,7 @@ export default function Fixture({ route }) {
 
   const createFixture = () => {
     try {
-      const data = getTournamentTeams(
-        createdBy,
-        tournamentId
-      );
+      const data = getTournamentTeams(createdBy, tournamentId);
       data.then((res) => setTeams(res.map((team) => team.nombre)));
 
       if (teams.length !== 0 && teams.length % 2 === 0) {
@@ -45,17 +37,12 @@ export default function Fixture({ route }) {
   };
 
   const handleConfirm = () => {
-    fixture.forEach((doc) =>
-      setFixtureDB(createdBy, tournamentId, doc)
-    );
+    fixture.forEach((doc) => setFixtureDB(createdBy, tournamentId, doc));
     setConfirm(true);
   };
 
   useEffect(() => {
-    const data1 = getFixture(
-      createdBy,
-      tournamentId
-    );
+    const data1 = getFixture(createdBy, tournamentId);
     data1.then((res) => {
       if (res.length > 0) {
         setFixture(res);
@@ -68,12 +55,12 @@ export default function Fixture({ route }) {
       }
     });
   }, [tournamentId, createdBy]);
-  fixture.sort(ordenarFechas)
+  fixture.sort(ordenarFechas);
 
   return (
     <View className="flex items-center justify-center h-full w-full">
       {loading ? (
-        <ActivityIndicator size={50} color={colors.accentColor} />
+        <Loader />
       ) : (
         <>
           {fixture.length > 0 ? (
@@ -81,19 +68,23 @@ export default function Fixture({ route }) {
               <ScrollView className="w-full py-2">
                 {fixture.map((partido, index) => (
                   <View
-                    className={
-                      "flex p-4 px-3 my-1 rounded-md w-[90%] mx-auto "
-                    }
-                    style={{backgroundColor:colors.primaryText}}
+                    className={"flex p-4 px-3 my-1 rounded-md w-[90%] mx-auto "}
+                    style={{ backgroundColor: colors.primaryText }}
                     key={index}
                   >
                     <Text className="text-violet-500">
                       Fecha: {partido.round}
                     </Text>
                     <View className="flex-row justify-between py-1 ">
-                    <Text className="text-white w-[40%] text-center">{partido.player1}</Text>
-                    <Text className="text-yellow-600 w-[20%] text-center">vs</Text>
-                    <Text className="text-white w-[40%] text-center">{partido.player2}</Text>
+                      <Text className="text-white w-[40%] text-center">
+                        {partido.player1}
+                      </Text>
+                      <Text className="text-yellow-600 w-[20%] text-center">
+                        vs
+                      </Text>
+                      <Text className="text-white w-[40%] text-center">
+                        {partido.player2}
+                      </Text>
                     </View>
                   </View>
                 ))}
@@ -129,22 +120,21 @@ export default function Fixture({ route }) {
               <Text style={{ color: colors.primaryText }} className="text-xl">
                 No hay fixture creado aún
               </Text>
-              <Text>{" "}</Text>
-              {
-                user && user.id === createdBy ? 
-              <TouchableOpacity
-                style={{ backgroundColor: colors.accentColor }}
-                className="p-3 rounded-md mb-3 "
-                onPress={() => createFixture()}
-              >
-                <Text
-                  className="font-bold text-center text-base"
-                  style={{ color: colors.primaryText }}
+              <Text> </Text>
+              {user && user.id === createdBy ? (
+                <TouchableOpacity
+                  style={{ backgroundColor: colors.accentColor }}
+                  className="p-3 rounded-md mb-3 "
+                  onPress={() => createFixture()}
                 >
-                  Crear Fixture
-                </Text>
-              </TouchableOpacity> : null
-              }
+                  <Text
+                    className="font-bold text-center text-base"
+                    style={{ color: colors.primaryText }}
+                  >
+                    Crear Fixture
+                  </Text>
+                </TouchableOpacity>
+              ) : null}
             </View>
           )}
         </>
