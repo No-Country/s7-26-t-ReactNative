@@ -5,7 +5,6 @@ import {
   ListAllTournaments,
   searchTournaments,
 } from "../firebase/getFunctions";
-import { Torneopalooza } from "../components/icons";
 import { Sports } from "../components/SelectSports";
 import Tournaments from "../components/Tournaments";
 import { SearchBar } from "../components/SearchBar";
@@ -47,7 +46,7 @@ function Home() {
                   (sportsScreen ? "text-white" : "text-slate-300")
                 }
               >
-                TORNEOS
+                Torneos
               </Text>
             </View>
           </TouchableOpacity>
@@ -60,7 +59,7 @@ function Home() {
                   (!sportsScreen ? "text-white" : "text-slate-300")
                 }
               >
-                DEPORTES
+                Deportes
               </Text>
             </View>
           </TouchableOpacity>

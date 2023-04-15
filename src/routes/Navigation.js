@@ -82,7 +82,7 @@ function BottomNavigation({}) {
             />
           ),
           headerTitle: () => (
-            <Torneopalooza width={146} height={45} color={colors.yellow} />
+            <Torneopalooza width={146} height={45} color={colors.accentColor} />
           ),
         }}
       >
@@ -177,11 +177,15 @@ function StackNavigation() {
             className="w-10 py-2"
             onPress={() => navigation.goBack()}
           >
-            <FontAwesome name="chevron-left" size={20} color={colors.yellow} />
+            <FontAwesome
+              name="chevron-left"
+              size={20}
+              color={colors.accentColor}
+            />
           </TouchableOpacity>
         ),
         headerRight: () => (
-          <Torneopalooza width={75} height={45} color={colors.yellow} />
+          <Torneopalooza width={75} height={45} color={colors.accentColor} />
         ),
         headerTitle: "",
         headerStyle: {
@@ -261,7 +265,7 @@ function CustomDrawerContent({ props }) {
               )}
 
               <Text className="font-bold text-lg text-white text-center">
-                Hola {user.username}
+                {user.username}
               </Text>
             </View>
 
