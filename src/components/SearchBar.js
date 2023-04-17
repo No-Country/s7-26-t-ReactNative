@@ -107,9 +107,9 @@ export const SearchBar = ({ setPartidos }) => {
         style={styles.search}
         icon={() => <FontAwesome name="search" size={18} color={"grey"} />}
       />
-
+      {/* CHECKEAR COLOR DE BOTON */}
       <TouchableOpacity
-        className="p-2 bg-indigo-900 w-24  h-10 rounded-lg"
+        className="p-2 bg-`[${colors.accentColor}]` w-24  h-10 rounded-lg"
         onPress={filterSelected}
       >
         <Text className="text-base text-center font-bold text-white">
