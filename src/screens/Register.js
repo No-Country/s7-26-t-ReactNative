@@ -74,7 +74,7 @@ export default function Register({ navigation }) {
   }
 
   return (
-    <>
+    <View  className="flex h-full">
       <View className="z-10">
         <Toast config={toastConfig} />
       </View>
@@ -101,18 +101,26 @@ export default function Register({ navigation }) {
             errors,
             touched,
           }) => (
-            <View className="w-full flex">
-              <View className="mx-auto">
-                <Torneopalooza width={250} height={100} color={colors.yellow} />
+            <View className="w-screen flex h-auto items-center mb-40">
+              <View className="mx-auto mb-10">
+                <Torneopalooza width={200} height={75} color={colors.yellow} />
               </View>
 
+
+              <View className=" shadow-md bg-white items-center w-11/12 h-auto rounded-xl p-4">
+                
+                
+              <Text className="text-black font-bold text-center text-2xl mb-5 mt-3">
+                  Registrarse
+                </Text>
+
               <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
+                className="mr-auto text-base font-semibold  text-black "
               >
                 Nombre
               </Text>
               <TextInput
-                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
                 onChangeText={handleChange("username")}
                 onBlur={handleBlur("username")}
                 value={values.name}
@@ -125,12 +133,12 @@ export default function Register({ navigation }) {
               )}
 
               <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
+                className="mr-auto text-base font-semibold  text-black mt-4 "
               >
                 Email
               </Text>
               <TextInput
-                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
@@ -143,12 +151,12 @@ export default function Register({ navigation }) {
               )}
 
               <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
+                className="mr-auto text-base mt-4 font-semibold  text-black"
               >
                 Password
               </Text>
               <TextInput
-                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
+                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
                 onChangeText={handleChange("password")}
                 onBlur={handleBlur("password")}
                 value={values.password}
@@ -161,16 +169,19 @@ export default function Register({ navigation }) {
               )}
 
               <TouchableOpacity
-                style={{backgroundColor: colors.yellow}}
-                className="p-3 rounded-md mb-3"
+                style={{backgroundColor: "#FFC107", width: "55%"}}
+                className="p-3 rounded-xl mb-6 mt-6 shadow-md"
                 onPress={() => handleSubmit()}
               >
-                <Text className="text-white font-bold text-center text-base">
-                  Registrarme
+                <Text className="text-gray-800 font-bold text-center text-base">
+                  Registrarse
                 </Text>
               </TouchableOpacity>
+                </View>
+
+
               <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text className="text-sm font-bold text-white/90 -tracking-wider">
+                <Text className="mt-4 text-sm font-bold text-white/90 -tracking-wider">
                   ¿Tenes cuenta? Inicia sesión acá
                 </Text>
               </TouchableOpacity>
@@ -178,6 +189,6 @@ export default function Register({ navigation }) {
           )}
         </Formik>
       </KeyboardAvoidingView>
-    </>
+    </View>
   );
 }
