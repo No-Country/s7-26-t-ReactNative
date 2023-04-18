@@ -7,15 +7,15 @@ export const ErrorPage = () => {
     const { colors } = useTheme();
 
     return (
-        <View className="text-center px-4">
-            <Text className="text-2xl font-bold">
+        <View className={`text-center  bg-violet-200 rounded-xl p-6 m-4`}>
+            <Text className="text-center text-2xl font-bold">
                 Ups!
             </Text>
-            <Text className="text-2xl font-bold">
+            <Text className=" text-center text-2xl font-bold">
                 No hay nada aquí...aún
             </Text>
             <Working width={350} height={350}/>
-            <Text className="text-xl">
+            <Text className=" text-center text-xl">
                 Por el momento esta función no está disponible, pero estamos trabajando duro para poder agregarla pronto!
             </Text>
         </View>

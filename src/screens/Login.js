@@ -1,12 +1,13 @@
 import { useTheme } from '@react-navigation/native';
 import { useState } from 'react';
-import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity, Platform } from 'react-native';
+import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity, Platform, Pressable} from 'react-native';
 import { loginWithEmailPassword } from '../firebase/auth';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Toast from "react-native-toast-message";
 import { toastConfig } from '../components/Toast'
-import { Torneopalooza } from '../components/icons';
+import { useTogglePasswordVisibility } from '../hooks/useToggleVisibility';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,6 +19,10 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function Login({ navigation }) {
+
+  const { passwordVisibility, rightIcon, handlePasswordVisibility } =
+    useTogglePasswordVisibility();
+    const [password, setPassword] = useState('');
 
   const { colors } = useTheme();
 
@@ -44,21 +49,15 @@ export default function Login({ navigation }) {
 
   return (
     <View className= {`bg-[${colors.primaryColor}] flex h-full`}>
+      <KeyboardAvoidingView
+       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        className="flex justify-center items-center w-[280] h-full mx-auto"
+      
+      >
       <View className="z-10">
         <Toast config={toastConfig} />
       </View>
 
-      <KeyboardAvoidingView
-        behavior="padding"
-        className="flex justify-center items-center w-[280] h-full mx-auto"
-        keyboardVerticalOffset={
-          Platform.select({
-            ios: () => 50,
-            android: () => 50,
-            web: () => 50
-          })()
-        }
-      >
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={handleSubmit}
@@ -103,20 +102,36 @@ export default function Login({ navigation }) {
                 >
                   Contraseña
                 </Text>
+
+                <View className="w-full flex flex-row  content-center items-center">
+
                 <TextInput
-                  className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-6 border-black/20 text-black shadow-md"
+                  className="bg-white/10 border p-2 h-14 focus:border-indigo-600/50 w-11/12 rounded-md  border-black/20 text-black shadow-md"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}
                   value={values.password}
                   placeholder="Aa"
                   placeholderTextColor="#ffffff6a"
+                  secureTextEntry={passwordVisibility}
+
                 />
+              <Pressable
+              className="ml-2"
+              onPress={handlePasswordVisibility}>
+              <MaterialCommunityIcons
+                name={rightIcon}
+                size={22}
+                color="#232323"
+              />
+            </Pressable>
+                </View>
+
 
                 {errors.password && touched.password && <Text className="text-rose-600 mb-2">{errors.password}</Text>}
 
                 <TouchableOpacity
                   style={{ backgroundColor: "#FFC107", width: "55%" }}
-                  className="p-3 rounded-xl mb-6 shadow-md"
+                  className="p-3 rounded-xl mb-6  mt-6 shadow-md"
                   onPress={() => handleSubmit()}
                 >
                   <Text className="text-black font-bold text-center text-base">
@@ -125,7 +140,7 @@ export default function Login({ navigation }) {
                 </TouchableOpacity>
               </View>
               <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-                <Text className="text-sm  font-bold mt-4 mb-4 text-white">
+                <Text className="text-sm  font-bold mt-4  text-white">
                   ¿No Tenes cuenta? Registrate acá
                 </Text>
               </TouchableOpacity>
