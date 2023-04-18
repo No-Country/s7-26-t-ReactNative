@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
   }
 
   return (
-    <View className="flex h-full">
+    <View className= {`bg-[${colors.primaryColor}] flex h-full`}>
       <View className="z-10">
         <Toast config={toastConfig} />
       </View>
@@ -72,11 +72,7 @@ export default function Login({ navigation }) {
             errors,
             touched,
           }) => (
-            <View className="w-screen flex h-auto items-center mb-40">
-
-              <View className="mx-auto mb-20">
-                <Torneopalooza width={200} height={75} color={colors.yellow} />
-              </View>
+            <View className="w-screen flex h-auto items-center">
 
 
               <View className=" shadow-md bg-white items-center w-11/12 h-auto rounded-xl p-4">
