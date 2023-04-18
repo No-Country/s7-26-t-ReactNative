@@ -37,7 +37,6 @@ import AddTeam from "../screens/AddTeam";
 import { RootColors } from "../theme.js";
 import Profile from "../screens/Profile";
 import { Torneopalooza } from "../components/icons";
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -63,7 +62,6 @@ function BottomNavigation({}) {
             paddingRight: 20,
           },
           tabBarStyle: {
-            marginBottom: 2,
             shadowColor: "transparent",
             borderTopWidth: 0,
           },
@@ -246,7 +244,7 @@ function CustomDrawerContent({ props }) {
       <View className="flex h-full justify-between items-center">
         {user ? (
           <View className="flex w-full h-full items-center mb-[3vh]">
-            <View className="mx-auto p-4 flex items-center gap-y-4 bg-indigo-900 w-full">
+            <View className="mx-auto p-4 flex items-center gap-y-4 w-full">
               {user?.photo ? (
                 <Image
                   resizeMode="contain"

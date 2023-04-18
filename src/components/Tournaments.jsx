@@ -35,10 +35,10 @@ export default function Tournaments({ data, fromHome }) {
                   setCreatedBy(data.userId);
                   setTournamentId(data.id);
                 }}
-                style={{
+                /* style={{
                   backgroundColor: colors.lightPrimary,
-                }}
-                className=" h-16 flex flex-row items-center justify-between border-b-2   py-[5rem] px-2 rounded mr-1 ml-1 mt-1"
+                }} */
+                className="bg-[#673AB7] h-16 flex flex-row items-center justify-between border-b-2   py-[5rem] px-2 rounded mr-1 ml-1 mt-3"
               >
                 <View className="flex flex-row items-center justify-between ">
                   {data.imagen ? (
@@ -61,7 +61,7 @@ export default function Tournaments({ data, fromHome }) {
                     />
                   )}
                   <Text
-                    style={{ color: colors.primaryText }}
+                    style={{ color: colors.textIcons }}
                     className="font-semibold"
                     data={data}
                     key={data.id}

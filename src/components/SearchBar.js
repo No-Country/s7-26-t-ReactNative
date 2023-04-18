@@ -17,9 +17,11 @@ import {
   ListSpecificTournaments,
 } from "../firebase/getFunctions";
 import * as Location from "expo-location";
+import { RootColors } from "../theme.js";
 
 export const SearchBar = ({ setPartidos }) => {
-  const { dark, colors } = useTheme();
+  /* const { dark, colors } = useTheme(); */
+  const { colors } = RootColors;
   const [distancia, setDistancia] = useState(0);
   const [apply, setApply] = useState([]);
   const [modalVisible, setModalVisible] = useState([]);
@@ -107,12 +109,15 @@ export const SearchBar = ({ setPartidos }) => {
         style={styles.search}
         icon={() => <FontAwesome name="search" size={18} color={"grey"} />}
       />
-      {/* CHECKEAR COLOR DE BOTON */}
       <TouchableOpacity
-        className="p-2 bg-`[${colors.accentColor}]` w-24  h-10 rounded-lg"
+        className="p-2 w-24  h-10 rounded-lg"
         onPress={filterSelected}
+        style={{ backgroundColor: colors.accentColor }}
       >
-        <Text className="text-base text-center font-bold text-white">
+        <Text
+          style={{ color: colors.primaryText }}
+          className="text-base text-center font-bold "
+        >
           {" "}
           Filtros ▼{" "}
         </Text>
@@ -127,7 +132,7 @@ export const SearchBar = ({ setPartidos }) => {
         }}
       >
         <View className=" flex-1 justify-center items-end ">
-          <View className="w-10/12 h-2.5/5  mr-5 mt-16  bg-white  pl-6 pr-6 pb-12 flex shadow-md z-5 border-2 border-indigo-400">
+          <View className="w-10/12 h-2.5/5  mx-auto bg-white px-4 pb-8 pt-4 flex shadow-md z-5 border-2 rounded-xl border-violet-400">
             <View>
               <Text className="text-base font-bold mb-2 mt-2">DEPORTES</Text>
               <View>
@@ -155,9 +160,9 @@ export const SearchBar = ({ setPartidos }) => {
               />
             </View>
 
-            <View className="w-max flex-row bg-red">
+            <View className="w-max flex-row flex justify-around bg-red">
               <Pressable
-                className="p-2 bg-indigo-400 w-6/12  h-10 rounded-md"
+                className="p-2 bg-indigo-400 w-[43%] h-10 rounded-md"
                 onPress={() => setModalVisible(!modalVisible)}
               >
                 <Text className="text-base text-center font-bold text-white">
@@ -166,7 +171,7 @@ export const SearchBar = ({ setPartidos }) => {
               </Pressable>
 
               <Pressable
-                className="p-2 bg-indigo-800 w-6/12 ml-4 h-10 rounded-md"
+                className="p-2 bg-indigo-800 w-[43%]  h-10 rounded-md"
                 onPress={handleApply}
               >
                 <Text className="text-base text-center font-bold text-white">
