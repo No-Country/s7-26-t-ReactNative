@@ -16,7 +16,6 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer";
 import Home from "../screens/Home";
-import Tournament from "../screens/MyTournaments";
 import Onboarding from "../screens/Onboarding";
 import Login from "../screens/Login";
 import News from "../screens/News";
