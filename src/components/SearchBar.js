@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Searchbar } from "react-native-paper";
+import { Searchbar, useTheme } from "react-native-paper";
 import {
   Text,
   View,
@@ -11,11 +11,17 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Modal } from "react-native";
 import CategoryPicker from "./CategoryPicker";
 import Slider from "react-native-a11y-slider";
-import { getNearTournaments, searchTournaments, ListSpecificTournaments } from "../firebase/getFunctions";
+import {
+  getNearTournaments,
+  searchTournaments,
+  ListSpecificTournaments,
+} from "../firebase/getFunctions";
 import * as Location from "expo-location";
+import { RootColors } from "../theme.js";
 
 export const SearchBar = ({ setPartidos }) => {
-  
+  /* const { dark, colors } = useTheme(); */
+  const { colors } = RootColors;
   const [distancia, setDistancia] = useState(0);
   const [apply, setApply] = useState([]);
   const [modalVisible, setModalVisible] = useState([]);
@@ -24,8 +30,8 @@ export const SearchBar = ({ setPartidos }) => {
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = async () => {
-    let data = await searchTournaments(searchText)
-    setPartidos(data)
+    let data = await searchTournaments(searchText);
+    setPartidos(data);
   };
 
   //Esta funcion solo se asegura de tener permiso del usuario de usar su ubicación
@@ -58,8 +64,8 @@ export const SearchBar = ({ setPartidos }) => {
           data.longitud,
           distancia
         );
-        
-        setPartidos(res)
+
+        setPartidos(res);
 
         let sportsSelected = selected.map((obj) => obj.deporte);
 
@@ -67,26 +73,22 @@ export const SearchBar = ({ setPartidos }) => {
           console.log("Aplicando Filtro Deportes con Distancia");
           const validSports = new Set(sportsSelected);
           let found = res.filter((e) => validSports.has(e.deporte));
-          setPartidos(found)
+          setPartidos(found);
         }
       } else {
         console.log("No encontre torneos cerca");
       }
-    }
-    else if(selected.length)
-    {
+    } else if (selected.length) {
       console.log("Filtro de Deportes SIN distancia");
 
       let sportsSelected = selected.map((obj) => obj.deporte);
       if (sportsSelected) {
-        let resp = await ListSpecificTournaments(sportsSelected)
-        setPartidos(resp)
+        let resp = await ListSpecificTournaments(sportsSelected);
+        setPartidos(resp);
       }
-    }
-    else
-    {
+    } else {
       //si no se selecciona nada traigo toda la lista al apretar aplicar
-      handleSearch()
+      handleSearch();
     }
   };
 
@@ -95,23 +97,29 @@ export const SearchBar = ({ setPartidos }) => {
   };
 
   return (
-    <View className=" mt-4 flex w-full flex-row justify-around content-center items-center">
+    <View className=" mt-4 flex w-full flex-row justify-around content-center items-center ">
       <Searchbar
+        className="rounded-lg"
+        placeholder={"Buscar"}
+        placeholderTextColor={colors.primaryText}
         onChangeText={setSearchText}
         onIconPress={handleSearch}
         onSubmitEditing={handleSearch}
         inputStyle={styles.input}
         style={styles.search}
-        icon={() => <FontAwesome name="search" size={24} color={"black"} />}
+        icon={() => <FontAwesome name="search" size={18} color={"grey"} />}
       />
-
       <TouchableOpacity
-        className="p-2 bg-indigo-900 w-24  h-10 rounded-md"
+        className="p-2 w-24  h-10 rounded-lg"
         onPress={filterSelected}
+        style={{ backgroundColor: colors.accentColor }}
       >
-        <Text className="text-base text-center font-bold text-white">
+        <Text
+          style={{ color: colors.primaryText }}
+          className="text-base text-center font-bold "
+        >
           {" "}
-          FILTROS{" "}
+          Filtros ▼{" "}
         </Text>
       </TouchableOpacity>
 
@@ -124,7 +132,7 @@ export const SearchBar = ({ setPartidos }) => {
         }}
       >
         <View className=" flex-1 justify-center items-end ">
-          <View className="w-10/12 h-2.5/5  mr-5 mt-16  bg-white  pl-6 pr-6 pb-12 flex shadow-md z-5 border-2 border-indigo-400">
+          <View className="w-10/12 h-2.5/5  mx-auto bg-white px-4 pb-8 pt-4 flex shadow-md z-5 border-2 rounded-xl border-violet-400">
             <View>
               <Text className="text-base font-bold mb-2 mt-2">DEPORTES</Text>
               <View>
@@ -152,9 +160,9 @@ export const SearchBar = ({ setPartidos }) => {
               />
             </View>
 
-            <View className="w-max flex-row bg-red">
+            <View className="w-max flex-row flex justify-around bg-red">
               <Pressable
-                className="p-2 bg-indigo-400 w-6/12  h-10 rounded-md"
+                className="p-2 bg-indigo-400 w-[43%] h-10 rounded-md"
                 onPress={() => setModalVisible(!modalVisible)}
               >
                 <Text className="text-base text-center font-bold text-white">
@@ -163,7 +171,7 @@ export const SearchBar = ({ setPartidos }) => {
               </Pressable>
 
               <Pressable
-                className="p-2 bg-indigo-800 w-6/12 ml-4 h-10 rounded-md"
+                className="p-2 bg-indigo-800 w-[43%]  h-10 rounded-md"
                 onPress={handleApply}
               >
                 <Text className="text-base text-center font-bold text-white">

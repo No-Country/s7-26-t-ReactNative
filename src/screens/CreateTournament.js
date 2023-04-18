@@ -19,7 +19,7 @@ import { toastConfig } from "../components/Toast";
 import Constants from "expo-constants";
 import * as ImagePicker from "expo-image-picker";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import {UserContext} from '../context/UserContext'
+import { UserContext } from "../context/UserContext";
 import { uploadProfilePicture } from "../firebase/getFunctions";
 
 const tournamentSchema = Yup.object().shape({
@@ -32,7 +32,7 @@ const tournamentSchema = Yup.object().shape({
 });
 
 const CreateTournament = ({ navigation, route }) => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
   const [imagen, setImagen] = useState(null);
   const [deporte, setDeporte] = useState(null);
   const [location, setLocation] = useState(null);
@@ -85,11 +85,7 @@ const CreateTournament = ({ navigation, route }) => {
 
   async function handleSubmit({ nombre, descripcion }) {
     if (deporte && location) {
-
-      const resImg = await uploadProfilePicture(
-        imagen,
-        `profileImg${nombre}`
-      );
+      const resImg = await uploadProfilePicture(imagen, `profileImg${nombre}`);
 
       const data = {
         nombre,
@@ -156,17 +152,18 @@ const CreateTournament = ({ navigation, route }) => {
             touched,
           }) => (
             <View className="w-full flex gap-y-1">
-                {
-                  imagen?
-                  <Image source={{ uri: imagen }} style={{height: 100, width: 100}} className="mx-auto mb-2" />
-                  :
-                  <View style={{marginBottom: 2}} className="mx-auto">
-                    <FontAwesome name="file-picture-o" size={100} color="#fff" />
-                  </View>
-                }
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
-              >
+              {imagen ? (
+                <Image
+                  source={{ uri: imagen }}
+                  style={{ height: 100, width: 100 }}
+                  className="mx-auto mb-2"
+                />
+              ) : (
+                <View style={{ marginBottom: 2 }} className="mx-auto">
+                  <FontAwesome name="file-picture-o" size={100} color="#fff" />
+                </View>
+              )}
+              <Text className="mr-auto text-base font-semibold opacity-70 text-white">
                 Nombre
               </Text>
               <TextInput
@@ -182,20 +179,22 @@ const CreateTournament = ({ navigation, route }) => {
                 <Text className="text-rose-600 mb-2">{errors.nombre}</Text>
               )}
 
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white"
-              >
+              <Text className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white">
                 Foto
               </Text>
               <View className="flex">
-                <TouchableOpacity onPress={pickImage} style={{height: 44, marginBottom: 4}} className="border border-white/10 px-4 bg-white/10 rounded-md">
-                  <Text className="text-center text-white text-base font-medium my-auto">Cargar Foto</Text>
+                <TouchableOpacity
+                  onPress={pickImage}
+                  style={{ height: 44, marginBottom: 4 }}
+                  className="border border-white/10 px-4 bg-white/10 rounded-md"
+                >
+                  <Text className="text-center text-white text-base font-medium my-auto">
+                    Cargar Foto
+                  </Text>
                 </TouchableOpacity>
               </View>
 
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 mb-1 text-white"
-              >
+              <Text className="mr-auto text-base font-semibold opacity-70 mb-1 text-white">
                 Deporte
               </Text>
 
@@ -209,7 +208,7 @@ const CreateTournament = ({ navigation, route }) => {
                   height: 44,
                   borderWidth: 1,
                   borderRadius: 5,
-                  marginBottom: 5
+                  marginBottom: 5,
                 }}
                 buttonTextStyle={{ color: "#fff" }}
                 renderDropdownIcon={(isOpened) => {
@@ -238,9 +237,7 @@ const CreateTournament = ({ navigation, route }) => {
                 }}
               />
 
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white"
-              >
+              <Text className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white">
                 Ciudad
               </Text>
 
@@ -272,9 +269,7 @@ const CreateTournament = ({ navigation, route }) => {
                 />
               </View>
 
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
-              >
+              <Text className="mr-auto text-base font-semibold opacity-70 text-white">
                 Descripción
               </Text>
               <TextInput
@@ -292,7 +287,7 @@ const CreateTournament = ({ navigation, route }) => {
               )}
 
               <TouchableOpacity
-                style={{backgroundColor: colors.yellow}}
+                style={{ backgroundColor: colors.accentColor }}
                 className="p-3 rounded-md mb-3 text-white"
                 onPress={() => handleSubmit()}
               >

@@ -74,7 +74,7 @@ export default function Register({ navigation }) {
   }
 
   return (
-    <>
+    <View className= {`bg-[${colors.primaryColor}] flex h-full`}>
       <View className="z-10">
         <Toast config={toastConfig} />
       </View>
@@ -101,76 +101,84 @@ export default function Register({ navigation }) {
             errors,
             touched,
           }) => (
-            <View className="w-full flex">
-              <View className="mx-auto">
-                <Torneopalooza width={250} height={100} color={colors.yellow} />
+            <View className="w-screen flex h-auto items-center">
+
+
+              <View className=" shadow-md bg-white items-center w-11/12 h-auto rounded-xl p-4">
+
+
+                <Text className="text-black font-bold text-center text-2xl mb-5 mt-3">
+                  Registrarse
+                </Text>
+
+                <Text
+                  className="mr-auto text-base font-semibold  text-black "
+                >
+                  Nombre
+                </Text>
+                <TextInput
+                  className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
+                  onChangeText={handleChange("username")}
+                  onBlur={handleBlur("username")}
+                  value={values.name}
+                  placeholder="John doe"
+                  placeholderTextColor="#ffffff6a"
+                />
+
+                {errors.username && touched.username && (
+                  <Text className="text-rose-500">{errors.username}</Text>
+                )}
+
+                <Text
+                  className="mr-auto text-base font-semibold  text-black mt-4 "
+                >
+                  Email
+                </Text>
+                <TextInput
+                  className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  value={values.email}
+                  placeholder="Your@email.com"
+                  placeholderTextColor="#ffffff6a"
+                />
+
+                {errors.email && touched.email && (
+                  <Text className="text-rose-500">{errors.email}</Text>
+                )}
+
+                <Text
+                  className="mr-auto text-base mt-4 font-semibold  text-black"
+                >
+                  Password
+                </Text>
+                <TextInput
+                  className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
+                  value={values.password}
+                  placeholder="Aa"
+                  placeholderTextColor="#ffffff6a"
+                />
+
+                {errors.password && touched.password && (
+                  <Text className="text-rose-500 mb-2">{errors.password}</Text>
+                )}
+
+                <TouchableOpacity
+                  style={{ backgroundColor: "#FFC107", width: "55%" }}
+                  className="p-3 rounded-xl mb-6 mt-6 shadow-md"
+                  onPress={() => handleSubmit()}
+                >
+                  <Text className="text-gray-800 font-bold text-center text-base">
+                    Registrarse
+                  </Text>
+                </TouchableOpacity>
               </View>
 
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
-              >
-                Nombre
-              </Text>
-              <TextInput
-                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
-                onChangeText={handleChange("username")}
-                onBlur={handleBlur("username")}
-                value={values.name}
-                placeholder="John doe"
-                placeholderTextColor="#ffffff6a"
-              />
 
-              {errors.username && touched.username && (
-                <Text className="text-rose-500">{errors.username}</Text>
-              )}
-
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
-              >
-                Email
-              </Text>
-              <TextInput
-                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
-                onChangeText={handleChange("email")}
-                onBlur={handleBlur("email")}
-                value={values.email}
-                placeholder="Your@email.com"
-                placeholderTextColor="#ffffff6a"
-              />
-
-              {errors.email && touched.email && (
-                <Text className="text-rose-500">{errors.email}</Text>
-              )}
-
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
-              >
-                Password
-              </Text>
-              <TextInput
-                className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-white"
-                onChangeText={handleChange("password")}
-                onBlur={handleBlur("password")}
-                value={values.password}
-                placeholder="Aa"
-                placeholderTextColor="#ffffff6a"
-              />
-
-              {errors.password && touched.password && (
-                <Text className="text-rose-500 mb-2">{errors.password}</Text>
-              )}
-
-              <TouchableOpacity
-                style={{backgroundColor: colors.yellow}}
-                className="p-3 rounded-md mb-3"
-                onPress={() => handleSubmit()}
-              >
-                <Text className="text-white font-bold text-center text-base">
-                  Registrarme
-                </Text>
-              </TouchableOpacity>
               <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text className="text-sm font-bold text-white/90 -tracking-wider">
+                <Text className="mt-4 text-sm font-bold text-white/90 -tracking-wider">
                   ¿Tenes cuenta? Inicia sesión acá
                 </Text>
               </TouchableOpacity>
@@ -178,6 +186,6 @@ export default function Register({ navigation }) {
           )}
         </Formik>
       </KeyboardAvoidingView>
-    </>
+    </View>
   );
 }

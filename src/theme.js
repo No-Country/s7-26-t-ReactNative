@@ -3,9 +3,9 @@
 export const RootColors = {
   dark: false,
   colors: {
-    background: "#52408e",
+    background: "#D1C4E9",
     border: "#d8d8d8a0",
-    card: "#52408e",
+    card: "#673AB7",
     notification: "#ff3b30",
     primary: "#007aff",
     text: "#000",
