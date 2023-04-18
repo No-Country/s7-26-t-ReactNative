@@ -16,7 +16,7 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer";
 import Home from "../screens/Home";
-import Tournament from "../screens/Tournament";
+import Tournament from "../screens/MyTournaments";
 import Onboarding from "../screens/Onboarding";
 import Login from "../screens/Login";
 import News from "../screens/News";
@@ -30,9 +30,11 @@ import CreateTournament from "../screens/CreateTournament";
 import ViewTournament from "../screens/ViewTournament";
 import { UserContext } from "../context/UserContext";
 import AddTeam from "../screens/AddTeam";
+import EditTeam from "../screens/EditTeam";
 import {RootColors} from '../theme.js'
 import Profile from "../screens/Profile";
 import { Torneopalooza } from "../components/icons";
+import MyTournaments from "../screens/MyTournaments";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -199,8 +201,17 @@ function StackNavigation() {
         username={(params) => params.username}
       />
       <Stack.Screen
+        name="MisTorneos"
+        component={MyTournaments}
+        id={(params) => params.id}
+      />
+      <Stack.Screen
         name="AddTeam"
         component={AddTeam}
+      />
+      <Stack.Screen
+        name="EditTeam"
+        component={EditTeam}
       />
       <Stack.Screen
         name="Login"
@@ -310,7 +321,13 @@ function CustomDrawerContent({ props }) {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
+            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+            onPress={() =>
+                navigation.navigate("MisTorneos", {
+                  id: user.id,
+                  username: user.username,
+                })
+              }>
               <View className="flex items-center justify-center w-5">
                 <MaterialCommunityIcons
                   name="tournament"
