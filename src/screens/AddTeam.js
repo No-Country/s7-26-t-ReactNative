@@ -17,7 +17,7 @@ import { useTheme } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "../components/Toast";
 import * as ImagePicker from "expo-image-picker";
-import {UserContext} from '../context/UserContext'
+import { UserContext } from "../context/UserContext";
 import { uploadProfilePicture } from "../firebase/getFunctions";
 
 const teamSchema = Yup.object().shape({
@@ -27,7 +27,7 @@ const teamSchema = Yup.object().shape({
 });
 
 const AddTeam = ({ navigation, route }) => {
-  const {user, tournamentId} = useContext(UserContext)
+  const { user, tournamentId } = useContext(UserContext);
   const [imagen, setImagen] = useState(null);
 
   const { colors } = useTheme();
@@ -44,23 +44,16 @@ const AddTeam = ({ navigation, route }) => {
     }
   };
 
-
   async function handleSubmit({ nombre, img }) {
     if (nombre) {
-
-      const resImg = await uploadProfilePicture(
-        imagen,
-        `teamImg${nombre}`
-      );
+      const resImg = await uploadProfilePicture(imagen, `teamImg${nombre}`);
 
       const data = {
         nombre,
         imagen: resImg || img,
-
       };
 
-      const resp = await CreateTeam( user.id,
-      tournamentId, data);
+      const resp = await CreateTeam(user.id, tournamentId, data);
 
       if (resp) {
         Toast.show({
@@ -101,7 +94,10 @@ const AddTeam = ({ navigation, route }) => {
         })()}
       >
         <Formik
-          initialValues={{ nombre: "", img: "https://w7.pngwing.com/pngs/302/473/png-transparent-gray-and-black-shield-shield-drawing-logo-black-shield-angle-rectangle-photography.png" }}
+          initialValues={{
+            nombre: "",
+            img: "https://i.postimg.cc/7Ly4rbp7/default-Group.png",
+          }}
           onSubmit={handleSubmit}
           validationSchema={teamSchema}
         >
@@ -114,17 +110,18 @@ const AddTeam = ({ navigation, route }) => {
             touched,
           }) => (
             <View className="w-full flex gap-y-1">
-                {
-                  imagen?
-                  <Image source={{ uri: imagen }} style={{height: 100, width: 100}} className="mx-auto mb-2" />
-                  :
-                  <View style={{marginBottom: 2}} className="mx-auto">
-                    <FontAwesome name="file-picture-o" size={100} color="#fff" />
-                  </View>
-                }
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 text-white"
-              >
+              {imagen ? (
+                <Image
+                  source={{ uri: imagen }}
+                  style={{ height: 100, width: 100 }}
+                  className="mx-auto mb-2"
+                />
+              ) : (
+                <View style={{ marginBottom: 2 }} className="mx-auto">
+                  <FontAwesome name="file-picture-o" size={100} color="#fff" />
+                </View>
+              )}
+              <Text className="mr-auto text-base font-semibold opacity-70 text-white">
                 Nombre
               </Text>
               <TextInput
@@ -140,20 +137,23 @@ const AddTeam = ({ navigation, route }) => {
                 <Text className="text-rose-600 mb-2">{errors.nombre}</Text>
               )}
 
-              <Text
-                className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white"
-              >
+              <Text className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white">
                 Foto
               </Text>
               <View className="flex">
-                <TouchableOpacity onPress={pickImage} style={{height: 44, marginBottom: 4}} className="border border-white/10 px-4 bg-white/10 rounded-md">
-                  <Text className="text-center text-white text-base font-medium my-auto">Cargar Foto</Text>
+                <TouchableOpacity
+                  onPress={pickImage}
+                  style={{ height: 44, marginBottom: 4 }}
+                  className="border border-white/10 px-4 bg-white/10 rounded-md"
+                >
+                  <Text className="text-center text-white text-base font-medium my-auto">
+                    Cargar Foto
+                  </Text>
                 </TouchableOpacity>
               </View>
 
-
               <TouchableOpacity
-                style={{backgroundColor: colors.accentColor}}
+                style={{ backgroundColor: colors.accentColor }}
                 className="p-3 rounded-md mb-3 text-white"
                 onPress={() => handleSubmit()}
               >
