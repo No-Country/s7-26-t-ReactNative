@@ -1,12 +1,15 @@
 import React from 'react'
 import { ErrorPage } from '../components/ErrorPage'
 import { View, TouchableOpacity, Text} from 'react-native'
-
+import { useTheme } from "@react-navigation/native";
 
 
 export default function Stats({ navigation }) {
+
+  const { colors } = useTheme();
+
   return (
-    <View className="flex h-full justify-center items-center">
+    <View className={`flex h-full justify-center  items-center bg-[${colors.primaryColor}]`}>
       <ErrorPage/>
 
 
