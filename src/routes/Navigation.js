@@ -236,7 +236,7 @@ function StackNavigation() {
         component={Register}
         options={{ headerTitle: "" }}
       />
-
+      
       <Stack.Screen
         name="Onboarding"
         options={{ headerShown: false }}

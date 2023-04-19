@@ -1,6 +1,6 @@
 import { useRoute, useTheme } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import { View, Text, Touchable, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import Loader from "../components/Loader";
 import { UserContext } from "../context/UserContext";
 import { getFixture, getTournamentTeams } from "../firebase/getFunctions";
@@ -8,12 +8,15 @@ import { RoundRobin } from "tournament-pairings";
 import { ordenarFechas, ordenarPorPuntos } from "../utils";
 import { ScrollView } from "react-native";
 import { setFixtureDB } from "../firebase/setFunctions";
+import MatchCard from "../components/MatchCard";
+import Toast from "react-native-toast-message";
+import { toastConfig } from "../components/Toast";
 
 export default function Fixture({ route }) {
   const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState([]);
   const [fixture, setFixture] = useState([]);
-  const { dark, colors } = useTheme();
+  const { colors } = useTheme();
   const { user, tournamentId, createdBy } = useContext(UserContext);
   const [confirm, setConfirm] = useState(false);
 
@@ -27,9 +30,11 @@ export default function Fixture({ route }) {
         /* console.log("Fixture: ", test); */
         setFixture(test);
       } else {
-        console.log(
-          "Debes tener un numero par de equipo para poder armar un fixture"
-        );
+        Toast.show({
+          type: "error",
+          text1: "❌ Debes tener un número par de equipos!",
+          text2: "⚠️ Agrega un equipo",
+        });
       }
     } catch (error) {
       console.log(error);
@@ -59,6 +64,9 @@ export default function Fixture({ route }) {
 
   return (
     <View className="flex items-center justify-center h-full w-full">
+      <View className="z-10">
+        <Toast config={toastConfig} />
+      </View>
       {loading ? (
         <Loader />
       ) : (
@@ -67,26 +75,7 @@ export default function Fixture({ route }) {
             <>
               <ScrollView className="w-full py-2">
                 {fixture.map((partido, index) => (
-                  <View
-                    className={"flex p-4 px-3 my-1 rounded-md w-[90%] mx-auto "}
-                    style={{ backgroundColor: colors.primaryText }}
-                    key={index}
-                  >
-                    <Text className="text-violet-500">
-                      Fecha: {partido.round}
-                    </Text>
-                    <View className="flex-row justify-between py-1 ">
-                      <Text className="text-white w-[40%] text-center">
-                        {partido.player1}
-                      </Text>
-                      <Text className="text-yellow-600 w-[20%] text-center">
-                        vs
-                      </Text>
-                      <Text className="text-white w-[40%] text-center">
-                        {partido.player2}
-                      </Text>
-                    </View>
-                  </View>
+                  <MatchCard partido={partido} key={partido.id} />
                 ))}
               </ScrollView>
               {confirm === true ? (

@@ -6,7 +6,7 @@ import { deleteTeam } from "../firebase/deleteFunctions";
 import { useNavigation } from "@react-navigation/native";
 
 const MiniMenu = ({ teamId, tournamentId, createdBy, teamName, teamImage }) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const [visible, setVisible] = React.useState(false);
 
   const openMenu = () => setVisible(true);
@@ -25,21 +25,24 @@ const MiniMenu = ({ teamId, tournamentId, createdBy, teamName, teamImage }) => {
           onPress={openMenu}
         />
       }
-      style={{ width: 100, height: 150 }}
-      contentStyle={{ backgroundColor: "#512DA8" }}
+      style={{ width: 100, height: 150}}
+      contentStyle={{ backgroundColor: "#D1C4E9" }}
     >
       <Menu.Item
+        titleStyle={{ color: "#000" }}
         onPress={() => {
-          console.log("Editar");
-          navigation.navigate({name :"EditTeam", params: {teamId, tournamentId, createdBy, teamName, teamImage}});
-          closeMenu()
+          navigation.navigate({
+            name: "EditTeam",
+            params: { teamId, tournamentId, createdBy, teamName, teamImage },
+          });
+          closeMenu();
         }}
         title="Editar"
       />
       <Divider />
       <Menu.Item
+        titleStyle={{ color: "#000" }}
         onPress={() => {
-          console.log("Eliminar " + createdBy + " " + tournamentId + " " + teamId);
           deleteTeam(createdBy, tournamentId, teamId);
           closeMenu();
         }}

@@ -1,60 +1,108 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 export default function TournamenTable({ teams }) {
   return (
-    <View className="w-full h-[60%] bg-purple-400 my-4 pb-8 ">
-      <View className={"flex p-2 my-6 w-[90%] mx-auto "}>
-        <Text className="text-white text-xl my-2">Posiciones: </Text>
-        <ScrollView horizontal className="h-full">
-          <ScrollView>
-            <View className="flex flex-row bg-purple-700">
-              <Text className="text-md w-12"> </Text>
-              <Text className="text-amber-400 font-bold text-md w-40">
-                Equipo
-              </Text>
-              <Text className="text-amber-400 font-bold text-md w-12 text-center">
-                Ptos
-              </Text>
-              <Text className="text-amber-400 font-bold text-md w-12 text-center">PJ</Text>
-              <Text className="text-amber-400 font-bold text-md w-12 text-center">PG</Text>
-              <Text className="text-amber-400 font-bold text-md w-12 text-center">PE</Text>
-              <Text className="text-amber-400 font-bold text-md w-12 text-center">PP</Text>
-            </View>
+    <View className="w-full h-[62%] bg-white my-4 pb-8 rounded-xl">
+      <View className="flex p-2 my-6 w-[94%] mx-auto">
+        <Text className="text-black text-xl my-2 text-center">Posiciones </Text>
+        <ScrollView horizontal className="h-full w-full py-2 ">
+          <ScrollView className="w-full">
             {teams.length > 0 ? (
-              teams.map((team, index) => (
-                <View
-                  className={`flex flex-row  py-1 border-b border-amber-100 ${
-                    index % 2 ? "bg-blue-900" : "bg-blue-800"
-                  }`}
-                  key={team.id}
-                >
-                  <Text className="text-white w-12 text-center">
-                    {index + 1}º
-                  </Text>
-                  <Text className="text-white w-40 ">{team.nombre}</Text>
-                  <Text className="text-white w-12 text-center ">
-                    {team.puntos}
-                  </Text>
-                  <Text className="text-white w-12 text-center ">
-                    {team.partidosJugados}
-                  </Text>
-                  <Text className="text-white w-12 text-center ">
-                    {team.partidosGanados}
-                  </Text>
-                  <Text className="text-white w-12 text-center ">
-                    {team.partidosEmpatados}
-                  </Text>
-                  <Text className="text-white w-12 text-center ">
-                    {team.partidosPerdidos}
-                  </Text>
-                </View>
-              ))
+              <>
+                <TableHeader />
+                {teams.map((team, index) => (
+                  <TableRow team={team} index={index} key={team.id}/>
+                ))}
+              </>
             ) : (
-              <Text className="text-violet-600">No hay equipos</Text>
+              <Text className="text-black py-4">No hay equipos</Text>
             )}
           </ScrollView>
         </ScrollView>
       </View>
+    </View>
+  );
+}
+
+function TableHeader() {
+  const { colors } = useTheme();
+
+  return (
+    <View
+      className={"flex flex-row py-4"}
+      style={{ backgroundColor: colors.primaryColor }}
+    >
+      <Text className="text-base w-12"> </Text>
+      <Text
+        className="font-bold text-base w-40"
+        style={{ color: colors.accentColor }}
+      >
+        Equipo
+      </Text>
+      <Text
+        className="font-bold text-base w-12 text-center"
+        style={{ color: colors.accentColor }}
+      >
+        Ptos
+      </Text>
+      <Text
+        className="font-bold text-base w-12 text-center"
+        style={{ color: colors.accentColor }}
+      >
+        PJ
+      </Text>
+      <Text
+        className="font-bold text-base w-12 text-center"
+        style={{ color: colors.accentColor }}
+      >
+        PG
+      </Text>
+      <Text
+        className="font-bold text-base w-12 text-center"
+        style={{ color: colors.accentColor }}
+      >
+        PE
+      </Text>
+      <Text
+        className="font-bold text-base w-12 text-center"
+        style={{ color: colors.accentColor }}
+      >
+        PP
+      </Text>
+    </View>
+  );
+}
+
+function TableRow({ index, team }) {
+  const { colors } = useTheme();
+  return (
+    <View
+      className={"flex flex-row items-center py-2 border-b border-gray-200"}
+      style={{
+        backgroundColor: `${
+          index % 2 ? colors.secondaryText : colors.dividerColor
+        }`,
+      }}
+    >
+      <Text className="text-white w-12 text-center">{index + 1}º</Text>
+      <View className="w-40 flex-row items-center" >
+        <Image source={{ uri: team.imagen }} className="w-8 h-8 rounded-full" />
+        <Text className="text-white ml-2">{team.nombre}</Text>
+      </View>
+      <Text className="text-white w-12 text-center ">{team.puntos}</Text>
+      <Text className="text-white w-12 text-center ">
+        {team.partidosJugados}
+      </Text>
+      <Text className="text-white w-12 text-center ">
+        {team.partidosGanados}
+      </Text>
+      <Text className="text-white w-12 text-center ">
+        {team.partidosEmpatados}
+      </Text>
+      <Text className="text-white w-12 text-center ">
+        {team.partidosPerdidos}
+      </Text>
     </View>
   );
 }
