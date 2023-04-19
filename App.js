@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { Torneopalooza } from "./src/components/icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { OnBoarding1 } from "./src/screens/OnBoarding1";
+import { OnBoarding2 } from "./src/screens/OnBoarding2";
+import { OnBoarding3 } from "./src/screens/OnBoarding3";
 
 
 NativeWindStyleSheet.setOutput({
@@ -16,24 +19,25 @@ NativeWindStyleSheet.setOutput({
 
 export default function App() {
   const [onboarding, setOnboarding] = useState(null);
+  const [screen, setScreen] = useState(1)
   const [user, setUser] = useState(null);
   const [tournamentId, setTournamentId] = useState(null);
   const [createdBy, setCreatedBy] = useState(null);
 
   const leaveOnboarding = async () => {
-    await AsyncStorage.setItem('onboarding', 'false');
+    await AsyncStorage.setItem('onboard', 'false');
     setOnboarding(false)
   };
 
   const checkOnboarding = async () => {
     try {
-      const value = await AsyncStorage.getItem('onboarding');
+      const value = await AsyncStorage.getItem('onboard');
       console.log('onboarding: ' + value);
 
       if (value === null) {
         setOnboarding(true);
-        await AsyncStorage.setItem('onboarding', 'false');
-      } else if (value === 'true') {
+        await AsyncStorage.setItem('onboard', 'true');
+      } else if (value === true) {
         setOnboarding(true);
         leaveOnboarding();
       } else {
@@ -75,10 +79,16 @@ export default function App() {
     return(
       <View className="flex items-center h-screen justify-center">
         <Torneopalooza width={150} height={40} color="#F0C05A"/>
-
-        <Text>{JSON.stringify(onboarding)}</Text>
-
-        <Text onPress={() => leaveOnboarding()}>Salir del Onboarding</Text>
+        
+        {
+          screen === 1?
+          <OnBoarding1 screen={setScreen}/>  
+          : screen === 2?
+          <OnBoarding2 screen={setScreen}/>
+          :
+          <OnBoarding3 leave={leaveOnboarding}/>
+        }
+        
       </View>
     ) 
   }
