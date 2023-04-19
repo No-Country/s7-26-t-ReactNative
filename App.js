@@ -77,9 +77,7 @@ export default function App() {
 
   if (onboarding) {
     return(
-      <View className="flex items-center h-screen justify-center">
-        <Torneopalooza width={150} height={40} color="#F0C05A"/>
-        
+      <>      
         {
           screen === 1?
           <OnBoarding1 screen={setScreen}/>  
@@ -88,8 +86,7 @@ export default function App() {
           :
           <OnBoarding3 leave={leaveOnboarding}/>
         }
-        
-      </View>
+      </>
     ) 
   }
 
