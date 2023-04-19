@@ -36,7 +36,7 @@ function Home() {
 
   return (
     <ScrollView
-      className="h-full p-4"
+      className="h-full px-4"
       style={{
         backgroundColor: sportsScreen ? colors.background : colors.primaryColor,
       }}
