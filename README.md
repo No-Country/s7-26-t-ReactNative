@@ -67,18 +67,17 @@ npm start
 👐 Involucrados en el proyecto:
 
 
+<a href="http://linkedin.com/in/alexander-mamani/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/AlexQS96" target="_blank">**Alexander Mamani**</a> | Front
 
- [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/alexander-mamani/) [**Alexander Mamani**](https://github.com/AlexQS96) | Front
+<a href="http://linkedin.com/in/ezequiel-berretta/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/rretta" target="_blank">**Ezequiel Berretta**</a> | Front
 
- [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/ezequiel-berretta/) [**Ezequiel Berretta**](https://github.com/rretta) | Front
+<a href="http://linkedin.com/in/nico-radin/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/niicodeer" target="_blank">**Nicolás Radín**</a> | Front
 
- [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/nico-radin/) [**Nicolás Radín**](https://github.com/niicodeer) | Front
+<a href="http://linkedin.com/in/nicolas-roberto/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/nicolasroberto" target="_blank">**Nicolás Roberto**</a> | Front
 
- [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/nicolas-roberto/) [**Nicolás Roberto**](https://github.com/nicolasroberto) | Front
+<a href="http://linkedin.com/in/mariana-camisasca/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://behance.net/mcamisasca" target="_blank">**Mariana Camisasca**</a> | UX/UI
 
- [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/mariana-camisasca/) [**Mariana Camisasca**](https://www.behance.net/mcamisasca) | UI/UX
-
- [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/cami-cataldi/) [**Camila Cataldi**](https://linkedin.com/in/cami-cataldi) | Team Leader
+<a href="http://linkedin.com/in/cami-cataldi/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://linkedin.com/in/cami-cataldi" target="_blank">**Camila Cataldi**</a> | TL
 
 
 ## 🎉 Deploy en Expo
