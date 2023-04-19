@@ -1,11 +1,49 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
+import { getSaved } from "../firebase/getFunctions";
+import { deleteSaved } from "../firebase/deleteFunctions";
+import { setSaved } from "../firebase/setFunctions";
+import { UserContext } from "../context/UserContext";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { db, mainCollection } from "../firebase/credentials";
 
 export default function TournamentDetails({ item }) {
+  const { user, tournamentId} = useContext(UserContext)
   const { colors } = useTheme();
-  const [saved, setSaved] = useState(false);
+  const [follow, setFollow] = useState(false);
+
+  useEffect(() => {
+    const save = async () => {
+      await getDoc(doc(db, mainCollection, user.id, "Saved", item.id)).then(
+        (docsnapshot) => {
+          if (docsnapshot.exists()) {
+            setFollow(true);
+          } else {
+            setFollow(false);
+          }
+        }
+      );
+    };
+    save();
+  }, [follow]);
+
+  const handleSaved = () => {
+    getDoc(doc(db, mainCollection, user.id, "Saved", item.id)).then(
+      (docsnapshot) => {
+        if (docsnapshot.exists()) {
+          deleteDoc(doc(db, mainCollection, user.id, "Saved", item.id));
+          setFollow(false);
+        } else {
+          setDoc(doc(db, mainCollection, user.id, "Saved", item.id), item);
+          setFollow(true);
+        }
+      }
+    );
+    return follow;
+  };
+
   return (
     <View className="flex justify-center items-center w-full p-4 text-center bg-white rounded-xl">
       {item.imagen ? (
@@ -39,11 +77,11 @@ export default function TournamentDetails({ item }) {
       </Text>
       <TouchableOpacity
         className={"flex flex-row gap-x-4 my-4 px-4 py-2 rounded-md "}
-        style={{backgroundColor: colors.accentColor}}
-        onPress={() => setSaved(!saved)}
+        style={{ backgroundColor: colors.accentColor }}
+        onPress={handleSaved}
       >
         <Text>Seguir</Text>
-        {saved ? (
+        {follow ? (
           <FontAwesome name="star" size={20} color="black" />
         ) : (
           <FontAwesome name="star-o" size={20} color="black" />

@@ -34,7 +34,7 @@ import ViewTournament from "../screens/ViewTournament";
 import { UserContext } from "../context/UserContext";
 import AddTeam from "../screens/AddTeam";
 import EditTeam from "../screens/EditTeam";
-import {RootColors} from '../theme.js'
+import { RootColors } from "../theme.js";
 import Profile from "../screens/Profile";
 import { Torneopalooza } from "../components/icons";
 import MyTournaments from "../screens/MyTournaments";
@@ -43,6 +43,7 @@ import AboutUs from "../screens/AboutUs";
 import Privacy from "../screens/Privacy";
 import Terms from "../screens/Terms";
 import QA from "../screens/QA";
+import MyFollows from "../screens/MyFollows";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -219,14 +220,9 @@ function StackNavigation() {
         component={MyTournaments}
         id={(params) => params.id}
       />
-      <Stack.Screen
-        name="AddTeam"
-        component={AddTeam}
-      />
-      <Stack.Screen
-        name="EditTeam"
-        component={EditTeam}
-      />
+      <Stack.Screen name="MisSeguidos" component={MyFollows} />
+      <Stack.Screen name="AddTeam" component={AddTeam} />
+      <Stack.Screen name="EditTeam" component={EditTeam} />
       <Stack.Screen
         name="Login"
         component={Login}
@@ -237,7 +233,8 @@ function StackNavigation() {
         component={Register}
         options={{ headerTitle: "" }}
       />
-      
+
+
       <Stack.Screen
         name="Onboarding"
         options={{ headerShown: false }}
@@ -338,24 +335,37 @@ function CustomDrawerContent({ props }) {
                 </Text>
               </TouchableOpacity>
 
-            <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-            onPress={() =>
-                navigation.navigate("MisTorneos", {
-                  id: user.id,
-                  username: user.username,
-                })
-              }>
-              <View className="flex items-center justify-center w-5">
-                <MaterialCommunityIcons
-                  name="tournament"
-                  size={20}
-                  color="#fff"
-                />
-              </View>
-              <Text className="text-white font-bold text-base">
-                Mis Torneos
-              </Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                onPress={() =>
+                  navigation.navigate("MisTorneos", {
+                    id: user.id,
+                    username: user.username,
+                  })
+                }
+              >
+                <View className="flex items-center justify-center w-5">
+                  <MaterialCommunityIcons
+                    name="tournament"
+                    size={20}
+                    color="#fff"
+                  />
+                </View>
+                <Text className="text-white font-bold text-base">
+                  Mis Torneos
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                onPress={() => navigation.navigate("MisSeguidos")}
+              >
+                <View className="flex items-center justify-center w-5">
+                  <FontAwesome name="star" size={20} color="#fff" />
+                </View>
+                <Text className="text-white font-bold text-base">
+                  Torneos Seguidos
+                </Text>
+              </TouchableOpacity>
 
               <TouchableOpacity 
                 onPress={() => navigation.navigate("Preguntas")}
