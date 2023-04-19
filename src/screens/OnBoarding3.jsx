@@ -1,10 +1,9 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { Octicons } from "@expo/vector-icons";
 
-export const OnBoarding3 = () => {
+export const OnBoarding3 = ({leave}) => {
   const { colors } = useTheme();
-  const navigate = useNavigation();
 
   return (
     <View
@@ -37,7 +36,7 @@ export const OnBoarding3 = () => {
       <TouchableOpacity
         style={{ backgroundColor: colors.accentColor, elevation: 6 }}
         className="self-center w-36 h-11 justify-center items-center rounded-md m-10"
-        onPress={() => navigation.navigate("Inicio")}
+        onPress={() => leave()}
       >
         <Text className="text-xl font-medium">Continuar</Text>
       </TouchableOpacity>

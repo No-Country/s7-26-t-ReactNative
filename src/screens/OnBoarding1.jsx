@@ -3,9 +3,8 @@ import { useNavigation, useTheme } from "@react-navigation/native";
 import { OnBoarding2 } from "./OnBoarding2";
 import { Octicons } from "@expo/vector-icons";
 
-export const OnBoarding1 = () => {
+export const OnBoarding1 = ({screen}) => {
   const { colors } = useTheme();
-  const navigate = useNavigation();
 
   return (
     <View
@@ -37,7 +36,7 @@ export const OnBoarding1 = () => {
       <TouchableOpacity
         style={{ backgroundColor: colors.accentColor, elevation: 6 }}
         className="self-center w-36 h-11 justify-center items-center rounded-md m-10"
-        onPress={() => navigation.navigate("OnBoarding2")}
+        onPress={() => screen(2)}
       >
         <Text className="text-xl font-medium">Continuar</Text>
       </TouchableOpacity>
