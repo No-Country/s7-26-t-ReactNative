@@ -220,7 +220,9 @@ function StackNavigation() {
         component={MyTournaments}
         id={(params) => params.id}
       />
+
       <Stack.Screen name="MisSeguidos" component={MyFollows} />
+
       <Stack.Screen name="AddTeam" component={AddTeam} />
       <Stack.Screen name="EditTeam" component={EditTeam} />
       <Stack.Screen
@@ -234,13 +236,11 @@ function StackNavigation() {
         options={{ headerTitle: "" }}
       />
 
-
       <Stack.Screen
         name="Onboarding"
         options={{ headerShown: false }}
         component={Onboarding}
       />
-
       <Stack.Screen name="MiPerfil" component={Profile} />
 
       <Stack.Screen name="Nosotros" component={AboutUs} />
@@ -261,80 +261,64 @@ function CustomDrawerContent({ props }) {
   return (
     <DrawerContentScrollView {...props}>
       <ScrollView className="h-screen">
-      <View className="flex justify-between h-full pb-4">
-        <View className="flex justify-between items-center">
-          {user ? (
-            <View className="flex w-full items-center mb-[3vh]">
-              <View className="mx-auto p-4 flex items-center gap-y-4 w-full">
-                {user?.photo ? (
-                  <Image
-                    resizeMode="contain"
-                    style={{
-                      height: 80,
-                      width: 80,
-                      borderRadius: 100,
-                      marginBottom: -10,
-                    }}
-                    source={{
-                      uri: user?.photo,
-                    }}
-                  />
-                ) : (
-                  <FontAwesome name="user-circle" size={60} color="#fff" />
-                )}
+        <View className="flex justify-between h-full pb-4">
+          <View className="flex justify-between items-center">
+            {user ? (
+              <View className="flex w-full items-center mb-[3vh]">
+                <View className="mx-auto p-4 flex items-center gap-y-4 w-full">
+                  {user?.photo ? (
+                    <Image
+                      resizeMode="contain"
+                      style={{
+                        height: 80,
+                        width: 80,
+                        borderRadius: 100,
+                        marginBottom: -10,
+                      }}
+                      source={{
+                        uri: user?.photo,
+                      }}
+                    />
+                  ) : (
+                    <FontAwesome name="user-circle" size={60} color="#fff" />
+                  )}
 
-                <Text className="font-bold text-lg text-white text-center">
-                  {user.username}
-                </Text>
-              </View>
-
-              <TouchableOpacity
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-                onPress={() => {
-                  navigation.reset({
-                    index: 0,
-                    routes: [{ name: "Index" }],
-                  });
-                }}
-              >
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="home" size={20} color="#fff" />
+                  <Text className="font-bold text-lg text-white text-center">
+                    {user.username}
+                  </Text>
                 </View>
-                <Text className="text-white font-bold text-base">Inicio</Text>
-              </TouchableOpacity>
 
-              <TouchableOpacity
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-                onPress={() =>
-                  navigation.navigate("MiPerfil", {
-                    username: user.username,
-                  })
-                }
-              >
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="user" size={20} color="#fff" />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Mi Perfil
-                </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                  onPress={() => {
+                    navigation.reset({
+                      index: 0,
+                      routes: [{ name: "Index" }],
+                    });
+                  }}
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="home" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">Inicio</Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-                onPress={() =>
-                  navigation.navigate("CrearTorneo", {
-                    username: user.username,
-                  })
-                }
-              >
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="trophy" size={20} color="#fff" />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Crear Torneo
-                </Text>
-              </TouchableOpacity>
-
+                <TouchableOpacity
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                  onPress={() =>
+                    navigation.navigate("MiPerfil", {
+                      username: user.username,
+                    })
+                  }
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="user" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Mi Perfil
+                  </Text>
+                </TouchableOpacity>
+                
               <TouchableOpacity
                 className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
                 onPress={() =>
@@ -367,100 +351,140 @@ function CustomDrawerContent({ props }) {
                 </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity 
-                onPress={() => navigation.navigate("Preguntas")}
-                className="py-2.5 pl-6 w-full bg-white/5 mt-4 border-t border-t-slate-700/25 flex flex-row items-center gap-x-2">
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="question" size={20} color="#fff" />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Preguntas Frecuentes
-                </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                  onPress={() =>
+                    navigation.navigate("CrearTorneo", {
+                      username: user.username,
+                    })
+                  }
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="trophy" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Crear Torneo
+                  </Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity 
-                onPress={() => navigation.navigate("Privacidad")}
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="book" size={20} color="#fff" />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Politicas de Privacidad
-                </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                  onPress={() =>
+                    navigation.navigate("MisTorneos", {
+                      id: user.id,
+                      username: user.username,
+                    })
+                  }
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <MaterialCommunityIcons
+                      name="tournament"
+                      size={20}
+                      color="#fff"
+                    />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Mis Torneos
+                  </Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity 
-                onPress={() => navigation.navigate("Terminos")}
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="list-alt" size={20} color="#fff" />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Terminos y Condiciones
-                </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Preguntas")}
+                  className="py-2.5 pl-6 w-full bg-white/5 mt-4 border-t border-t-slate-700/25 flex flex-row items-center gap-x-2"
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="question" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Preguntas Frecuentes
+                  </Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity 
-                onPress={() => navigation.navigate("Nosotros")}
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-              >
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="group" size={20} color="#fff" />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Sobre Nosotros
-                </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Privacidad")}
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="book" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Politicas de Privacidad
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Terminos")}
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="list-alt" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Terminos y Condiciones
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Nosotros")}
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="group" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Sobre Nosotros
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ) : undefined}
+
+            <View className="flex flex-col gap-y-4 items-center my-2">
+              {!user?.email ? (
+                <>
+                  <TouchableOpacity
+                    className="p-3 rounded-md bg-white/5 border-b border-b-slate-700/25 flex items-center flex-row gap-x-0.5 w-40 justify-center"
+                    onPress={() => navigation.navigate("Login")}
+                  >
+                    <View className="flex items-center justify-center w-5">
+                      <FontAwesome name="sign-in" size={20} color="#fff" />
+                    </View>
+                    <Text className="text-white font-bold text-center text-base">
+                      Iniciar Sesion
+                    </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    className="p-3 rounded-md bg-white/5 border-b border-b-slate-700/25 flex items-center flex-row gap-x-0.5 w-40 justify-center"
+                    onPress={() => navigation.navigate("Register")}
+                  >
+                    <View className="flex items-center justify-center w-5">
+                      <AntDesign name="addusergroup" size={20} color="#fff" />
+                    </View>
+                    <Text className="text-white font-bold text-center text-base">
+                      Registrate
+                    </Text>
+                  </TouchableOpacity>
+                </>
+              ) : undefined}
             </View>
-          ) : undefined}
+          </View>
 
-          <View className="flex flex-col gap-y-4 items-center my-2">
-            {!user?.email ? (
-              <>
-                <TouchableOpacity
-                  className="p-3 rounded-md bg-white/5 border-b border-b-slate-700/25 flex items-center flex-row gap-x-0.5 w-40 justify-center"
-                  onPress={() => navigation.navigate("Login")}
-                >
-                  <View className="flex items-center justify-center w-5">
-                    <FontAwesome name="sign-in" size={20} color="#fff" />
-                  </View>
-                  <Text className="text-white font-bold text-center text-base">
-                    Iniciar Sesion
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  className="p-3 rounded-md bg-white/5 border-b border-b-slate-700/25 flex items-center flex-row gap-x-0.5 w-40 justify-center"
-                  onPress={() => navigation.navigate("Register")}
-                >
-                  <View className="flex items-center justify-center w-5">
-                    <AntDesign name="addusergroup" size={20} color="#fff" />
-                  </View>
-                  <Text className="text-white font-bold text-center text-base">
-                    Registrate
-                  </Text>
-                </TouchableOpacity>
-              </>
+          <View>
+            {user ? (
+              <TouchableOpacity
+                className="p-3 rounded-md flex items-center flex-row self-center gap-x-2"
+                onPress={() => logOut()}
+              >
+                <Text className="text-[#FFC107] font-bold text-center text-base border-b border-b-[#FFC107] ">
+                  Cerrar Sesion
+                </Text>
+                <View className="flex items-center justify-center">
+                  <FontAwesome name="sign-out" size={24} color="#FFC107" />
+                </View>
+              </TouchableOpacity>
             ) : undefined}
           </View>
         </View>
-
-        <View>
-          {user ? (
-            <TouchableOpacity
-              className="p-3 rounded-md flex items-center flex-row self-center gap-x-2"
-              onPress={() => logOut()}
-            >
-              <Text className="text-[#FFC107] font-bold text-center text-base border-b border-b-[#FFC107] ">
-                Cerrar Sesion
-              </Text>
-              <View className="flex items-center justify-center">
-                <FontAwesome name="sign-out" size={24} color="#FFC107" />
-              </View>
-            </TouchableOpacity>
-          ) : undefined}
-        </View>
-      </View>
       </ScrollView>
     </DrawerContentScrollView>
   );
