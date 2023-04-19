@@ -1,11 +1,10 @@
 <div align="center">
 
+![logotorneopalooza](https://user-images.githubusercontent.com/87555292/233217179-964e9c39-f200-493d-8b9a-c8e6de7bb223.png)
 
-![logotorneopalooza](https://user-images.githubusercontent.com/87555292/233204533-169ae838-1278-4cfd-8e6e-2462e05246ae.png)
+<img src="https://i.ibb.co/wpHjQtq/torneopalooza-mockup.png" width="50%">
 
-
-
-  <p>con <b>TorneoPalooza</b> vas a poder ver, crear y administrar torneos del deporte o e-sport que mas te guste.</p>
+ <p>con <b>TorneoPalooza</b> vas a poder ver, crear y administrar torneos del deporte o e-sport que mas te guste.</p>
 
 <a href="https://expo.dev/@ezequielmatiasb/tournament-app?serviceType=classic&distribution=expo-go">🚀 Deploy Expo </a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -18,7 +17,7 @@
 
 ## 🦾 Tech utilizada
 
-Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://expo.dev/) en conjunto con [**NodeJS**](https://nativewind.dev/) + [**Firebase**](https://firebase.google.com/) para el  **backend** y **bases de datos**.
+Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://expo.dev/) en conjunto con [**Nativewind**](https://nativewind.dev/)(Tailwind) + [**Firebase**](https://firebase.google.com/) para el  **backend** y **bases de datos**.
 
 DEPENDENCIAS / APPS:   
 
