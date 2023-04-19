@@ -131,11 +131,11 @@ const CreateTournament = ({ navigation, route }) => {
 
       <KeyboardAvoidingView
         behavior="padding"
-        className="flex justify-center items-center w-[80%] my-5 h-full mx-auto"
+        className={`flex justify-center items-center px-[10%] w-full h-full mx-auto bg-[${colors.card}]`}
         keyboardVerticalOffset={Platform.select({
-          ios: () => 30,
-          android: () => 30,
-          web: () => 30,
+          ios: () => 100,
+          android: () => 100,
+          web: () => 100,
         })()}
       >
         <Formik
@@ -176,7 +176,7 @@ const CreateTournament = ({ navigation, route }) => {
               />
 
               {errors.nombre && touched.nombre && (
-                <Text className="text-rose-600 mb-2">{errors.nombre}</Text>
+                <Text className="text-yellow-400 mb-2">{errors.nombre}</Text>
               )}
 
               <Text className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white">
@@ -283,7 +283,7 @@ const CreateTournament = ({ navigation, route }) => {
               />
 
               {errors.descripcion && touched.descripcion && (
-                <Text className="text-rose-600 mb-2">{errors.descripcion}</Text>
+                <Text className="text-yellow-400 mb-2">{errors.descripcion}</Text>
               )}
 
               <TouchableOpacity

@@ -109,7 +109,7 @@ const AddTeam = ({ navigation, route }) => {
             errors,
             touched,
           }) => (
-            <View className="w-full flex gap-y-1">
+            <View className="w-full flex gap-y-4">
               {imagen ? (
                 <Image
                   source={{ uri: imagen }}
@@ -121,7 +121,7 @@ const AddTeam = ({ navigation, route }) => {
                   <FontAwesome name="file-picture-o" size={100} color="#fff" />
                 </View>
               )}
-              <Text className="mr-auto text-base font-semibold opacity-70 text-white">
+              <Text className="mr-auto text-base font-semibold opacity-70 text-gray-600">
                 Nombre
               </Text>
               <TextInput
@@ -137,10 +137,10 @@ const AddTeam = ({ navigation, route }) => {
                 <Text className="text-rose-600 mb-2">{errors.nombre}</Text>
               )}
 
-              <Text className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-white">
+              <Text className="mr-auto text-base font-semibold opacity-70 -mb-0.5 text-gray-600">
                 Foto
               </Text>
-              <View className="flex">
+              <View className="flex mb-16">
                 <TouchableOpacity
                   onPress={pickImage}
                   style={{ height: 44, marginBottom: 4 }}
@@ -154,10 +154,10 @@ const AddTeam = ({ navigation, route }) => {
 
               <TouchableOpacity
                 style={{ backgroundColor: colors.accentColor }}
-                className="p-3 rounded-md mb-3 text-white"
-                onPress={() => handleSubmit()}
+                className="p-3 rounded-md mb-3 "
+                onPress={handleSubmit}
               >
-                <Text className="text-white font-bold text-center text-base">
+                <Text className="text-black font-bold text-center text-base">
                   Agregar Equipo
                 </Text>
               </TouchableOpacity>

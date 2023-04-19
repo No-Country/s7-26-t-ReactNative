@@ -7,7 +7,7 @@ export default function TournamentDetails({ item }) {
   const { colors } = useTheme();
   const [saved, setSaved] = useState(false);
   return (
-    <View className="flex justify-center items-center bg-purple-400 w-full h-auto p-2 text-center ">
+    <View className="flex justify-center items-center w-full p-4 text-center bg-white rounded-xl">
       {item.imagen ? (
         <Image
           className="w-20 h-20 rounded-full "
@@ -24,10 +24,11 @@ export default function TournamentDetails({ item }) {
 
       <View className="flex flex-row justify-center items-center">
         <Text
-          style={{ color: colors.text }}
+          style={{ color: colors.primaryText }}
           className="text-2xl font-bold my-2 "
         >
-          {item.nombre}{" "}
+          {item.nombre}
+          {"  "}
         </Text>
         <Text className="text-xs italic bg-indigo-600 text-white px-2 py-1 rounded-md">
           {item.deporte}
@@ -37,7 +38,8 @@ export default function TournamentDetails({ item }) {
         {item.descripcion}
       </Text>
       <TouchableOpacity
-        className="flex flex-row gap-x-4 my-4 px-4 py-2 bg-yellow-500 rounded-md "
+        className={"flex flex-row gap-x-4 my-4 px-4 py-2 rounded-md "}
+        style={{backgroundColor: colors.accentColor}}
         onPress={() => setSaved(!saved)}
       >
         <Text>Seguir</Text>

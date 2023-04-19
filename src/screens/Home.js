@@ -36,7 +36,7 @@ function Home() {
 
   return (
     <ScrollView
-      className="h-full p-4"
+      className="h-full px-4"
       style={{
         backgroundColor: sportsScreen ? colors.background : colors.primaryColor,
       }}
@@ -67,7 +67,7 @@ function Home() {
                   className={
                     "text-lg font-bold border-b-2 " +
                     (sportsScreen
-                      ? "text-black  border-indigo-600"
+                      ? "text-black border-b-indigo-600"
                       : "text-white/50 border-transparent")
                   }
                 >

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Button,
   Platform,
+  ScrollView,
   Pressable
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
@@ -82,15 +83,15 @@ export default function Register({ navigation }) {
   }
 
   return (
-    <View className= {`bg-[${colors.primaryColor}] flex h-full`}>
+    <ScrollView className= {`bg-[${colors.primaryColor}] flex pt-6 h-full`}>
       <View className="z-10">
         <Toast config={toastConfig} />
       </View>
 
       <KeyboardAvoidingView
-       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        className="flex justify-center items-center w-[280] h-full mx-auto"
-      
+       behavior='position'
+       keyboardVerticalOffset={-160}
+      className="flex justify-center items-center w-[280] h-full mx-auto"      
       >
         <Formik
           initialValues={{ username: "", email: "", password: "" }}
@@ -121,7 +122,7 @@ export default function Register({ navigation }) {
                   Nombre
                 </Text>
                 <TextInput
-                  className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
+                  className="border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
                   onChangeText={handleChange("username")}
                   onBlur={handleBlur("username")}
                   value={values.name}
@@ -134,12 +135,12 @@ export default function Register({ navigation }) {
                 )}
 
                 <Text
-                  className="mr-auto text-base font-semibold  text-black mt-4 "
+                  className="mr-auto text-base font-semibold  text-black mt-1 "
                 >
                   Email
                 </Text>
                 <TextInput
-                  className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
+                  className="border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-2 border-black/20 text-black"
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
                   value={values.email}
@@ -152,14 +153,14 @@ export default function Register({ navigation }) {
                 )}
 
                 <Text
-                  className="mr-auto text-base mt-4 font-semibold  text-black"
+                  className="mr-auto text-base mt-1 font-semibold  text-black"
                 >
                   Password
                 </Text>
                 <View className="w-full flex flex-row  content-center items-center">
 
                 <TextInput
-                  className="bg-white/10 border p-2 h-14 focus:border-indigo-600/50 w-11/12 rounded-md  border-black/20 text-black shadow-md"
+                  className="border p-2 h-14 focus:border-indigo-600/50 w-11/12 rounded-md  border-black/20 text-black"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}
                   value={values.password}
@@ -196,7 +197,7 @@ export default function Register({ navigation }) {
 
 
               <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text className="mt-4 text-sm font-bold text-white/90 -tracking-wider">
+                <Text className="mt-4 mb-10 text-sm font-bold text-white/90 -tracking-wider">
                   ¿Tenes cuenta? Inicia sesión acá
                 </Text>
               </TouchableOpacity>
@@ -204,6 +205,6 @@ export default function Register({ navigation }) {
           )}
         </Formik>
       </KeyboardAvoidingView>
-    </View>
+    </ScrollView>
   );
 }

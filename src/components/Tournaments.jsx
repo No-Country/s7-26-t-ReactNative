@@ -16,7 +16,7 @@ export default function Tournaments({ data, fromHome }) {
   }
 
   if (data.length == 0) {
-    return <Text className="text-white">No hay Torneos</Text>;
+    return <Text className="text-center font-bold pb-4 text-xl">No hay Torneos</Text>;
   }
 
   return (

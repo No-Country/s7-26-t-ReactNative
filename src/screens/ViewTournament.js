@@ -1,5 +1,5 @@
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { getTournament, getTournamentTeams } from "../firebase/getFunctions";
 import TournamentDetails from "../components/TournamentDetails";
 import { ordenarPorPuntos } from "../utils";
@@ -35,7 +35,7 @@ const ViewTournament = ({ route }) => {
   }, [tournamentId])
 
   return (
-    <>
+    <ScrollView>
       <View className="flex justify-start gap-y-4 py-6 px-4 h-full">
         {loading ? (
           <Loader />
@@ -52,7 +52,7 @@ const ViewTournament = ({ route }) => {
           </>
         )}
       </View>
-    </>
+    </ScrollView>
   );
 };
 
