@@ -63,8 +63,12 @@ npm start
 
 ```
 
-👐 Involucrados en el proyecto:
+<span>&nbsp;&nbsp;&nbsp;</span>
 
+
+## :handshake: Involucrados en el proyecto 
+<div align="center">
+<span>&nbsp;&nbsp;&nbsp;</span>
 
 <a href="http://linkedin.com/in/alexander-mamani/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/AlexQS96" target="_blank">**Alexander Mamani**</a> | Front
 
@@ -78,6 +82,7 @@ npm start
 
 <a href="http://linkedin.com/in/cami-cataldi/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://linkedin.com/in/cami-cataldi" target="_blank">**Camila Cataldi**</a> | TL
 
+</div>
 
 ## 🎉 Deploy en Expo
 
