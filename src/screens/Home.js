@@ -67,7 +67,7 @@ function Home() {
                   className={
                     "text-lg font-bold border-b-2 " +
                     (sportsScreen
-                      ? "text-black  border-indigo-600"
+                      ? "text-black border-b-indigo-600"
                       : "text-white/50 border-transparent")
                   }
                 >

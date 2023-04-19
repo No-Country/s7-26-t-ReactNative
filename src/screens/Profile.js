@@ -110,7 +110,7 @@ export default function Profile({navigation}){
       web: () => -120
     })()}
     >
-    <ScrollView className="h-full">
+    <ScrollView className="h-full bg-[#673AB7]">
       <Formik
         initialValues={{ username: user.username, email: user.email, telefono: user.telefono, twitter: user?.twitter }}
         onSubmit={handleSubmit}
@@ -206,27 +206,9 @@ export default function Profile({navigation}){
               <Text className="text-4xl text-white font-semibold mt-3">{user.username}</Text>
             }
           </View>
-  
-          <View className="flex flex-row justify-around py-4 w-[90%] mx-auto bg-black/30 rounded-lg">
-            <View className="flex items-center">
-              <Text className="text-2xl font-bold text-white">28</Text>
-              <Text className="text-base font-medium text-white">Equipos</Text>
-            </View>
-            
-            <View className="flex items-center">
-              <Text className="text-2xl font-bold text-white">2</Text>
-              <Text className="text-base font-medium text-white">Torneos</Text>
-            </View>
-  
-            <View className="flex items-center">
-              <Text className="text-2xl font-bold text-white">4</Text>
-              <Text className="text-base font-medium text-white">Deportes</Text>
-            </View>
-  
-          </View>
-  
+
           <View className="px-[7.5%]">
-            <Text className="text-3xl text-white font-semibold mb-4 tracking-widest">Contacto</Text>
+            <Text className="text-3xl text-white font-bold mb-4 tracking-widest">Social</Text>
   
             <View className="flex flex-row items-center gap-x-2 mb-2 bg-white/5 py-3 px-2 rounded-lg">
               <View className="w-[24] items-center -mb-0.5">
