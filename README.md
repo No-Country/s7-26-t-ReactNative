@@ -78,7 +78,7 @@ npm start
 
  [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/mariana-camisasca/) [**Mariana Camisasca**](https://www.behance.net/mcamisasca) | UI/UX
 
-
+ [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/cami-cataldi/) [**Camila Cataldi**](https://linkedin.com/in/cami-cataldi) | Team Leader
 
 
 ## 🎉 Deploy en Expo
