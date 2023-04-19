@@ -38,9 +38,6 @@ import { RootColors } from "../theme.js";
 import Profile from "../screens/Profile";
 import { Torneopalooza } from "../components/icons";
 import MyTournaments from "../screens/MyTournaments";
-import { OnBoarding1 } from "../screens/OnBoarding1";
-import { OnBoarding2 } from "../screens/OnBoarding2";
-import { OnBoarding3 } from "../screens/OnBoarding3";
 import TournamentDetails from "../components/TournamentDetails";
 import AboutUs from "../screens/AboutUs";
 import Privacy from "../screens/Privacy";
@@ -234,23 +231,6 @@ function StackNavigation() {
         component={Register}
         options={{ headerTitle: "" }}
       />
-      <Stack.Screen
-        name="OnBoarding1"
-        options={{ headerShown: false }}
-        component={OnBoarding1}
-      />
-
-      <Stack.Screen
-        name="OnBoarding2"
-        options={{ headerShown: false }}
-        component={OnBoarding2}
-      />
-      <Stack.Screen
-        name="OnBoarding3"
-        options={{ headerShown: false }}
-        component={OnBoarding3}
-      />
-
       <Stack.Screen name="MiPerfil" component={Profile} />
 
       <Stack.Screen name="Nosotros" component={AboutUs} />
