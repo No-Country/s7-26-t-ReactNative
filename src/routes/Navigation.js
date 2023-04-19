@@ -42,6 +42,7 @@ import TournamentDetails from "../components/TournamentDetails";
 import AboutUs from "../screens/AboutUs";
 import Privacy from "../screens/Privacy";
 import Terms from "../screens/Terms";
+import QA from "../screens/QA";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -250,6 +251,8 @@ function StackNavigation() {
       <Stack.Screen name="Privacidad" component={Privacy} />
 
       <Stack.Screen name="Terminos" component={Terms} />
+
+      <Stack.Screen name="Preguntas" component={QA} />
     </Stack.Navigator>
   );
 }
