@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "Torneopalooza",
+    "slug": "torneopalooza-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "¿Deseas permitir que Torneopalooza acceda a tu ubicación?."
+        }
+      ]
+    ],
+    "ios": {
+      "userInterfaceStyle": "automatic",
+      "supportsTablet": true
+    },
+    "android": {
+      "userInterfaceStyle": "automatic",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "newsKey": "YOUR_API_KEY_NEWS",
+      "geoKey": "YOUR_API_KEY_GOOGLE_MAPS",
+      "apiKey": "YOUR_API_KEY_FIREBASE",
+      "authDomain": "YOUR_API_KEY_FIREBASE",
+      "projectId": "YOUR_API_KEY_FIREBASE",
+      "storageBucket": "YOUR_API_KEY_FIREBASE",
+      "messagingSenderId": "YOUR_API_KEY_FIREBASE",
+      "appId": "YOUR_API_KEY_FIREBASE"
+    }
+  }
+}
