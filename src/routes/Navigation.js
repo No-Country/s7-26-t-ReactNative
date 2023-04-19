@@ -38,6 +38,10 @@ import {RootColors} from '../theme.js'
 import Profile from "../screens/Profile";
 import { Torneopalooza } from "../components/icons";
 import MyTournaments from "../screens/MyTournaments";
+import TournamentDetails from "../components/TournamentDetails";
+import AboutUs from "../screens/AboutUs";
+import Privacy from "../screens/Privacy";
+import Terms from "../screens/Terms";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -82,7 +86,7 @@ function BottomNavigation({}) {
             />
           ),
           headerTitle: () => (
-            <Torneopalooza width={146} height={45} color={colors.accentColor} />
+            <Torneopalooza width={100} height={30} color={colors.accentColor} />
           ),
         }}
       >
@@ -232,8 +236,7 @@ function StackNavigation() {
         component={Register}
         options={{ headerTitle: "" }}
       />
-
-
+      
       <Stack.Screen
         name="Onboarding"
         options={{ headerShown: false }}
@@ -241,6 +244,12 @@ function StackNavigation() {
       />
 
       <Stack.Screen name="MiPerfil" component={Profile} />
+
+      <Stack.Screen name="Nosotros" component={AboutUs} />
+
+      <Stack.Screen name="Privacidad" component={Privacy} />
+
+      <Stack.Screen name="Terminos" component={Terms} />
     </Stack.Navigator>
   );
 }
@@ -251,7 +260,7 @@ function CustomDrawerContent({ props }) {
 
   return (
     <DrawerContentScrollView {...props}>
-      <View className="flex justify-between h-screen pb-4">
+      <View className="flex justify-between h-[90vh] pb-4">
         <View className="flex justify-between items-center">
           {user ? (
             <View className="flex w-full items-center mb-[3vh]">
@@ -344,7 +353,9 @@ function CustomDrawerContent({ props }) {
               </Text>
             </TouchableOpacity>
 
-              <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 mt-4 border-t border-t-slate-700/25 flex flex-row items-center gap-x-2">
+              <TouchableOpacity 
+                onPress={() => navigation.navigate("Preguntas")}
+                className="py-2.5 pl-6 w-full bg-white/5 mt-4 border-t border-t-slate-700/25 flex flex-row items-center gap-x-2">
                 <View className="flex items-center justify-center w-5">
                   <FontAwesome name="question" size={20} color="#fff" />
                 </View>
@@ -353,7 +364,9 @@ function CustomDrawerContent({ props }) {
                 </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
+              <TouchableOpacity 
+                onPress={() => navigation.navigate("Privacidad")}
+                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
                 <View className="flex items-center justify-center w-5">
                   <FontAwesome name="book" size={20} color="#fff" />
                 </View>
@@ -362,7 +375,9 @@ function CustomDrawerContent({ props }) {
                 </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
+              <TouchableOpacity 
+                onPress={() => navigation.navigate("Terminos")}
+                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
                 <View className="flex items-center justify-center w-5">
                   <FontAwesome name="list-alt" size={20} color="#fff" />
                 </View>
@@ -371,7 +386,10 @@ function CustomDrawerContent({ props }) {
                 </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center">
+              <TouchableOpacity 
+                onPress={() => navigation.navigate("Nosotros")}
+                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+              >
                 <View className="flex items-center justify-center w-5">
                   <FontAwesome name="group" size={20} color="#fff" />
                 </View>
