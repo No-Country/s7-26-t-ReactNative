@@ -17,7 +17,7 @@
 
 ## 🦾 Tech utilizada
 
-Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://expo.dev/) en conjunto con [**Nativewind**](https://nativewind.dev/)(Tailwind) + [**Firebase**](https://firebase.google.com/) para el  **backend** y **bases de datos**.
+Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://expo.dev/) en conjunto con [**Nativewind**](https://nativewind.dev/) (Tailwind) + [**Firebase**](https://firebase.google.com/) para el  **backend** y **bases de datos**.
 
 DEPENDENCIAS / APPS:   
 
