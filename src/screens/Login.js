@@ -87,7 +87,7 @@ export default function Login({ navigation }) {
                   Email
                 </Text>
                 <TextInput
-                  className="bg-white/10 border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-6 border-black/20 text-black shadow-md"
+                  className="border py-3 px-4 focus:border-indigo-600/50 w-full rounded-md mb-3 border-black/20 text-black"
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
                   value={values.email}
@@ -106,7 +106,7 @@ export default function Login({ navigation }) {
                 <View className="w-full flex flex-row  content-center items-center">
 
                 <TextInput
-                  className="bg-white/10 border p-2 h-14 focus:border-indigo-600/50 w-11/12 rounded-md  border-black/20 text-black shadow-md"
+                  className=" border p-2 h-14 focus:border-indigo-600/50 w-11/12 mb-3 rounded-md  border-black/20 text-black"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}
                   value={values.password}

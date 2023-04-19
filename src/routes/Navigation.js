@@ -27,7 +27,7 @@ import Teams from "../screens/Teams";
 import Stats from "../screens/Stats";
 import Fixture from "../screens/Fixture";
 import Register from "../screens/Register";
-import { Button, Image, Text, View, TouchableOpacity } from "react-native";
+import { ScrollView, Image, Text, View, TouchableOpacity } from "react-native";
 import { logOut } from "../firebase/auth";
 import CreateTournament from "../screens/CreateTournament";
 import ViewTournament from "../screens/ViewTournament";
@@ -263,7 +263,8 @@ function CustomDrawerContent({ props }) {
 
   return (
     <DrawerContentScrollView {...props}>
-      <View className="flex justify-between h-[90vh] pb-4">
+      <ScrollView className="h-screen">
+      <View className="flex justify-between h-full pb-4">
         <View className="flex justify-between items-center">
           {user ? (
             <View className="flex w-full items-center mb-[3vh]">
@@ -450,6 +451,7 @@ function CustomDrawerContent({ props }) {
           ) : undefined}
         </View>
       </View>
+      </ScrollView>
     </DrawerContentScrollView>
   );
 }

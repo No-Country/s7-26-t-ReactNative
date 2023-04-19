@@ -97,7 +97,7 @@ export const SearchBar = ({ setPartidos }) => {
   };
 
   return (
-    <View className=" mt-4 flex w-full flex-row justify-around content-center items-center ">
+    <View className="rounded-lg overflow-hidden mt-4 flex w-full flex-row justify-around content-center items-center ">
       <Searchbar
         className="rounded-lg"
         placeholder={"Buscar"}
@@ -110,7 +110,7 @@ export const SearchBar = ({ setPartidos }) => {
         icon={() => <FontAwesome name="search" size={18} color={"grey"} />}
       />
       <TouchableOpacity
-        className="p-2 w-24  h-10 rounded-lg"
+        className="p-2 w-24 ml-4 h-10 rounded-lg"
         onPress={filterSelected}
         style={{ backgroundColor: colors.accentColor }}
       >
