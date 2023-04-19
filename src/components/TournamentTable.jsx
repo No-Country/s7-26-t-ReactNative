@@ -12,7 +12,7 @@ export default function TournamenTable({ teams }) {
               <>
                 <TableHeader />
                 {teams.map((team, index) => (
-                  <TableRow team={team} index={index} />
+                  <TableRow team={team} index={index} key={team.id}/>
                 ))}
               </>
             ) : (
@@ -84,10 +84,9 @@ function TableRow({ index, team }) {
           index % 2 ? colors.secondaryText : colors.dividerColor
         }`,
       }}
-      key={team.id}
     >
       <Text className="text-white w-12 text-center">{index + 1}º</Text>
-      <View className="w-40 flex-row items-center">
+      <View className="w-40 flex-row items-center" >
         <Image source={{ uri: team.imagen }} className="w-8 h-8 rounded-full" />
         <Text className="text-white ml-2">{team.nombre}</Text>
       </View>
