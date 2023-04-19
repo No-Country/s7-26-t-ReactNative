@@ -33,7 +33,7 @@ export default function Teams() {
         ) : (
           <>
             <View className="w-full h-30 items-center py-4">
-              <Text style={{ color: colors.textIcons }} className="text-base ">
+              <Text style={{ color: colors.primaryText }} className="text-xl py-4">
                 {teams.length > 0 ? "Equipos competidores:" : "No hay equipos"}
               </Text>
             </View>

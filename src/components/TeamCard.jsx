@@ -10,12 +10,11 @@ export default function TeamCard({ team, tournamentId, createdBy }) {
   const { colors } = useTheme();
   return (
     <TouchableOpacity
-      className={"flex p-2 px-3 m-2 rounded-lg w-36 h-30"}
-      style={{ backgroundColor: colors.lightPrimary }}
+      className={"flex p-2 px-3 m-2 rounded-lg w-36 h-30 relative"}
+      style={{ backgroundColor: colors.primaryColor }}
     >
       <TouchableOpacity
         className="self-end z-10 w-5 h-5"
-        onPress={() => console.log("Presss + " + team.nombre)}
       >
         <MiniMenu
           teamId={team.id}
@@ -38,7 +37,7 @@ export default function TeamCard({ team, tournamentId, createdBy }) {
           />
         )}
         <TextTicker
-          className=" text-md my-1" style={{ color: colors.primaryText }}
+          className="text-md my-1 text-white "
           duration={3500}
           loop
           bounce

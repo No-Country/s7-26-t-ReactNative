@@ -232,11 +232,7 @@ function StackNavigation() {
         component={Register}
         options={{ headerTitle: "" }}
       />
-      <Stack.Screen
-        name="Tournament"
-        options={{ headerShown: false }}
-        component={Tournament}
-      />
+
 
       <Stack.Screen
         name="Onboarding"

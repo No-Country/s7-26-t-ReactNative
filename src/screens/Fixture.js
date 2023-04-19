@@ -13,7 +13,7 @@ export default function Fixture({ route }) {
   const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState([]);
   const [fixture, setFixture] = useState([]);
-  const { dark, colors } = useTheme();
+  const { colors } = useTheme();
   const { user, tournamentId, createdBy } = useContext(UserContext);
   const [confirm, setConfirm] = useState(false);
 
@@ -68,7 +68,7 @@ export default function Fixture({ route }) {
               <ScrollView className="w-full py-2">
                 {fixture.map((partido, index) => (
                   <View
-                    className={"flex p-4 px-3 my-1 rounded-md w-[90%] mx-auto "}
+                    className="flex p-4 px-3 my-2 rounded-md w-[90%] mx-auto "
                     style={{ backgroundColor: colors.primaryText }}
                     key={index}
                   >
@@ -76,15 +76,24 @@ export default function Fixture({ route }) {
                       Fecha: {partido.round}
                     </Text>
                     <View className="flex-row justify-between py-1 ">
-                      <Text className="text-white w-[40%] text-center">
-                        {partido.player1}
-                      </Text>
-                      <Text className="text-yellow-600 w-[20%] text-center">
+                      <View className="w-[40%] py-2">
+                        <Text className="text-white text-center">
+                          {partido.player1}
+                        </Text>
+                        <Text className="text-white text-center">-</Text>
+                      </View>
+                      <Text
+                        className="w-[20%] text-center py-2"
+                        style={{ color: colors.accentColor }}
+                      >
                         vs
                       </Text>
-                      <Text className="text-white w-[40%] text-center">
-                        {partido.player2}
-                      </Text>
+                      <View className="w-[40%] py-2">
+                        <Text className="text-white text-center">
+                          {partido.player2}
+                        </Text>
+                        <Text className="text-white text-center">-</Text>
+                      </View>
                     </View>
                   </View>
                 ))}
