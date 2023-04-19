@@ -3,27 +3,28 @@ import React, { useContext } from "react";
 import { useTheme } from "@react-navigation/native";
 import MiniMenu from "./MiniMenu";
 import { UserContext } from "../context/UserContext";
-import TextTicker from 'react-native-text-ticker'
+import TextTicker from "react-native-text-ticker";
 
-export default function TeamCard({ team, tournamentId, createdBy }) {
-  /* const { user, tournamentId, createdBy } = useContext(UserContext); */
+export default function TeamCard({ team }) {
+  const { user, tournamentId, createdBy } = useContext(UserContext);
   const { colors } = useTheme();
   return (
     <TouchableOpacity
       className={"flex p-2 px-3 m-2 rounded-lg w-36 h-30 relative"}
       style={{ backgroundColor: colors.primaryColor }}
     >
-      <TouchableOpacity
-        className="self-end z-10 w-5 h-5"
-      >
-        <MiniMenu
-          teamId={team.id}
-          createdBy={createdBy}
-          tournamentId={tournamentId}
-          teamName={team.nombre}
-          teamImage={team.imagen}
-        />
-      </TouchableOpacity>
+      {user.id === createdBy ? (
+        <TouchableOpacity className="self-end z-10 w-5 h-5">
+          <MiniMenu
+            teamId={team.id}
+            createdBy={createdBy}
+            tournamentId={tournamentId}
+            teamName={team.nombre}
+            teamImage={team.imagen}
+          />
+        </TouchableOpacity>
+      ) : null}
+
       <View className="flex felx-col items-center space-y-4">
         {team.imagen ? (
           <Image
