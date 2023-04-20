@@ -95,7 +95,7 @@ npx expo start -c
 
 <a href="http://linkedin.com/in/mariana-camisasca/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://behance.net/mcamisasca" target="_blank">  <img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white" height="20px" margin="4px"/> </a> **Mariana Camisasca** | UX/UI
 
-<a href="http://linkedin.com/in/cami-cataldi/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a> <a href="http://linkedin.com/in/cami-cataldi" target="_blank"> **Camila Cataldi**</a> | TL
+<a href="http://linkedin.com/in/cami-cataldi/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a> **Camila Cataldi**</a> | TL
 
 
 ## 🎉 Deploy en Expo
