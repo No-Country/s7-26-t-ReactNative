@@ -24,7 +24,7 @@
 
 ## 🦾 Tech utilizada
 
-![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)  <img src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-adge&logo=react&logoColor=%2361DAFB" height="28px"/>   ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)   ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)   ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
+![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)  <img src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-adge&logo=react&logoColor=%2361DAFB" height="28px"/> <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" height="28px"/>   ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)   ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)   ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 <br/>
 Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://expo.dev/) en conjunto con [**Nativewind**](https://nativewind.dev/) (Tailwind) + [**Firebase**](https://firebase.google.com/) para el  **backend** y **bases de datos**.
 
@@ -76,17 +76,17 @@ npx expo start -c
 <div align="center">
 <span>&nbsp;&nbsp;&nbsp;</span>
 
-<a href="http://linkedin.com/in/alexander-mamani/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/AlexQS96" target="_blank">**Alexander Mamani**</a> | Front
+ <a href="http://linkedin.com/in/alexander-mamani/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="http://github.com/AlexQS96" target="_blank">**Alexander Mamani**</a> | Front
 
-<a href="http://linkedin.com/in/ezequiel-berretta/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/rretta" target="_blank">**Ezequiel Berretta**</a> | Front
+<a href="http://linkedin.com/in/ezequiel-berretta/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="http://github.com/rretta" target="_blank">**Ezequiel Berretta**</a> | Front
 
-<a href="http://linkedin.com/in/nico-radin/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/niicodeer" target="_blank">**Nicolás Radín**</a> | Front
+<a href="http://linkedin.com/in/nico-radin/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="http://github.com/niicodeer" target="_blank">**Nicolás Radín**</a> | Front
 
-<a href="http://linkedin.com/in/nicolas-roberto/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://github.com/nicolasroberto" target="_blank">**Nicolás Roberto**</a> | Front
+<a href="http://linkedin.com/in/nicolas-roberto/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="http://github.com/nicolasroberto" target="_blank">**Nicolás Roberto**</a> | Front
 
-<a href="http://linkedin.com/in/mariana-camisasca/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://behance.net/mcamisasca" target="_blank">**Mariana Camisasca**</a> | UX/UI
+<a href="http://linkedin.com/in/mariana-camisasca/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="http://behance.net/mcamisasca" target="_blank">**Mariana Camisasca**</a> | UX/UI
 
-<a href="http://linkedin.com/in/cami-cataldi/" target="_blank">![Linkedin](https://i.stack.imgur.com/gVE0j.png)</a> <a href="http://linkedin.com/in/cami-cataldi" target="_blank">**Camila Cataldi**</a> | TL
+<a href="http://linkedin.com/in/cami-cataldi/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="http://linkedin.com/in/cami-cataldi" target="_blank">**Camila Cataldi**</a> | TL
 
 </div>
 
