@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Platform,
   Image,
+  ScrollView,
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -131,7 +132,7 @@ const CreateTournament = ({ navigation, route }) => {
 
       <KeyboardAvoidingView
         behavior="padding"
-        className={`flex justify-center items-center px-[10%] w-full h-full mx-auto bg-[${colors.card}]`}
+        className={`flex pt-10 justify-center items-center px-[10%] w-full h-full mx-auto bg-[${colors.card}]`}
         keyboardVerticalOffset={Platform.select({
           ios: () => 100,
           android: () => 100,
@@ -288,7 +289,7 @@ const CreateTournament = ({ navigation, route }) => {
 
               <TouchableOpacity
                 style={{ backgroundColor: colors.accentColor }}
-                className="p-3 rounded-md mb-3 text-white"
+                className="p-3 rounded-md mb-10 text-white"
                 onPress={() => handleSubmit()}
               >
                 <Text className="text-white font-bold text-center text-base">
