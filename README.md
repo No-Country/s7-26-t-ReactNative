@@ -24,7 +24,7 @@
 
 ## 🦾 Tech utilizada
 
-![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)   ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-adge&logo=react&logoColor=%2361DAFB)   ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)   ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)   ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
+![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)  <img src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-adge&logo=react&logoColor=%2361DAFB" height="28px"/>   ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)   ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)   ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 <br/>
 Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://expo.dev/) en conjunto con [**Nativewind**](https://nativewind.dev/) (Tailwind) + [**Firebase**](https://firebase.google.com/) para el  **backend** y **bases de datos**.
 
