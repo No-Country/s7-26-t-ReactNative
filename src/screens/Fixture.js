@@ -50,8 +50,10 @@ export default function Fixture({ route }) {
   };
 
   useEffect(() => {
-    if (createdBy === user.id) {
-      setEditorMode(true)
+    if (createdBy) {
+      if (createdBy === user.id) {
+        setEditorMode(true)
+      } 
     }
 
     const data1 = getFixture(createdBy, tournamentId);
