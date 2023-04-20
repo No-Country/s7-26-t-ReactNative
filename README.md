@@ -85,15 +85,15 @@ npx expo start -c
 
 <span>&nbsp;&nbsp;&nbsp;</span>
 
- <a href="http://linkedin.com/in/alexander-mamani/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://github.com/AlexQS96" target="_blank"> **Alexander Mamani**</a> | Front
+ <a href="http://linkedin.com/in/alexander-mamani/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a>  <a href="http://github.com/AlexQS96" target="_blank">  <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" height="20px" margin="4px"/></a>  **Alexander Mamani** | Front
 
-<a href="http://linkedin.com/in/ezequiel-berretta/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://github.com/rretta" target="_blank"> **Ezequiel Berretta**</a> | Front
+<a href="http://linkedin.com/in/ezequiel-berretta/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://github.com/rretta" target="_blank">  <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" height="20px" margin="4px"/> </a> **Ezequiel Berretta** | Front
 
-<a href="http://linkedin.com/in/nico-radin/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a> <a href="http://github.com/niicodeer" target="_blank"> **Nicolás Radín**</a> | Front
+<a href="http://linkedin.com/in/nico-radin/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a> <a href="http://github.com/niicodeer" target="_blank">  <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" height="20px" margin="4px"/> </a> **Nicolás Radín** | Front
 
-<a href="http://linkedin.com/in/nicolas-roberto/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://github.com/nicolasroberto" target="_blank"> **Nicolás Roberto**</a> | Front
+<a href="http://linkedin.com/in/nicolas-roberto/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://github.com/nicolasroberto" target="_blank">  <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" height="20px" margin="4px"/></a> **Nicolás Roberto** | Front
 
-<a href="http://linkedin.com/in/mariana-camisasca/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://behance.net/mcamisasca" target="_blank"> **Mariana Camisasca**</a> | UX/UI
+<a href="http://linkedin.com/in/mariana-camisasca/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a><a href="http://behance.net/mcamisasca" target="_blank">  <img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white" height="20px" margin="4px"/> </a> **Mariana Camisasca** | UX/UI
 
 <a href="http://linkedin.com/in/cami-cataldi/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="20px"/></a> <a href="http://linkedin.com/in/cami-cataldi" target="_blank"> **Camila Cataldi**</a> | TL
 
