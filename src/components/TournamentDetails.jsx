@@ -76,11 +76,11 @@ export default function TournamentDetails({ item }) {
         {item.descripcion}
       </Text>
       <TouchableOpacity
-        className={"flex flex-row gap-x-4 my-4 px-4 py-2 rounded-md "}
+        className={"flex flex-row items-center gap-x-4 my-4 px-4 py-2 rounded-md "}
         style={{ backgroundColor: colors.accentColor }}
         onPress={handleSaved}
       >
-        <Text>Seguir</Text>
+        <Text className="font-semibold">Seguir</Text>
         {follow ? (
           <FontAwesome name="star" size={20} color="black" />
         ) : (

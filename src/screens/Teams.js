@@ -25,6 +25,16 @@ export default function Teams() {
     }
   }, [tournamentId, createdBy, teams]);
 
+  if (!tournamentId) {
+    return (
+      <View className="flex-1 justify-center items-center ">
+      <Text style={{ color: colors.primaryText }} className="text-xl">
+        Elegi un Torneo para ver los Equipos
+      </Text>
+      </View>
+    )
+  }
+
   return (
     <Provider>
       <View className="flex items-center h-full w-full ">

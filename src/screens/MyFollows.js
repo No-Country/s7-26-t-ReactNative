@@ -53,10 +53,10 @@ export default function MyFollows() {
       ) : (
         <View className="w-full h-full flex justify-center items-center px-8">
           <Text
-            className="text-2xl text-center py-4"
+            className="text-2xl text-center font-semibold py-4"
             style={{ color: colors.primaryText }}
           >
-            No tienes sigues a ningún torneo aún
+            No sigues a ningún torneo aún
           </Text>
           <TouchableOpacity
             style={{ backgroundColor: colors.accentColor }}
@@ -65,7 +65,7 @@ export default function MyFollows() {
               navigation.navigate("Inicio")
             }
           >
-            <Text>Ir al Home</Text>
+            <Text className="font-medium text-base">Ir al Home</Text>
           </TouchableOpacity>
         </View>
       )}
