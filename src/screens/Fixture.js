@@ -1,5 +1,5 @@
 import { useRoute, useTheme } from "@react-navigation/native";
-import React, { useContext, useEffect, useState, useCallback } from "react";
+import React, { useContext, useEffect, useState, useCallback, Children } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Loader from "../components/Loader";
 import { UserContext } from "../context/UserContext";
@@ -93,9 +93,12 @@ export default function Fixture({ route }) {
                 
               }
               >
-                {fixture.map((partido, index) => (
+                {
+                Children.toArray(
+                fixture.map((partido, index) => (
                   <MatchCard partido={partido} key={partido.id} editorMode={editorMode} />
-                ))}
+                )))
+                }
               </ScrollView>
               {confirm === true ? (
                 <View className="flex flex-row justify-center my-2 gap-x-4 w-full ">

@@ -5,7 +5,7 @@ export default function TournamenTable({ teams }) {
   return (
     <View className="w-full h-[62%] bg-white my-4 pb-8 rounded-xl">
       <View className="flex p-2 my-6 w-[94%] mx-auto">
-        <Text className="text-black text-xl my-2 text-center">Posiciones </Text>
+        <Text className="text-black text-xl my-2 font-semibold text-center">Posiciones </Text>
         <ScrollView horizontal className="h-full w-full py-2 ">
           <ScrollView className="w-full">
             {teams.length > 0 ? (

@@ -33,7 +33,7 @@ export default function AboutUs() {
         "about" : "Desarrollador Web, Mobile",
         "role" : "Frontend",
         "github": "https://github.com/rretta",
-        "linkedin": "https://www.linkedin.com/in/ezequiel-berretta-b1187821b",
+        "linkedin": "https://www.linkedin.com/in/ezequiel-berretta",
         "pic": "https://media.licdn.com/dms/image/D4D03AQFBRS_jyNQoAw/profile-displayphoto-shrink_400_400/0/1666972004994?e=1687392000&v=beta&t=uitv8dHR9onoINlBmSCbwm9-hn6y7JPcZHPL746sk4E"
     },
     {
