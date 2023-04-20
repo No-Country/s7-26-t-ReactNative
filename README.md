@@ -4,7 +4,14 @@
 
 <img src="https://i.ibb.co/wpHjQtq/torneopalooza-mockup.png" width="50%">
 
+
  <p>con <b>TorneoPalooza</b> vas a poder ver, crear y administrar torneos del deporte o e-sport que mas te guste.</p>
+<a href="https://torneopalooza.netlify.app/"><b>🌍 WEB / DESCARGA APK </b></a>
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 <a href="https://expo.dev/@ezequielmatiasb/tournament-app?serviceType=classic&distribution=expo-go">🚀 Deploy Expo </a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
