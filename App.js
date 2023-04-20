@@ -11,6 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { OnBoarding1 } from "./src/screens/OnBoarding1";
 import { OnBoarding2 } from "./src/screens/OnBoarding2";
 import { OnBoarding3 } from "./src/screens/OnBoarding3";
+import { StatusBar } from "expo-status-bar";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -75,6 +76,7 @@ export default function App() {
   if (onboarding) {
     return (
       <>
+        <StatusBar style={"dark"} />
         {screen === 1 ? (
           <OnBoarding1 screen={setScreen} />
         ) : screen === 2 ? (
