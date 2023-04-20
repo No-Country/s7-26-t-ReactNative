@@ -28,10 +28,19 @@
 <br/>
 Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://expo.dev/) en conjunto con [**Nativewind**](https://nativewind.dev/) (Tailwind) + [**Firebase**](https://firebase.google.com/) para el  **backend** y **bases de datos**.
 
+```
+- dependencias
+  |- react-navigation
+  |- formik yup
+  |- expo
+  |- tailwind
+  |- google places
+  |- tournament-pairings
+  |- react-native-toast-message
+```
 
-DEPENDENCIAS / APPS:   
 
-
+HERRAMIENTAS:   
 - ✅ **Diseño**: [*Figma*](https://www.figma.com/file/HR1pTyjfQiFjdvEU3LXQud/Cohete-9?node-id=0-1).
 - ✅ **Organización de proyecto**: [*Trello*](https://trello.com).
 
@@ -73,7 +82,7 @@ npx expo start -c
 
 
 ## :handshake: Involucrados en el proyecto 
-<div align="center">
+
 <span>&nbsp;&nbsp;&nbsp;</span>
 
  <a href="http://linkedin.com/in/alexander-mamani/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="http://github.com/AlexQS96" target="_blank">**Alexander Mamani**</a> | Front
@@ -88,7 +97,6 @@ npx expo start -c
 
 <a href="http://linkedin.com/in/cami-cataldi/" target="_blank"><img src = "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="http://linkedin.com/in/cami-cataldi" target="_blank">**Camila Cataldi**</a> | TL
 
-</div>
 
 ## 🎉 Deploy en Expo
 
