@@ -10,7 +10,7 @@ export const OnBoarding2 = ({ screen }) => {
   return (
     <ScrollView style={{ backgroundColor: colors.lightPrimary }}>
       <View
-        className={`text-center h-screen justify-between items-center w-full pt-20`}
+        className={`text-center h-screen justify-between items-center w-full py-10`}
       >
         <Torneopalooza width={316} height={100} color={colors.darkPrimary} />
         <Image
@@ -25,7 +25,7 @@ export const OnBoarding2 = ({ screen }) => {
 
         <Text
           style={{ color: colors.primaryText }}
-          className=" text-center text-xl m4"
+          className=" text-center text-lg px-4 m4"
         >
           Los usuarios registrados pueden crear torneos, agregar equipos y
           organizar los partidos de forma aleatoria.
