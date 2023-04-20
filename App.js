@@ -72,7 +72,7 @@ export default function App() {
     return unsubscribe;
   }, []);
 
-  if (!onboarding) {
+  if (onboarding) {
     return (
       <>
         {screen === 1 ? (
