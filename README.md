@@ -53,10 +53,6 @@ git clone https://github.com/No-Country/s7-26-t-ReactNative.git
 En el proyecto y dentro del directorio raiz:
 
 ```bash
-npm install
-# o
-pnpm install
-# o
 yarn install
 ```
 
@@ -66,7 +62,7 @@ yarn install
 ```bash
 
 # en consola:
-npm start
+npx expo start -c
 
 ```
 
