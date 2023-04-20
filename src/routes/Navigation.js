@@ -260,8 +260,8 @@ function CustomDrawerContent({ props }) {
 
   return (
     <DrawerContentScrollView {...props}>
-      <ScrollView className="h-screen">
-        <View className="flex justify-between h-full pb-4">
+      <ScrollView>
+        <View className="flex h-full justify-between pb-4">
           <View className="flex justify-between items-center">
             {user ? (
               <View className="flex w-full items-center mb-[3vh]">

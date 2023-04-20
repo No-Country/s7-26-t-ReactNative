@@ -16,7 +16,7 @@ export default function TournamentDetails({ item }) {
 
   useEffect(() => {
     const save = async () => {
-      await getDoc(doc(db, mainCollection, user.id, "Saved", item.id)).then(
+      await getDoc(doc(db, mainCollection, user?.id, "Saved", item.id)).then(
         (docsnapshot) => {
           if (docsnapshot.exists()) {
             setFollow(true);
@@ -30,13 +30,13 @@ export default function TournamentDetails({ item }) {
   }, [follow]);
 
   const handleSaved = () => {
-    getDoc(doc(db, mainCollection, user.id, "Saved", item.id)).then(
+    getDoc(doc(db, mainCollection, user?.id, "Saved", item.id)).then(
       (docsnapshot) => {
         if (docsnapshot.exists()) {
-          deleteDoc(doc(db, mainCollection, user.id, "Saved", item.id));
+          deleteDoc(doc(db, mainCollection, user?.id, "Saved", item.id));
           setFollow(false);
         } else {
-          setDoc(doc(db, mainCollection, user.id, "Saved", item.id), item);
+          setDoc(doc(db, mainCollection, user?.id, "Saved", item.id), item);
           setFollow(true);
         }
       }

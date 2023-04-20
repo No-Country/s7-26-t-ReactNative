@@ -17,7 +17,7 @@ export default function MatchCard({ partido, editorMode }) {
   })
 
   async function updateResults(){
-    let res = await updateGoals(user.id, partido.tournamentId, partido.id, goals)
+    let res = await updateGoals(user?.id, partido.tournamentId, partido.id, goals)
 
     if (res) {
       setUpdateTitle("Actualizado")

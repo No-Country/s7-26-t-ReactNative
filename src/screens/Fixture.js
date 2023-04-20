@@ -11,6 +11,7 @@ import { setFixtureDB } from "../firebase/setFunctions";
 import MatchCard from "../components/MatchCard";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "../components/Toast";
+import {RootColors} from '../theme'
 
 export default function Fixture({ route }) {
 
@@ -19,7 +20,7 @@ export default function Fixture({ route }) {
   const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState([]);
   const [fixture, setFixture] = useState([]);
-  const { colors } = useTheme();
+  const { colors } = RootColors
   const { user, tournamentId, createdBy } = useContext(UserContext);
   const [confirm, setConfirm] = useState(false);
 
@@ -50,7 +51,7 @@ export default function Fixture({ route }) {
   };
 
   useEffect(() => {
-    if (createdBy) {
+    if (createdBy && user) {
       if (createdBy === user.id) {
         setEditorMode(true)
       } 
@@ -91,7 +92,7 @@ export default function Fixture({ route }) {
             <>
               <ScrollView className="w-full py-2"
               refreshControl={
-                <RefreshControl refreshing={updateList} onRefresh={handleRefresh} tintColor={colors.yellow} colors={colors.yellow}/>
+                <RefreshControl refreshing={updateList} onRefresh={handleRefresh} tintColor="#F0C05A"/>
                 
               }
               >
@@ -134,7 +135,7 @@ export default function Fixture({ route }) {
                 No hay fixture creado aún
               </Text>
               <Text> </Text>
-              {user && user.id === createdBy ? (
+              {user && user?.id === createdBy ? (
                 <TouchableOpacity
                   style={{ backgroundColor: colors.accentColor }}
                   className="p-3 rounded-md mb-3 "

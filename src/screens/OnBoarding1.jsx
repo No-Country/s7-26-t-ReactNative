@@ -24,7 +24,7 @@ export const OnBoarding1 = ({ screen }) => {
         />
         <Text
           style={{ color: colors.primaryText }}
-          className=" text-center text-3xl font-semibold"
+          className=" text-center text-3xl font-semibold mb-7"
         >
           ¡Bienvenido!
         </Text>
@@ -38,12 +38,12 @@ export const OnBoarding1 = ({ screen }) => {
         </Text>
         <TouchableOpacity
           style={{ backgroundColor: colors.accentColor, elevation: 6 }}
-          className="self-center w-36 h-11 justify-center items-center rounded-md m-8"
+          className="self-center w-36 h-11 justify-center items-center rounded-md my-8"
           onPress={() => screen(2)}
         >
           <Text className="text-xl font-medium">Continuar</Text>
         </TouchableOpacity>
-        <View className="flex flex-row justify-between self-center w-36">
+        <View className="flex flex-row justify-between self-center mt-4 w-36">
           <Octicons
             name="dot-fill"
             size={24}
