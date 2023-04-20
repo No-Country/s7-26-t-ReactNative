@@ -1,54 +1,70 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
-import { useNavigation, useTheme } from "@react-navigation/native";
-import { OnBoarding2 } from "./OnBoarding2";
 import { Octicons } from "@expo/vector-icons";
+import { RootColors } from "../theme";
+import { ScrollView } from "react-native-gesture-handler";
+import { Torneopalooza } from "../components/icons";
 
-export const OnBoarding1 = ({screen}) => {
-  const { colors } = useTheme();
+export const OnBoarding1 = ({ screen }) => {
+  const { colors } = RootColors;
 
   return (
-    <View
-      style={{ backgroundColor: colors.darkPrimary }}
-      className={`text-center h-full w-full`}
-    >
-      <Image
-        style={{
-          width: 316,
-          height: 200,
-          resizeMode: "contain",
-        }}
-        className="w-350 h-250 self-center"
-        source={require("../../assets/logotorneopalooza.png")}
-      />
-      <Image
-        className="w-350 h-250  self-center"
-        source={require("../../assets/tournamentSample.png")}
-      />
-
-      <Text
-        style={{ color: colors.primaryText }}
-        className=" text-center text-xl m-4"
+    <ScrollView style={{ backgroundColor: colors.lightPrimary }}>
+      <View
+        className={`text-center items-center h-screen justify-around w-full pt-20`}
       >
-        En Torneo Palooza podés crear torneos para deportes amateur. Tanto los
-        usuarios invitados como los registrados pueden encontrar torneos de sus
-        deportes favoritos.
-      </Text>
-      <TouchableOpacity
-        style={{ backgroundColor: colors.accentColor, elevation: 6 }}
-        className="self-center w-36 h-11 justify-center items-center rounded-md m-10"
-        onPress={() => screen(2)}
-      >
-        <Text className="text-xl font-medium">Continuar</Text>
-      </TouchableOpacity>
-      <View className="flex flex-row justify-between self-center w-36">
-        <Octicons
-          name="dot-fill"
-          size={24}
-          style={{ color: colors.accentColor }}
+        <Torneopalooza width={316} height={100} color={colors.darkPrimary} />
+        <Image
+          style={{
+            resizeMode: "contain",
+            width: 250,
+            height: 250,
+          }}
+          className="self-center"
+          source={require("../../assets/tournamentSample.png")}
         />
-        <Octicons name="dot" size={24} style={{ color: colors.accentColor }} />
-        <Octicons name="dot" size={24} style={{ color: colors.accentColor }} />
+        <Text
+          style={{ color: colors.primaryText }}
+          className=" text-center text-3xl font-semibold"
+        >
+          ¡Bienvenido!
+        </Text>
+        <Text
+          style={{ color: colors.primaryText }}
+          className="text-center text-lg p-2"
+        >
+          En Torneo Palooza podés crear torneos para deportes amateur. Tanto los
+          usuarios invitados como los registrados pueden encontrar torneos de
+          sus deportes favoritos.
+        </Text>
+        <TouchableOpacity
+          style={{ backgroundColor: colors.accentColor, elevation: 6 }}
+          className="self-center w-36 h-11 justify-center items-center rounded-md m-8"
+          onPress={() => screen(2)}
+        >
+          <Text className="text-xl font-medium">Continuar</Text>
+        </TouchableOpacity>
+        <View className="flex flex-row justify-between self-center w-36">
+          <Octicons
+            name="dot-fill"
+            size={24}
+            style={{ color: colors.accentColor }}
+          />
+          <TouchableOpacity onPress={() => screen(2)}>
+            <Octicons
+              name="dot"
+              size={24}
+              style={{ color: colors.accentColor }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => screen(3)}>
+            <Octicons
+              name="dot"
+              size={24}
+              style={{ color: colors.accentColor }}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
