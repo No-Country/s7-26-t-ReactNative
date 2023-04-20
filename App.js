@@ -7,11 +7,10 @@ import { UserContext } from "./src/context/UserContext";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { Torneopalooza } from "./src/components/icons";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { OnBoarding1 } from "./src/screens/OnBoarding1";
 import { OnBoarding2 } from "./src/screens/OnBoarding2";
 import { OnBoarding3 } from "./src/screens/OnBoarding3";
-
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -19,24 +18,24 @@ NativeWindStyleSheet.setOutput({
 
 export default function App() {
   const [onboarding, setOnboarding] = useState(null);
-  const [screen, setScreen] = useState(1)
+  const [screen, setScreen] = useState(1);
   const [user, setUser] = useState(null);
   const [tournamentId, setTournamentId] = useState(null);
   const [createdBy, setCreatedBy] = useState(null);
 
   const leaveOnboarding = async () => {
-    await AsyncStorage.setItem('onboard', 'false');
-    setOnboarding(false)
+    await AsyncStorage.setItem("onboard", "false");
+    setOnboarding(false);
   };
 
   const checkOnboarding = async () => {
     try {
-      const value = await AsyncStorage.getItem('onboard');
-      console.log('onboarding: ' + value);
+      const value = await AsyncStorage.getItem("onboard");
+      console.log("onboarding: " + value);
 
       if (value === null) {
         setOnboarding(true);
-        await AsyncStorage.setItem('onboard', 'true');
+        await AsyncStorage.setItem("onboard", "true");
       } else if (value === true) {
         setOnboarding(true);
         leaveOnboarding();
@@ -58,9 +57,7 @@ export default function App() {
   };
 
   useEffect(() => {
-
-    checkOnboarding()
-
+    checkOnboarding();
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -75,23 +72,31 @@ export default function App() {
     return unsubscribe;
   }, []);
 
-  if (onboarding) {
-    return(
-      <>      
-        {
-          screen === 1?
-          <OnBoarding1 screen={setScreen}/>  
-          : screen === 2?
-          <OnBoarding2 screen={setScreen}/>
-          :
-          <OnBoarding3 leave={leaveOnboarding}/>
-        }
+  if (!onboarding) {
+    return (
+      <>
+        {screen === 1 ? (
+          <OnBoarding1 screen={setScreen} />
+        ) : screen === 2 ? (
+          <OnBoarding2 screen={setScreen} />
+        ) : (
+          <OnBoarding3 screen={setScreen} leave={leaveOnboarding} />
+        )}
       </>
-    ) 
+    );
   }
 
   return (
-    <UserContext.Provider value={ {user, setUser, tournamentId, setTournamentId, createdBy, setCreatedBy} }>
+    <UserContext.Provider
+      value={{
+        user,
+        setUser,
+        tournamentId,
+        setTournamentId,
+        createdBy,
+        setCreatedBy,
+      }}
+    >
       <DrawerNavigation />
     </UserContext.Provider>
   );
