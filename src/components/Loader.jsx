@@ -5,7 +5,7 @@ import { useTheme } from "@react-navigation/native";
 export default function Loader() {
   const { dark, colors } = useTheme();
   return (
-    <View className="flex items-center justify-center h-full w-full">
+    <View className="flex items-center justify-center h-[70vh] w-full">
       <UIActivityIndicator color={colors.primaryText} />
     </View>
   );

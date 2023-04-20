@@ -26,7 +26,7 @@ export const OnBoarding3 = ({ leave, screen }) => {
 
         <Text
           style={{ color: colors.primaryText }}
-          className=" text-center text-lg px-4 m-4"
+          className=" text-center text-lg px-4 my-7"
         >
           Torneo Palooza está diseñada para que la organización de torneos
           amateur sea lo más sencilla posible y que los fanáticos del deporte se
@@ -41,13 +41,13 @@ export const OnBoarding3 = ({ leave, screen }) => {
           <Text className="text-xl font-medium">Continuar</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          className="self-center justify-center items-center mb-8"
+          className="self-center justify-center items-center my-8"
           onPress={() => screen(2)}
         >
           <Text className="text-base underline font-medium">Atrás</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          className="flex flex-row justify-between self-center w-36"
+          className="flex flex-row justify-between self-center mt-6 w-36"
           onPress={() => screen(3)}
         >
           <TouchableOpacity onPress={() => screen(1)}>

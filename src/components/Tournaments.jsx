@@ -30,10 +30,10 @@ export default function Tournaments({ data, fromHome }) {
                 onPress={() => {
                   navigation.navigate({
                     name: "VerTorneo",
-                    params: { id: data.id, userId: data.userId },
+                    params: { id: data?.id, userId: data?.userId },
                   });
-                  setCreatedBy(data.userId);
-                  setTournamentId(data.id);
+                  setCreatedBy(data?.userId);
+                  setTournamentId(data?.id);
                 }}
                 /* style={{
                   backgroundColor: colors.lightPrimary,
@@ -64,7 +64,7 @@ export default function Tournaments({ data, fromHome }) {
                     style={{ color: colors.textIcons }}
                     className="font-semibold"
                     data={data}
-                    key={data.id}
+                    key={data?.id}
                   >
                     {data.nombre}
                   </Text>

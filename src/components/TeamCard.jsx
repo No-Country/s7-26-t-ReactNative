@@ -13,7 +13,7 @@ export default function TeamCard({ team }) {
       className={"flex p-2 px-3 m-2 rounded-lg w-36 h-30 relative"}
       style={{ backgroundColor: colors.primaryColor }}
     >
-      {user.id === createdBy ? (
+      {user?.id === createdBy ? (
         <TouchableOpacity className="self-end z-10 w-5 h-5">
           <MiniMenu
             teamId={team.id}
