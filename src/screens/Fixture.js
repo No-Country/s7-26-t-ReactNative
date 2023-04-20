@@ -1,18 +1,21 @@
 import { useRoute, useTheme } from "@react-navigation/native";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Loader from "../components/Loader";
 import { UserContext } from "../context/UserContext";
 import { getFixture, getTournamentTeams } from "../firebase/getFunctions";
 import { RoundRobin } from "tournament-pairings";
 import { ordenarFechas, ordenarPorPuntos } from "../utils";
-import { ScrollView } from "react-native";
+import { ScrollView, RefreshControl } from "react-native";
 import { setFixtureDB } from "../firebase/setFunctions";
 import MatchCard from "../components/MatchCard";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "../components/Toast";
 
 export default function Fixture({ route }) {
+
+  const [updateList, setUpdateList] = useState(false);
+  const [editorMode, setEditorMode] = useState(false);
   const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState([]);
   const [fixture, setFixture] = useState([]);
@@ -47,6 +50,10 @@ export default function Fixture({ route }) {
   };
 
   useEffect(() => {
+    if (createdBy === user.id) {
+      setEditorMode(true)
+    }
+
     const data1 = getFixture(createdBy, tournamentId);
     data1.then((res) => {
       if (res.length > 0) {
@@ -59,8 +66,15 @@ export default function Fixture({ route }) {
         setLoading(false);
       }
     });
-  }, [tournamentId, createdBy]);
+  }, [tournamentId, createdBy, updateList]);
   fixture.sort(ordenarFechas);
+
+  const handleRefresh = useCallback(() => {
+    setUpdateList(true);
+    setTimeout(() => {
+      setUpdateList(false);
+    }, 500);
+  }, []);
 
   return (
     <View className="flex items-center justify-center h-full w-full">
@@ -73,9 +87,14 @@ export default function Fixture({ route }) {
         <>
           {fixture.length > 0 ? (
             <>
-              <ScrollView className="w-full py-2">
+              <ScrollView className="w-full py-2"
+              refreshControl={
+                <RefreshControl refreshing={updateList} onRefresh={handleRefresh} tintColor={colors.yellow} colors={colors.yellow}/>
+                
+              }
+              >
                 {fixture.map((partido, index) => (
-                  <MatchCard partido={partido} key={partido.id} />
+                  <MatchCard partido={partido} key={partido.id} editorMode={editorMode} />
                 ))}
               </ScrollView>
               {confirm === true ? (

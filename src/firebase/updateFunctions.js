@@ -1,5 +1,5 @@
 import { doc, updateDoc } from "firebase/firestore";
-import { db, mainCollection, teamsCollection, tournamentCollection } from "./credentials";
+import { db, fixtureCollection, mainCollection, teamsCollection, tournamentCollection } from "./credentials";
 
 export const updateTeam = async (userId, tournamentId, teamId, data) => {
   try {
@@ -17,3 +17,18 @@ export const updateTeam = async (userId, tournamentId, teamId, data) => {
   }
 };
 
+export const updateGoals = async (userId, tournamentId,fixtureId, goals) =>{
+  try {
+    await updateDoc(
+      doc(
+        db,
+        `${mainCollection}/${userId}/${tournamentCollection}/${tournamentId}/${fixtureCollection}/${fixtureId}`
+      ),
+      goals
+    )
+    return true
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
