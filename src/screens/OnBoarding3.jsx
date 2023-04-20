@@ -11,7 +11,7 @@ export const OnBoarding3 = ({ leave, screen }) => {
     <ScrollView style={{ backgroundColor: colors.lightPrimary }}>
       <View
         style={{ backgroundColor: colors.lightPrimary }}
-        className={`text-center w-full pt-20 h-screen justify-around items-center `}
+        className={`text-center w-full h-screen justify-around items-center py-10`}
       >
         <Torneopalooza width={316} height={100} color={colors.darkPrimary} />
         <Image
@@ -26,7 +26,7 @@ export const OnBoarding3 = ({ leave, screen }) => {
 
         <Text
           style={{ color: colors.primaryText }}
-          className=" text-center text-xl m-4"
+          className=" text-center text-lg px-4 m-4"
         >
           Torneo Palooza está diseñada para que la organización de torneos
           amateur sea lo más sencilla posible y que los fanáticos del deporte se

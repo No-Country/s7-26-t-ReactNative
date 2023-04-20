@@ -10,7 +10,7 @@ export const OnBoarding1 = ({ screen }) => {
   return (
     <ScrollView style={{ backgroundColor: colors.lightPrimary }}>
       <View
-        className={`text-center items-center h-screen justify-around w-full pt-20`}
+        className={`text-center items-center h-screen justify-around w-full py-10`}
       >
         <Torneopalooza width={316} height={100} color={colors.darkPrimary} />
         <Image
