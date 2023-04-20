@@ -1,6 +1,6 @@
 <div align="center">
 
-![logotorneopalooza](https://user-images.githubusercontent.com/87555292/233217179-964e9c39-f200-493d-8b9a-c8e6de7bb223.png)
+![logotorneopalooza](https://torneopalooza.netlify.app/torneopalooza.svg)
 
 <img src="https://i.ibb.co/wpHjQtq/torneopalooza-mockup.png" width="50%">
 
