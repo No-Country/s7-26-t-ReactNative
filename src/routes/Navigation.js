@@ -318,54 +318,6 @@ function CustomDrawerContent({ props }) {
                     Mi Perfil
                   </Text>
                 </TouchableOpacity>
-                
-              <TouchableOpacity
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-                onPress={() =>
-                  navigation.navigate("MisTorneos", {
-                    id: user.id,
-                    username: user.username,
-                  })
-                }
-              >
-                <View className="flex items-center justify-center w-5">
-                  <MaterialCommunityIcons
-                    name="tournament"
-                    size={20}
-                    color="#fff"
-                  />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Mis Torneos
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-                onPress={() => navigation.navigate("MisSeguidos")}
-              >
-                <View className="flex items-center justify-center w-5">
-                  <FontAwesome name="star" size={20} color="#fff" />
-                </View>
-                <Text className="text-white font-bold text-base">
-                  Torneos Seguidos
-                </Text>
-              </TouchableOpacity>
-
-                <TouchableOpacity
-                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
-                  onPress={() =>
-                    navigation.navigate("CrearTorneo", {
-                      username: user.username,
-                    })
-                  }
-                >
-                  <View className="flex items-center justify-center w-5">
-                    <FontAwesome name="trophy" size={20} color="#fff" />
-                  </View>
-                  <Text className="text-white font-bold text-base">
-                    Crear Torneo
-                  </Text>
-                </TouchableOpacity>
 
                 <TouchableOpacity
                   className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
@@ -385,6 +337,33 @@ function CustomDrawerContent({ props }) {
                   </View>
                   <Text className="text-white font-bold text-base">
                     Mis Torneos
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                  onPress={() => navigation.navigate("MisSeguidos")}
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="star" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Torneos Seguidos
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  className="py-2.5 pl-6 w-full bg-white/5 flex gap-x-2 flex-row items-center"
+                  onPress={() =>
+                    navigation.navigate("CrearTorneo", {
+                      username: user.username,
+                    })
+                  }
+                >
+                  <View className="flex items-center justify-center w-5">
+                    <FontAwesome name="trophy" size={20} color="#fff" />
+                  </View>
+                  <Text className="text-white font-bold text-base">
+                    Crear Torneo
                   </Text>
                 </TouchableOpacity>
 
