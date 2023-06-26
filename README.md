@@ -41,7 +41,7 @@ Se utilizó [**React Native**](https://reactnative.dev/) + [**Expo**](https://ex
 
 
 HERRAMIENTAS:   
-- ✅ **Diseño**: [*Figma*](https://www.figma.com/file/HR1pTyjfQiFjdvEU3LXQud/Cohete-9?node-id=0-1).
+- ✅ **Diseño**: [*Figma*]([https://www.figma.com/file/HR1pTyjfQiFjdvEU3LXQud/Cohete-9?node-id=0-1](https://www.figma.com/file/Y3oPRJ0vsi2LzAhstn5Ehv/S7-26?type=design&node-id=0-1&mode=design&t=JYDqrK6r4ULCiVnI-0)).
 - ✅ **Organización de proyecto**: [*Trello*](https://trello.com).
 
 
